@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   BASE
+   ============================================================ */
+:root {
+  --page: #FBF5EC;
+  --ink: #2A0E3D;
+  --gold: #C9A84C;
+  --gold-light: #E8D5A3;
+  --gold-dark: #8B6914;
+  --rose: #C0607A;
+  --plum: #7B3F8C;
+  --terra: #C1440E;
+  --line: rgba(123, 63, 140, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
+body {
+  background: var(--page);
+  color: #2D1B0E;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection { background: rgba(201, 168, 76, 0.28); color: var(--ink); }
+
+section[id] { scroll-margin-top: 90px; }
+
+/* ============================================================
+   TYPOGRAPHY HELPERS
+   ============================================================ */
+.font-display { font-family: var(--font-fraunces), serif; }
+
+/* gold→terracotta gradient accent used on italic emphasis */
+.text-accent {
+  font-style: italic;
+  font-weight: 500;
+  background: linear-gradient(100deg, #B8821E, #E2A93C 50%, #C1440E);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* light-on-dark accent (footer / dark areas) */
+.text-accent-light {
+  font-style: italic;
+  font-weight: 500;
+  background: linear-gradient(100deg, #E8D5A3, #F4E3B0 50%, #E7A98C);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================================
+   MESH GRADIENTS
+   ============================================================ */
+/* HERO — warm gold (top-left) → pink → purple → deep purple (bottom-right) */
+.mesh-hero {
+  background:
+    radial-gradient(ellipse 95% 85% at 6% 4%,    #F8EAC6 0%, transparent 46%),
+    radial-gradient(ellipse 70% 75% at 28% 34%,  #EEC3DA 0%, transparent 52%),
+    radial-gradient(ellipse 85% 95% at 74% 62%,  #9C53C2 0%, transparent 56%),
+    radial-gradient(ellipse 95% 95% at 102% 104%,#1E0838 0%, transparent 60%),
+    linear-gradient(122deg, #F5E1B6 0%, #E199BE 25%, #A552C0 50%, #5A2188 73%, #1F0A3A 100%);
+}
+
+/* FOOTER OUTRO — the exact hero mesh, point-reflected 180° so it reads
+   as an inverted "outro": deep purple at the top (flows from the page)
+   blooming into warm gold/rose toward the bottom. */
+.mesh-outro {
+  background:
+    radial-gradient(ellipse 95% 85% at 94% 96%,  #F8EAC6 0%, transparent 46%),
+    radial-gradient(ellipse 70% 75% at 72% 66%,  #EEC3DA 0%, transparent 52%),
+    radial-gradient(ellipse 85% 95% at 26% 38%,  #9C53C2 0%, transparent 56%),
+    radial-gradient(ellipse 95% 95% at -2% -4%,  #1E0838 0%, transparent 60%),
+    linear-gradient(302deg, #F5E1B6 0%, #E199BE 25%, #A552C0 50%, #5A2188 73%, #1F0A3A 100%);
+}
+
+/* ABOUT portrait frame — branded mini-mesh */
+.mesh-frame {
+  background:
+    radial-gradient(ellipse 80% 60% at 25% 18%, #E7BFD6 0%, transparent 55%),
+    radial-gradient(ellipse 90% 80% at 80% 90%, #1E0838 0%, transparent 60%),
+    linear-gradient(150deg, #C77FB0 0%, #8B45B8 45%, #2A0E47 100%);
+}
+
+/* film grain overlay */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+/* ============================================================
+   MANDALA + ORBIT
+   ============================================================ */
+.mandala-slow  { transform-box: fill-box; transform-origin: center; will-change: transform; animation: mandala-cw 80s linear infinite; }
+.mandala-slow2 { transform-box: fill-box; transform-origin: center; will-change: transform; animation: mandala-ccw 110s linear infinite; }
+
+.orbit-node { animation: bob var(--bd, 5s) ease-in-out infinite var(--bdy, 0s); }
+@keyframes bob { 0%,100% { margin-top: 0; } 50% { margin-top: -9px; } }
+
+/* ============================================================
+   VASTU 3D COMPASS + HOVERING HOUSE
+   ============================================================ */
+.vc-scene {
+  position: relative; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  perspective: 1100px;
+}
+.vc-compass {
+  position: absolute; left: 50%; top: 52%;
+  width: 96%; height: 96%;
+  transform: translate(-50%, -50%) rotateX(62deg) rotateZ(0deg);
+  transform-style: preserve-3d; will-change: transform;
+  animation: vc-spin 90s linear infinite;
+}
+.vc-compass svg { width: 100%; height: 100%; overflow: visible; }
+@keyframes vc-spin {
+  from { transform: translate(-50%, -50%) rotateX(62deg) rotateZ(0deg); }
+  to   { transform: translate(-50%, -50%) rotateX(62deg) rotateZ(360deg); }
+}
+
+/* soft ground shadow cast on the compass */
+.vc-shadow {
+  position: absolute; left: 50%; top: 55%;
+  width: 40%; height: 15%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, rgba(20, 6, 36, 0.4) 0%, rgba(20, 6, 36, 0.16) 42%, transparent 72%);
+  filter: blur(3px);
+  animation: vc-shadow 6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes vc-shadow {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+  50%      { transform: translate(-50%, -50%) scale(0.86); opacity: 0.62; }
+}
+
+/* the hovering house (purchased iso-home.png, transparent bg) */
+.vc-house {
+  position: absolute; left: 50%; top: 40%;
+  width: 78%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 26px 30px rgba(31, 10, 58, 0.4));
+  animation: vc-float 6s ease-in-out infinite;
+  will-change: transform;
+}
+.vc-house svg,
+.vc-house img { display: block; width: 100%; height: auto; overflow: visible; }
+@keyframes vc-float {
+  0%, 100% { transform: translate(-50%, -52%); }
+  50%      { transform: translate(-50%, -58%); }
+}
+
+/* ============================================================
+   LOTUS BLOOM (scroll-triggered via .bloomed)
+   ============================================================ */
+.lotus .lp {
+  transform-box: view-box;
+  transform-origin: 60px 60px;
+  transform: rotate(0deg) scale(0.15);
+  opacity: 0;
+  transition: transform 0.95s cubic-bezier(0.18, 0.9, 0.26, 1), opacity 0.7s ease;
+}
+.lotus.bloomed .lp { opacity: 1; }
+.lotus.bloomed .lp-c  { transform: rotate(0deg)   scale(1); transition-delay: 0.18s; }
+.lotus.bloomed .lp-l1 { transform: rotate(-32deg) scale(1); transition-delay: 0.12s; }
+.lotus.bloomed .lp-r1 { transform: rotate(32deg)  scale(1); transition-delay: 0.12s; }
+.lotus.bloomed .lp-l2 { transform: rotate(-62deg) scale(1); transition-delay: 0.04s; }
+.lotus.bloomed .lp-r2 { transform: rotate(62deg)  scale(1); transition-delay: 0.04s; }
+.lotus .lp-base {
+  transform-box: view-box; transform-origin: center;
+  transform: scale(0); opacity: 0;
+  transition: transform 0.6s ease 0.3s, opacity 0.6s ease 0.3s;
+}
+.lotus.bloomed .lp-base { transform: scale(1); opacity: 1; }
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
