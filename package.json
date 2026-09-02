@@ -2,7 +2,7 @@
   "name": "a-healing-vaastu",
   "version": "1.0.0",
   "private": true,
-  "description": "A Healing Vaastu \u2014 Vastu Shastra consultancy. Next.js full-stack site.",
+  "description": "A Healing Vaastu — Vastu Shastra consultancy, Brampton ON. Next.js full-stack site.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,8 +13,8 @@
   "dependencies": {
     "framer-motion": "^11.3.24",
     "lucide-react": "^0.427.0",
-    "next": "14.2.5",
-    "nodemailer": "^6.10.1",
+    "next": "14.2.35",
+    "nodemailer": "^9.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
