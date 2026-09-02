@@ -2,11 +2,12 @@
   "name": "a-healing-vaastu",
   "version": "1.0.0",
   "private": true,
-  "description": "A Healing Vaastu — Vastu Shastra consultancy. Next.js full-stack site.",
+  "description": "A Healing Vaastu \u2014 Vastu Shastra consultancy. Next.js full-stack site.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "start:passenger": "NODE_ENV=production node server.js",
     "lint": "next lint"
   },
   "dependencies": {
