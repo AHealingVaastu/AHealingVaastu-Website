@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Facebook, Instagram, Youtube } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import Lotus from "@/components/ui/Lotus";
 import { business, services } from "@/lib/content";
 
 const cols = [
@@ -38,7 +37,7 @@ export default function Footer() {
         <div className="mesh-outro grain relative overflow-hidden rounded-[30px]">
           <Reveal className="relative z-[2] mx-auto max-w-shell px-6 py-16 text-center md:px-14 md:py-24">
             <div className="flex justify-center">
-              <Lotus width={64} stroke="#F4E3B0" />
+              <Image src="/lotus.png" alt="" width={72} height={50} aria-hidden="true" />
             </div>
             <h2 className="mx-auto mt-6 max-w-3xl font-display text-[clamp(2.2rem,5vw,4.2rem)] font-normal leading-[1.08] tracking-[-0.025em] text-[#FFFCF6]">
               Let your space <span className="text-accent-plum">breathe,</span>

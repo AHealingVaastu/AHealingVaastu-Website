@@ -182,29 +182,6 @@ section[id] { scroll-margin-top: 90px; }
 }
 
 /* ============================================================
-   LOTUS BLOOM (scroll-triggered via .bloomed)
-   ============================================================ */
-.lotus .lp {
-  transform-box: view-box;
-  transform-origin: 60px 60px;
-  transform: rotate(0deg) scale(0.15);
-  opacity: 0;
-  transition: transform 0.95s cubic-bezier(0.18, 0.9, 0.26, 1), opacity 0.7s ease;
-}
-.lotus.bloomed .lp { opacity: 1; }
-.lotus.bloomed .lp-c  { transform: rotate(0deg)   scale(1); transition-delay: 0.18s; }
-.lotus.bloomed .lp-l1 { transform: rotate(-32deg) scale(1); transition-delay: 0.12s; }
-.lotus.bloomed .lp-r1 { transform: rotate(32deg)  scale(1); transition-delay: 0.12s; }
-.lotus.bloomed .lp-l2 { transform: rotate(-62deg) scale(1); transition-delay: 0.04s; }
-.lotus.bloomed .lp-r2 { transform: rotate(62deg)  scale(1); transition-delay: 0.04s; }
-.lotus .lp-base {
-  transform-box: view-box; transform-origin: center;
-  transform: scale(0); opacity: 0;
-  transition: transform 0.6s ease 0.3s, opacity 0.6s ease 0.3s;
-}
-.lotus.bloomed .lp-base { transform: scale(1); opacity: 1; }
-
-/* ============================================================
    TESTIMONIAL PROGRESS (fills, then advances to the next story)
    ============================================================ */
 @keyframes story-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }

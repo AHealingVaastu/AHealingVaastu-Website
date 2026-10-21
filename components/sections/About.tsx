@@ -1,6 +1,6 @@
 import { BadgeCheck } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import Lotus from "@/components/ui/Lotus";
+import Image from "next/image";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { credentials, business } from "@/lib/content";
 
@@ -13,7 +13,7 @@ export default function About() {
           <Reveal direction="right">
             <div className="mesh-frame grain relative flex aspect-[4/5] w-full md:aspect-[16/10] lg:aspect-[4/5] items-center justify-center overflow-hidden rounded-[30px]">
               {/* Swap this whole block for <Image src="/your-photo.jpg" fill className="object-cover" /> */}
-              <Lotus width={170} stroke="#F4E3B0" className="opacity-90" />
+              <Image src="/lotus.png" alt="" width={180} height={125} className="relative z-[1] opacity-90" aria-hidden="true" />
 
               <div className="glass absolute right-4 top-4 z-[2] rounded-[18px] px-4 py-3 text-center shadow-[0_12px_30px_rgba(31,10,58,0.22)]">
                 <span className="block font-display text-[1.6rem] font-normal leading-none tracking-[-0.02em] text-[#FFFCF6]">7+</span>
