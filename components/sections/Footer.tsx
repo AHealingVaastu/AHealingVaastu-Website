@@ -2,17 +2,12 @@ import Image from "next/image";
 import { Facebook, Instagram, Youtube } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import Lotus from "@/components/ui/Lotus";
-import { business } from "@/lib/content";
+import { business, services } from "@/lib/content";
 
 const cols = [
   {
     title: "Services",
-    links: [
-      { label: "Residential Vastu", href: "#services" },
-      { label: "Commercial Vastu", href: "#services" },
-      { label: "Astrological Guidance", href: "#services" },
-      { label: "Online Consultations", href: "#services" },
-    ],
+    links: services.map((s) => ({ label: s.title, href: "#services" })),
   },
   {
     title: "Company",
@@ -48,8 +43,8 @@ export default function Footer() {
               <Lotus width={64} stroke="#F4E3B0" />
             </div>
             <h2 className="mx-auto mt-6 max-w-3xl font-display text-[clamp(2.2rem,5vw,4.2rem)] font-normal leading-[1.08] tracking-[-0.025em] text-[#FFFCF6]">
-              Let your space <span className="text-accent-light">breathe</span>,
-              <br className="hidden sm:block" /> and watch your life <span className="text-accent-light">bloom.</span>
+              Let your space <span className="text-accent-plum">breathe</span>,
+              <br className="hidden sm:block" /> and watch your life <span className="text-accent-plum">bloom.</span>
             </h2>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
               <a
