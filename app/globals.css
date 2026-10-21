@@ -166,10 +166,11 @@ section[id] { scroll-margin-top: 90px; }
 }
 
 /* the hovering house (purchased iso-home.png, transparent bg) */
+/* left/top place the house directly; the box is square like iso-home.png, so its size
+   is known before the image loads (Safari can lock percentage transforms at animation start) */
 .vc-house {
-  position: absolute; left: 50%; top: 40%;
-  width: 78%;
-  transform: translate(-50%, -50%);
+  position: absolute; left: 11%; top: -0.6%;
+  width: 78%; aspect-ratio: 1 / 1;
   filter: drop-shadow(0 26px 30px rgba(31, 10, 58, 0.4));
   animation: vc-float 6s ease-in-out infinite;
   will-change: transform;
@@ -177,8 +178,14 @@ section[id] { scroll-margin-top: 90px; }
 .vc-house svg,
 .vc-house img { display: block; width: 100%; height: auto; overflow: visible; }
 @keyframes vc-float {
-  0%, 100% { transform: translate(-50%, -52%); }
-  50%      { transform: translate(-50%, -58%); }
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -6%, 0); }
+}
+
+/* touch screens: enlarge the tap area of small inline text links without moving them */
+@media (pointer: coarse) {
+  .tap { position: relative; }
+  .tap::after { content: ""; position: absolute; inset: -12px -6px; }
 }
 
 /* ============================================================

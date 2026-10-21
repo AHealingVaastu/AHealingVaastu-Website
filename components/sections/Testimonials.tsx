@@ -21,7 +21,7 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" aria-label="Testimonials" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         {/* heading */}
         <Reveal className="px-4 pb-8 pt-8 md:px-10 md:pb-10 md:pt-12">
           <SectionLabel index="05" label="Client stories" />
@@ -125,7 +125,7 @@ export default function Testimonials() {
                       </span>
                       <span className="min-w-0">
                         <span className={`block truncate text-[0.88rem] font-medium ${on ? "text-ink" : "text-ink/70"}`}>{c.name}</span>
-                        <span className="block truncate text-[0.74rem] text-body-faint">{c.location}</span>
+                        <span className="block truncate text-[0.75rem] text-body-faint">{c.location.split(" · ")[0]}</span>
                       </span>
                       {on && !reduce && (
                         <span

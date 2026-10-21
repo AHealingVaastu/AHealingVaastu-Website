@@ -130,7 +130,7 @@ export default function VastuCompass({ className = "" }: { className?: string })
       <div className="vc-shadow" />
       <div className="vc-house">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/iso-home.png" alt="A modern home aligned to Vastu directional principles" />
+        <img src="/iso-home.png" width={500} height={500} alt="A modern home aligned to Vastu directional principles" />
       </div>
     </div>
   );

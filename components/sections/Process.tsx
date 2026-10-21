@@ -28,7 +28,7 @@ export default function Process() {
 
   return (
     <section id="process" aria-label="Process" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         <div className="grid grid-cols-1 gap-2 lg:grid-cols-[0.9fr_1.1fr] lg:gap-4">
           {/* mesh card: pinned on desktop, tracks the active step */}
           <div className="lg:sticky lg:top-24 lg:self-start">
@@ -84,7 +84,7 @@ export default function Process() {
                   rows.current[i] = el;
                 }}
                 data-index={i}
-                className={`grid grid-cols-[3.25rem_1fr] gap-x-5 border-line py-8 transition-opacity duration-500 md:grid-cols-[4.5rem_1fr] md:gap-x-8 md:py-10 lg:min-h-[34svh] lg:content-center ${
+                className={`grid grid-cols-[3.25rem_1fr] gap-x-5 border-line py-8 transition-opacity duration-500 md:grid-cols-[4.5rem_1fr] md:gap-x-8 md:py-10 lg:min-h-[min(34svh,300px)] lg:content-center ${
                   i > 0 ? "border-t" : ""
                 } ${i === active ? "" : "lg:opacity-45"}`}
               >
