@@ -2,16 +2,44 @@
 
 import { useState } from "react";
 import { MapPin, Phone, Mail, Calendar, Check, Loader2 } from "lucide-react";
+import Reveal from "@/components/ui/Reveal";
+import SectionLabel from "@/components/ui/SectionLabel";
 import { business, serviceOptions, propertyOptions } from "@/lib/content";
 
 const info = [
   { icon: MapPin, title: "Location", lines: [business.location, business.area] },
-  { icon: Phone, title: "Phone & WhatsApp", lines: [business.phone, business.bookingNote] },
-  { icon: Mail, title: "Email", lines: [business.email, "We respond within 24 hours"] },
+  { icon: Phone, title: "Phone & WhatsApp", lines: [business.phone, business.bookingNote], href: business.phoneHref },
+  { icon: Mail, title: "Email", lines: [business.email, "We respond within 24 hours"], href: `mailto:${business.email}` },
   { icon: Calendar, title: "Consultation Hours", lines: business.hoursLines },
 ];
 
 type Status = "idle" | "loading" | "success" | "error";
+
+const field =
+  "w-full rounded-[14px] border border-line bg-white px-4 py-3 text-[0.93rem] text-ink outline-none transition placeholder:text-body-faint/70 focus:border-plum/50 focus:ring-4 focus:ring-plum/10";
+const label = "mb-2 block text-[0.8rem] font-medium text-ink/80";
+
+/** Radio group styled as selectable pills. */
+function Pills({ name, legend, options, required = false }: { name: string; legend: string; options: { value: string; label: string }[]; required?: boolean }) {
+  return (
+    <fieldset>
+      <legend className={label}>
+        {legend}
+        {required && " *"}
+      </legend>
+      <div className="flex flex-wrap gap-2">
+        {options.map((o) => (
+          <label key={o.value} className="cursor-pointer">
+            <input type="radio" name={name} value={o.value} required={required} className="peer sr-only" />
+            <span className="inline-flex rounded-full border border-line bg-white px-4 py-2 text-[0.84rem] text-ink/80 transition hover:border-ink/40 peer-checked:border-ink peer-checked:bg-ink peer-checked:text-[#FFFCF6] peer-focus-visible:ring-4 peer-focus-visible:ring-plum/20">
+              {o.label}
+            </span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  );
+}
 
 export default function Contact() {
   const [status, setStatus] = useState<Status>("idle");
@@ -39,111 +67,118 @@ export default function Contact() {
     }
   }
 
-  const field =
-    "w-full rounded-[10px] border-[1.5px] border-gold/20 bg-cream px-[0.95rem] py-3 text-[0.93rem] text-body outline-none transition focus:border-gold focus:ring-[3px] focus:ring-gold/10";
-  const label = "mb-[0.38rem] block text-[0.83rem] font-bold tracking-[0.02em] text-ink";
-
   return (
-    <section id="contact" className="bg-gradient-to-b from-cream-200 to-page">
-      <div className="mx-auto max-w-shell px-6 py-16">
-        <div className="grid grid-cols-1 items-start gap-16 md:grid-cols-[1fr_1.4fr]">
+    <section id="contact" aria-label="Contact" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
+      <div className="rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+        <div className="grid grid-cols-1 items-start gap-2 lg:grid-cols-[0.9fr_1.1fr] lg:gap-4">
           {/* info */}
-          <div>
-            <div className="mb-4 inline-flex items-center gap-2 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-gold-dark">
-              <span className="h-[7px] w-[7px] rounded-full bg-gold ring-4 ring-gold/20" />
-              Book a Consultation
-            </div>
-            <h2 className="mb-4 font-display text-[clamp(2rem,3.6vw,3rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-ink">
-              Let&apos;s Begin Your <span className="text-accent">Transformation</span>
+          <Reveal className="px-4 pb-6 pt-8 md:px-10 md:pt-12 lg:pb-12">
+            <SectionLabel index="07" label="Book a consultation" />
+            <h2 className="mt-6 font-display text-[clamp(2.2rem,4vw,3.4rem)] font-normal leading-[1.08] tracking-[-0.025em] text-ink">
+              Let&apos;s Begin Your
+              <br />
+              <span className="text-accent-plum">Transformation</span>
             </h2>
-            <p className="mb-8 text-[0.97rem] leading-relaxed text-body-muted">
+            <p className="mt-5 max-w-[440px] text-[1rem] leading-[1.65] text-body-muted">
               Fill in the form and we&apos;ll respond within 24 hours to confirm your consultation. All enquiries are completely confidential.
             </p>
-            {info.map((it) => (
-              <div key={it.title} className="mb-6 flex gap-4">
-                <div className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-xl bg-gold/[0.11] text-gold-dark">
-                  <it.icon size={20} />
-                </div>
-                <div>
-                  <strong className="mb-[0.2rem] block text-[0.92rem] font-bold text-ink">{it.title}</strong>
-                  {it.lines.map((l) => (
-                    <span key={l} className="block text-[0.88rem] text-body-muted">{l}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+
+            {/* contact details: the 1px gap shows as divider lines */}
+            <ul className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-[24px] bg-line sm:grid-cols-2">
+              {info.map((it) => (
+                <li key={it.title} className="flex gap-3 bg-[#FFFCF6] px-5 py-5">
+                  <it.icon size={20} strokeWidth={1.5} className="mt-0.5 shrink-0 text-plum" aria-hidden="true" />
+                  <div className="min-w-0">
+                    <span className="block text-[0.9rem] font-medium text-ink">{it.title}</span>
+                    {it.lines.map((l, i) =>
+                      i === 0 && it.href ? (
+                        <a key={l} href={it.href} className="mt-1 block break-words text-[0.84rem] text-ink underline decoration-ink/25 underline-offset-4 transition hover:decoration-ink">
+                          {l}
+                        </a>
+                      ) : (
+                        <span key={l} className="mt-1 block text-[0.82rem] leading-[1.5] text-body-muted">
+                          {l}
+                        </span>
+                      )
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
 
           {/* form */}
-          <div className="rounded-[24px] border border-line bg-white p-8 shadow-[0_18px_50px_rgba(74,31,92,0.08)]">
+          <Reveal delay={0.1} className="rounded-[30px] bg-[#FFFCF6] px-6 py-8 md:px-10 md:py-10">
             {status === "success" ? (
-              <div className="flex flex-col items-center py-10 text-center">
-                <Check size={52} className="mb-3 rounded-full bg-green-50 p-2 text-green-500" />
-                <h3 className="mb-2 font-display text-[1.4rem] font-semibold text-ink">Message Received!</h3>
-                <p className="max-w-sm text-[0.92rem] text-body-muted">
+              <div className="flex flex-col items-center py-14 text-center">
+                <span className="grid h-14 w-14 place-items-center rounded-full bg-ink text-[#FFFCF6]">
+                  <Check size={26} strokeWidth={2} />
+                </span>
+                <h3 className="mt-5 font-display text-[1.6rem] font-normal tracking-[-0.02em] text-ink">Message received</h3>
+                <p className="mt-2 max-w-sm text-[0.94rem] leading-[1.65] text-body-muted">
                   Thank you for reaching out. We&apos;ll contact you within 24 hours to schedule your free discovery call.
                 </p>
               </div>
             ) : (
-              <form onSubmit={onSubmit} noValidate>
-                <h3 className="mb-[0.35rem] font-display text-[1.3rem] font-semibold text-ink">Request a Consultation</h3>
-                <p className="mb-6 text-[0.87rem] text-body-muted">Free 15-minute discovery call included with every enquiry.</p>
+              <form onSubmit={onSubmit} noValidate className="space-y-5">
+                <div>
+                  <h3 className="font-display text-[1.6rem] font-normal tracking-[-0.02em] text-ink">Request a Consultation</h3>
+                  <p className="mt-1 text-[0.88rem] text-body-muted">Free 15-minute discovery call included with every enquiry.</p>
+                </div>
 
-                <div className="mb-[1.1rem] grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="firstName" className={label}>First Name *</label>
+                    <label htmlFor="firstName" className={label}>First name *</label>
                     <input id="firstName" name="firstName" required autoComplete="given-name" placeholder="Priya" className={field} />
                   </div>
                   <div>
-                    <label htmlFor="lastName" className={label}>Last Name *</label>
+                    <label htmlFor="lastName" className={label}>Last name *</label>
                     <input id="lastName" name="lastName" required autoComplete="family-name" placeholder="Sharma" className={field} />
                   </div>
                 </div>
-                <div className="mb-[1.1rem]">
-                  <label htmlFor="email" className={label}>Email Address *</label>
-                  <input id="email" name="email" type="email" required autoComplete="email" placeholder="priya@example.com" className={field} />
-                </div>
-                <div className="mb-[1.1rem]">
-                  <label htmlFor="phone" className={label}>Phone / WhatsApp</label>
-                  <input id="phone" name="phone" type="tel" autoComplete="tel" placeholder="+1 (416) 555-0100" className={field} />
-                </div>
-                <div className="mb-[1.1rem] grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="service" className={label}>Service Needed *</label>
-                    <select id="service" name="service" required defaultValue="" className={field}>
-                      <option value="" disabled>Select a service</option>
-                      {serviceOptions.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-                    </select>
+                    <label htmlFor="email" className={label}>Email address *</label>
+                    <input id="email" name="email" type="email" required autoComplete="email" placeholder="priya@example.com" className={field} />
                   </div>
                   <div>
-                    <label htmlFor="propertyType" className={label}>Property Type</label>
-                    <select id="propertyType" name="propertyType" defaultValue="" className={field}>
-                      <option value="" disabled>Select type</option>
-                      {propertyOptions.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-                    </select>
+                    <label htmlFor="phone" className={label}>Phone / WhatsApp</label>
+                    <input id="phone" name="phone" type="tel" autoComplete="tel" placeholder="+1 (416) 555-0100" className={field} />
                   </div>
-                </div>
-                <div className="mb-4">
-                  <label htmlFor="message" className={label}>Your Message</label>
-                  <textarea id="message" name="message" rows={4} placeholder="Tell us briefly about your space and the challenges you're experiencing…" className={`${field} min-h-[95px] resize-y`} />
                 </div>
 
-                {status === "error" && <p className="mb-3 text-[0.85rem] font-medium text-rose">{error}</p>}
+                <Pills name="service" legend="Service needed" options={serviceOptions} required />
+                <Pills name="propertyType" legend="Property type" options={propertyOptions} />
+
+                <div>
+                  <label htmlFor="message" className={label}>Your message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    placeholder="Tell us briefly about your space and the challenges you're experiencing…"
+                    className={`${field} min-h-[110px] resize-y`}
+                  />
+                </div>
+
+                {status === "error" && <p className="text-[0.86rem] font-medium text-rose">{error}</p>}
 
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-br from-gold to-[#D4B85C] py-[0.95rem] text-[0.97rem] font-bold text-ink shadow-[0_4px_14px_rgba(201,168,76,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,168,76,0.42)] disabled:cursor-not-allowed disabled:opacity-70"
+                  className="flex w-full items-center justify-center gap-2 rounded-full bg-ink px-7 py-[0.95rem] text-[0.96rem] font-medium text-page shadow-[0_10px_28px_rgba(31,10,58,0.28)] transition hover:-translate-y-0.5 hover:bg-[#3D1556] disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {status === "loading" ? (
-                    <><Loader2 size={18} className="animate-spin" /> Sending…</>
+                    <>
+                      <Loader2 size={18} className="animate-spin" /> Sending…
+                    </>
                   ) : (
                     "Request Free Consultation"
                   )}
                 </button>
               </form>
             )}
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
