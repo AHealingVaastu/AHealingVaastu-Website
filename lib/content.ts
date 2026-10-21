@@ -87,11 +87,11 @@ export const services: {
 ];
 
 export const elements = [
-  { name: "Earth", direction: "South-west", sanskrit: "Prithvi · पृथ्वी", color: "#C1440E" },
-  { name: "Water", direction: "North-east", sanskrit: "Jal · जल", color: "#3B72C6" },
-  { name: "Fire", direction: "South-east", sanskrit: "Agni · अग्नि", color: "#DC2626" },
-  { name: "Air", direction: "North-west", sanskrit: "Vayu · वायु", color: "#16A34A" },
-  { name: "Space", direction: "Centre", sanskrit: "Akash · आकाश", color: "#7B3F8C" },
+  { name: "Earth", direction: "South-west", sanskrit: "Prithvi · पृथ्वी" },
+  { name: "Water", direction: "North-east", sanskrit: "Jal · जल" },
+  { name: "Fire", direction: "South-east", sanskrit: "Agni · अग्नि" },
+  { name: "Air", direction: "North-west", sanskrit: "Vayu · वायु" },
+  { name: "Space", direction: "Centre", sanskrit: "Akash · आकाश" },
 ] as const;
 
 export const credentials = [
