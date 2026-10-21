@@ -31,7 +31,7 @@ function StatCard({ target, suffix, label, run }: { target: number; suffix: stri
     <div className="bg-[#FFFCF6] px-8 py-9">
       <span className="block font-display text-[clamp(2.6rem,4vw,3.4rem)] font-normal leading-none tracking-[-0.025em] text-ink">
         {val}
-        <span className="text-accent">{suffix}</span>
+        <span className="text-accent font-accent italic">{suffix}</span>
       </span>
       <span className="mt-3 block text-[0.86rem] text-body-faint">{label}</span>
     </div>

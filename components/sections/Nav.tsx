@@ -1,15 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import { HoverGroup, GroupIcon, StateIcon } from "@/components/icons/hover-group";
-import { MenuIcon } from "@/components/icons/menu";
-import { ArrowRightIcon } from "@/components/icons/arrow-right";
-import { nav } from "@/lib/content";
+import PillNav from "@/components/ui/PillNav";
 
 export default function Nav() {
   const [visible, setVisible] = useState(false);
-  const [open, setOpen] = useState(false);
 
   // stay hidden while the hero (which has its own nav) is on screen
   useEffect(() => {
@@ -27,98 +22,16 @@ export default function Nav() {
     };
   }, []);
 
-  useEffect(() => {
-    if (!visible) setOpen(false);
-  }, [visible]);
-
-  const tab = visible ? undefined : -1;
-
   return (
-    <nav
+    <div
       aria-hidden={!visible}
-      className={`fixed inset-x-0 top-0 z-[100] py-3 bg-page/80 backdrop-blur-xl backdrop-saturate-150 shadow-[0_1px_0_rgba(123,63,140,0.08),0_8px_30px_rgba(74,31,92,0.06)] transition-all duration-400 ${
-        visible ? "" : "pointer-events-none -translate-y-full opacity-0"
+      className={`fixed inset-x-0 top-0 z-[100] px-3 pt-3 transition-all duration-500 ease-out md:px-5 md:pt-4 ${
+        visible ? "" : "pointer-events-none -translate-y-[130%] opacity-0"
       }`}
     >
-      <div className="mx-auto flex max-w-shell items-center justify-between px-6">
-        <a href="#top" tabIndex={tab} className="flex items-center gap-3" aria-label="A Healing Vaastu home">
-          <Image
-            src="/logo.png"
-            alt="A Healing Vaastu"
-            width={44}
-            height={44}
-            className="rounded-xl shadow-[0_2px_10px_rgba(74,31,92,0.18)]"
-          />
-          <span className="font-display text-[1.05rem] font-semibold leading-[1.12] tracking-[0.01em] text-ink">
-            A Healing
-            <br />
-            Vaastu
-          </span>
-        </a>
-
-        {/* desktop links */}
-        <ul className="hidden items-center gap-1 md:flex">
-          {nav.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                tabIndex={tab}
-                className="rounded-full px-[0.95rem] py-2 text-[0.9rem] font-medium text-ink/80 transition hover:bg-plum/[0.07] hover:text-ink"
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
-          <li className="ml-2">
-            <HoverGroup
-              as="a"
-              href="#contact"
-              tabIndex={tab}
-              className="group inline-flex items-center gap-2 rounded-full bg-ink py-2 pl-5 pr-2 text-[0.9rem] font-semibold text-page shadow-[0_6px_18px_rgba(42,14,61,0.28)] transition hover:-translate-y-px hover:bg-plum"
-            >
-              Book Consultation
-              <span className="grid h-[22px] w-[22px] place-items-center rounded-full bg-page/[0.16] transition group-hover:bg-page/25">
-                <GroupIcon icon={ArrowRightIcon} size={12} strokeWidth={3} />
-              </span>
-            </HoverGroup>
-          </li>
-        </ul>
-
-        {/* mobile toggle */}
-        <button
-          tabIndex={tab}
-          className="text-ink md:hidden"
-          aria-label="Toggle navigation"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <StateIcon icon={MenuIcon} active={open} size={24} strokeWidth={2} />
-        </button>
+      <div className="mx-auto max-w-shell">
+        <PillNav menuId="nav-menu" label="Main navigation" floating hidden={!visible} />
       </div>
-
-      {/* mobile menu */}
-      {open && (
-        <div className="absolute inset-x-4 top-[70px] flex flex-col gap-1 rounded-[20px] border border-line bg-page/95 p-2 shadow-[0_18px_50px_rgba(74,31,92,0.16)] backdrop-blur-xl md:hidden">
-          {nav.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="rounded-xl px-[1.1rem] py-[0.85rem] font-medium text-ink/80 hover:bg-plum/[0.07]"
-            >
-              {l.label}
-            </a>
-          ))}
-          <HoverGroup
-            as="a"
-            href="#contact"
-            onClick={() => setOpen(false)}
-            className="m-1 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-3 font-semibold text-page"
-          >
-            Book Consultation <GroupIcon icon={ArrowRightIcon} size={14} strokeWidth={3} />
-          </HoverGroup>
-        </div>
-      )}
-    </nav>
+    </div>
   );
 }

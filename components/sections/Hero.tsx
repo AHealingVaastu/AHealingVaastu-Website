@@ -1,18 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { HoverGroup, GroupIcon, StateIcon } from "@/components/icons/hover-group";
+import { HoverGroup, GroupIcon } from "@/components/icons/hover-group";
 import { CalendarDaysIcon } from "@/components/icons/calendar-days";
 import { MapPinIcon } from "@/components/icons/map-pin";
-import { MenuIcon } from "@/components/icons/menu";
 import { MonitorCheckIcon } from "@/components/icons/monitor-check";
-import { PhoneIcon } from "@/components/icons/phone";
 import { PlusIcon } from "@/components/icons/plus";
 import { ShieldCheckIcon } from "@/components/icons/shield-check";
+import PillNav from "@/components/ui/PillNav";
 import VastuCompass from "@/components/ui/VastuCompass";
-import { business, nav } from "@/lib/content";
 
 const ease = [0.2, 0.7, 0.2, 1] as const;
 
@@ -22,110 +18,6 @@ const info = [
   { icon: MonitorCheckIcon, title: "Online consultations", sub: "Vastu and astrology, over video" },
   { icon: CalendarDaysIcon, title: "Free discovery call", sub: "15 minutes, included with every enquiry" },
 ];
-
-function HeroNav() {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="absolute inset-x-3 top-3 z-[6] md:inset-x-7 md:top-7">
-      <nav
-        aria-label="Hero navigation"
-        className="flex items-center justify-between gap-3 rounded-full border border-white/60 bg-[#FFFCF6]/55 py-[0.6rem] pl-4 pr-[0.6rem] shadow-[0_8px_30px_rgba(74,31,92,0.08)] backdrop-blur-[16px] backdrop-saturate-[1.4] md:pl-5"
-      >
-        <a href="#top" className="flex shrink-0 items-center gap-3" aria-label="A Healing Vaastu home">
-          <Image
-            src="/logo.png"
-            alt="A Healing Vaastu"
-            width={36}
-            height={36}
-            className="h-9 w-9 rounded-xl shadow-[0_2px_10px_rgba(74,31,92,0.18)]"
-            priority
-          />
-          <span className="hidden whitespace-nowrap font-display text-[0.98rem] font-semibold leading-[1.12] tracking-[0.01em] text-ink lg:block">
-            A Healing
-            <br />
-            Vaastu
-          </span>
-        </a>
-
-        {/* desktop links */}
-        <ul className="hidden min-w-0 items-center md:flex lg:gap-1">
-          {nav.map((l) => (
-            <li key={l.href} className="shrink-0">
-              <a
-                href={l.href}
-                className="whitespace-nowrap rounded-full px-[0.7rem] py-2 text-[0.9rem] font-medium text-ink/80 transition hover:bg-plum/[0.07] hover:text-ink lg:px-[0.95rem]"
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <div className="flex shrink-0 items-center gap-2">
-          <HoverGroup
-            as="a"
-            href={business.phoneHref}
-            className="hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white/70 px-4 py-[0.55rem] text-[0.88rem] font-medium text-ink transition hover:bg-white xl:inline-flex"
-          >
-            <GroupIcon icon={PhoneIcon} size={14} strokeWidth={2} />
-            {business.phone}
-          </HoverGroup>
-          <a
-            href="#contact"
-            className="hidden shrink-0 whitespace-nowrap rounded-full bg-ink px-5 py-[0.6rem] text-[0.88rem] font-medium text-page shadow-[0_6px_18px_rgba(42,14,61,0.28)] transition hover:-translate-y-px hover:bg-plum sm:inline-flex"
-          >
-            Book Consultation
-          </a>
-          <button
-            type="button"
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full text-ink transition hover:bg-plum/[0.07] md:hidden"
-            aria-label="Toggle navigation"
-            aria-expanded={open}
-            aria-controls="hero-menu"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <StateIcon icon={MenuIcon} active={open} size={22} strokeWidth={2} />
-          </button>
-        </div>
-      </nav>
-
-      {/* mobile menu */}
-      {open && (
-        <div
-          id="hero-menu"
-          className="mt-2 flex flex-col gap-1 rounded-[24px] border border-white/60 bg-[#FFFCF6]/90 p-2 shadow-[0_18px_50px_rgba(74,31,92,0.16)] backdrop-blur-xl md:hidden"
-        >
-          {nav.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="rounded-xl px-[1.1rem] py-[0.85rem] font-medium text-ink/80 hover:bg-plum/[0.07]"
-            >
-              {l.label}
-            </a>
-          ))}
-          <a
-            href={business.phoneHref}
-            onClick={() => setOpen(false)}
-            className="flex items-center gap-2 rounded-xl px-[1.1rem] py-[0.85rem] font-medium text-ink/80 hover:bg-plum/[0.07]"
-          >
-            <GroupIcon icon={PhoneIcon} size={15} strokeWidth={2} />
-            {business.phone}
-          </a>
-          <a
-            href="#contact"
-            onClick={() => setOpen(false)}
-            className="m-1 inline-flex items-center justify-center rounded-full bg-ink px-5 py-3 font-medium text-page"
-          >
-            Book Consultation
-          </a>
-        </div>
-      )}
-    </div>
-  );
-}
 
 function GlassTag({ title, sub, className }: { title: string; sub: string; className: string }) {
   return (
@@ -156,7 +48,9 @@ export default function Hero() {
     <section id="top" aria-label="Hero" className="flex min-h-[100svh] flex-col bg-page p-3 md:p-5">
       <div className="flex flex-1 flex-col rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         <div className="mesh-hero grain relative flex flex-1 flex-col overflow-hidden rounded-[30px]">
-          <HeroNav />
+          <div className="absolute inset-x-3 top-3 z-[6] md:inset-x-7 md:top-7">
+            <PillNav menuId="hero-menu" label="Hero navigation" priority />
+          </div>
 
           <div className="relative z-[2] mx-auto grid min-h-[620px] w-full max-w-shell flex-1 grid-cols-1 items-center gap-10 px-6 pb-14 pt-32 md:grid-cols-2 md:px-14 md:pt-36">
             {/* LEFT: copy */}
