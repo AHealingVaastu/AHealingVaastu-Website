@@ -3,17 +3,24 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { Calendar, MapPin, Menu, Monitor, Phone, Plus, ShieldCheck, X } from "lucide-react";
+import { HoverGroup, GroupIcon, StateIcon } from "@/components/icons/hover-group";
+import { CalendarDaysIcon } from "@/components/icons/calendar-days";
+import { MapPinIcon } from "@/components/icons/map-pin";
+import { MenuIcon } from "@/components/icons/menu";
+import { MonitorCheckIcon } from "@/components/icons/monitor-check";
+import { PhoneIcon } from "@/components/icons/phone";
+import { PlusIcon } from "@/components/icons/plus";
+import { ShieldCheckIcon } from "@/components/icons/shield-check";
 import VastuCompass from "@/components/ui/VastuCompass";
 import { business, nav } from "@/lib/content";
 
 const ease = [0.2, 0.7, 0.2, 1] as const;
 
 const info = [
-  { icon: MapPin, title: "Canada, US & worldwide", sub: "Based in Ontario, serving clients everywhere" },
-  { icon: ShieldCheck, title: "7+ years of practice", sub: "Certified Vastu & Vedic Astrology consultant" },
-  { icon: Monitor, title: "Online consultations", sub: "Vastu and astrology, over video" },
-  { icon: Calendar, title: "Free discovery call", sub: "15 minutes, included with every enquiry" },
+  { icon: MapPinIcon, title: "Canada, US & worldwide", sub: "Based in Ontario, serving clients everywhere" },
+  { icon: ShieldCheckIcon, title: "7+ years of practice", sub: "Certified Vastu & Vedic Astrology consultant" },
+  { icon: MonitorCheckIcon, title: "Online consultations", sub: "Vastu and astrology, over video" },
+  { icon: CalendarDaysIcon, title: "Free discovery call", sub: "15 minutes, included with every enquiry" },
 ];
 
 function HeroNav() {
@@ -56,13 +63,14 @@ function HeroNav() {
         </ul>
 
         <div className="flex shrink-0 items-center gap-2">
-          <a
+          <HoverGroup
+            as="a"
             href={business.phoneHref}
             className="hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white/70 px-4 py-[0.55rem] text-[0.88rem] font-medium text-ink transition hover:bg-white xl:inline-flex"
           >
-            <Phone size={14} strokeWidth={2} />
+            <GroupIcon icon={PhoneIcon} size={14} strokeWidth={2} />
             {business.phone}
-          </a>
+          </HoverGroup>
           <a
             href="#contact"
             className="hidden shrink-0 whitespace-nowrap rounded-full bg-ink px-5 py-[0.6rem] text-[0.88rem] font-medium text-page shadow-[0_6px_18px_rgba(42,14,61,0.28)] transition hover:-translate-y-px hover:bg-plum sm:inline-flex"
@@ -77,7 +85,7 @@ function HeroNav() {
             aria-controls="hero-menu"
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
+            <StateIcon icon={MenuIcon} active={open} size={22} strokeWidth={2} />
           </button>
         </div>
       </nav>
@@ -103,7 +111,7 @@ function HeroNav() {
             onClick={() => setOpen(false)}
             className="flex items-center gap-2 rounded-xl px-[1.1rem] py-[0.85rem] font-medium text-ink/80 hover:bg-plum/[0.07]"
           >
-            <Phone size={15} strokeWidth={2} />
+            <GroupIcon icon={PhoneIcon} size={15} strokeWidth={2} />
             {business.phone}
           </a>
           <a
@@ -121,7 +129,8 @@ function HeroNav() {
 
 function GlassTag({ title, sub, className }: { title: string; sub: string; className: string }) {
   return (
-    <a
+    <HoverGroup
+      as="a"
       href="#services"
       className={`glass group absolute z-[4] flex items-center gap-3 rounded-[18px] py-[0.55rem] pl-4 pr-[0.55rem] shadow-[0_12px_30px_rgba(31,10,58,0.22)] transition duration-300 hover:-translate-y-0.5 ${className}`}
     >
@@ -130,9 +139,9 @@ function GlassTag({ title, sub, className }: { title: string; sub: string; class
         <span className="mt-0.5 text-[0.78rem] text-[#FFFCF6]/75">{sub}</span>
       </span>
       <span className="grid h-[34px] w-[34px] shrink-0 place-items-center rounded-full bg-ink text-[#FFFCF6]">
-        <Plus size={16} strokeWidth={2} className="transition-transform duration-300 group-hover:rotate-90" />
+        <GroupIcon icon={PlusIcon} size={16} strokeWidth={2} />
       </span>
-    </a>
+    </HoverGroup>
   );
 }
 
@@ -217,13 +226,13 @@ export default function Hero() {
         {/* info row */}
         <ul className="grid grid-cols-1 gap-x-8 gap-y-6 px-4 pb-4 pt-6 sm:grid-cols-2 md:px-10 md:pb-5 md:pt-7 lg:grid-cols-4">
           {info.map(({ icon: Icon, title, sub }) => (
-            <li key={title} className="flex items-start gap-3">
-              <Icon size={20} strokeWidth={1.5} className="mt-0.5 shrink-0 text-body-muted" aria-hidden="true" />
+            <HoverGroup as="li" key={title} className="flex items-start gap-3">
+              <GroupIcon icon={Icon} size={20} strokeWidth={1.5} className="mt-0.5 shrink-0 text-body-muted" />
               <div>
                 <p className="text-[0.9rem] font-medium text-ink">{title}</p>
                 <p className="mt-0.5 text-[0.78rem] text-body-faint">{sub}</p>
               </div>
-            </li>
+            </HoverGroup>
           ))}
         </ul>
       </div>

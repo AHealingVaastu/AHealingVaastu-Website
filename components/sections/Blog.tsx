@@ -1,4 +1,5 @@
-import { ArrowUpRight } from "lucide-react";
+import { HoverGroup, GroupIcon } from "@/components/icons/hover-group";
+import { ArrowUpRightIcon } from "@/components/icons/arrow-up-right";
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { posts } from "@/lib/content";
@@ -31,7 +32,8 @@ export default function Blog() {
             <ol className="group/list">
               {posts.map((p, i) => (
                 <li key={p.title} className={i > 0 ? "border-t border-line" : ""}>
-                  <a
+                  <HoverGroup
+                    as="a"
                     href="#"
                     className="group/row grid grid-cols-[2.25rem_1fr] gap-x-4 px-6 py-8 transition-opacity duration-300 md:grid-cols-[3.25rem_1fr_auto] md:items-center md:gap-x-8 md:px-10 md:py-10 lg:group-hover/list:opacity-40 lg:hover:!opacity-100"
                   >
@@ -55,9 +57,9 @@ export default function Blog() {
                       className="hidden h-12 w-12 shrink-0 place-items-center rounded-full border border-line bg-white text-ink transition-colors duration-300 group-hover/row:border-ink group-hover/row:bg-ink group-hover/row:text-[#FFFCF6] md:grid"
                       aria-hidden="true"
                     >
-                      <ArrowUpRight size={18} strokeWidth={2} className="transition-transform duration-300 group-hover/row:rotate-45" />
+                      <GroupIcon icon={ArrowUpRightIcon} size={18} strokeWidth={2} />
                     </span>
-                  </a>
+                  </HoverGroup>
                 </li>
               ))}
             </ol>

@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { HoverGroup, GroupIcon, StateIcon } from "@/components/icons/hover-group";
+import { MenuIcon } from "@/components/icons/menu";
+import { ArrowRightIcon } from "@/components/icons/arrow-right";
 import { nav } from "@/lib/content";
 
 export default function Nav() {
@@ -68,16 +70,17 @@ export default function Nav() {
             </li>
           ))}
           <li className="ml-2">
-            <a
+            <HoverGroup
+              as="a"
               href="#contact"
               tabIndex={tab}
               className="group inline-flex items-center gap-2 rounded-full bg-ink py-2 pl-5 pr-2 text-[0.9rem] font-semibold text-page shadow-[0_6px_18px_rgba(42,14,61,0.28)] transition hover:-translate-y-px hover:bg-plum"
             >
               Book Consultation
               <span className="grid h-[22px] w-[22px] place-items-center rounded-full bg-page/[0.16] transition group-hover:bg-page/25">
-                <ArrowRight size={12} strokeWidth={3} />
+                <GroupIcon icon={ArrowRightIcon} size={12} strokeWidth={3} />
               </span>
-            </a>
+            </HoverGroup>
           </li>
         </ul>
 
@@ -89,7 +92,7 @@ export default function Nav() {
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          <StateIcon icon={MenuIcon} active={open} size={24} strokeWidth={2} />
         </button>
       </div>
 
@@ -106,13 +109,14 @@ export default function Nav() {
               {l.label}
             </a>
           ))}
-          <a
+          <HoverGroup
+            as="a"
             href="#contact"
             onClick={() => setOpen(false)}
             className="m-1 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-3 font-semibold text-page"
           >
-            Book Consultation <ArrowRight size={14} strokeWidth={3} />
-          </a>
+            Book Consultation <GroupIcon icon={ArrowRightIcon} size={14} strokeWidth={3} />
+          </HoverGroup>
         </div>
       )}
     </nav>

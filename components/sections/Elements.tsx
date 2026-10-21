@@ -1,15 +1,7 @@
-import type { CSSProperties } from "react";
+import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { elements } from "@/lib/content";
-
-const paths: Record<string, JSX.Element> = {
-  Earth: <><circle cx="12" cy="12" r="10" /><path d="M12 6v12M8 10l4-4 4 4" /></>,
-  Water: <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />,
-  Fire: <path d="M12 2c0 6-6 8-6 13a6 6 0 0012 0c0-5-6-7-6-13z" />,
-  Air: <path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1114 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2" />,
-  Space: <><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="4" /><line x1="12" y1="2" x2="12" y2="4" /><line x1="12" y1="20" x2="12" y2="22" /><line x1="2" y1="12" x2="4" y2="12" /><line x1="20" y1="12" x2="22" y2="12" /></>,
-};
 
 export default function Elements() {
   return (
@@ -36,21 +28,20 @@ export default function Elements() {
             {elements.map((el, i) => (
               <li
                 key={el.name}
-                style={{ "--el": el.color } as CSSProperties}
                 className={`group flex flex-col bg-[#FFFCF6] px-6 py-8 transition-colors duration-300 hover:bg-white md:px-8 md:py-9 ${
                   i === elements.length - 1 ? "col-span-2 lg:col-span-1" : ""
                 }`}
               >
-                <div className="flex items-center justify-between">
-                  <span className="grid h-11 w-11 place-items-center rounded-full border border-line bg-white text-body-muted transition-colors duration-300 group-hover:text-[var(--el)]">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5" aria-hidden="true">
-                      {paths[el.name]}
-                    </svg>
-                  </span>
-                  <span className="h-[7px] w-[7px] rounded-full opacity-70" style={{ background: el.color }} aria-hidden="true" />
-                </div>
+                <Image
+                  src={`/elements/${el.name.toLowerCase()}.png`}
+                  alt=""
+                  width={64}
+                  height={64}
+                  aria-hidden="true"
+                  className="h-16 w-16 transition-transform duration-500 ease-out group-hover:-translate-y-1 group-hover:scale-105"
+                />
 
-                <h3 className="mt-7 font-display text-[1.6rem] font-normal leading-none tracking-[-0.02em] text-ink">{el.name}</h3>
+                <h3 className="mt-6 font-display text-[1.6rem] font-normal leading-none tracking-[-0.02em] text-ink">{el.name}</h3>
                 <p className="mt-2 text-[0.86rem] text-body-faint">{el.sanskrit}</p>
 
                 <p className="mt-7 border-t border-line pt-4 text-[0.82rem] text-body-muted">
