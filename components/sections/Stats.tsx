@@ -28,12 +28,12 @@ function useCountUp(target: number, run: boolean, duration = 1800) {
 function StatCard({ target, suffix, label, run }: { target: number; suffix: string; label: string; run: boolean }) {
   const val = useCountUp(target, run);
   return (
-    <div className="group rounded-[20px] border border-line bg-white p-8 text-center shadow-[0_1px_2px_rgba(74,31,92,0.03)] transition duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-[0_18px_40px_rgba(74,31,92,0.08)]">
-      <span className="block font-display text-[2.9rem] font-semibold leading-none text-gold-dark">
+    <div className="bg-[#FFFCF6] px-8 py-9">
+      <span className="block font-display text-[clamp(2.6rem,4vw,3.4rem)] font-normal leading-none tracking-[-0.025em] text-ink">
         {val}
-        {suffix}
+        <span className="text-accent">{suffix}</span>
       </span>
-      <span className="mt-2 block text-[0.87rem] font-semibold tracking-[0.02em] text-body-muted">{label}</span>
+      <span className="mt-3 block text-[0.86rem] text-body-faint">{label}</span>
     </div>
   );
 }
@@ -59,11 +59,13 @@ export default function Stats() {
   }, []);
 
   return (
-    <section aria-label="Our impact" className="bg-page px-6 py-12">
-      <div ref={ref} className="mx-auto grid max-w-shell grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {stats.map((s) => (
-          <StatCard key={s.label} {...s} run={run} />
-        ))}
+    <section aria-label="Our impact" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
+      <div className="rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+        <div ref={ref} className="grid grid-cols-1 gap-px overflow-hidden rounded-[30px] bg-line sm:grid-cols-2 lg:grid-cols-4">
+          {stats.map((s) => (
+            <StatCard key={s.label} {...s} run={run} />
+          ))}
+        </div>
       </div>
     </section>
   );

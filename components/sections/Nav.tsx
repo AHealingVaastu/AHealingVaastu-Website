@@ -6,33 +6,46 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import { nav } from "@/lib/content";
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
 
+  // stay hidden while the hero (which has its own nav) is on screen
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const update = () => {
+      const hero = document.getElementById("top");
+      const heroBottom = hero ? hero.getBoundingClientRect().bottom + window.scrollY : 0;
+      setVisible(window.scrollY > heroBottom - 80);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, []);
+
+  useEffect(() => {
+    if (!visible) setOpen(false);
+  }, [visible]);
+
+  const tab = visible ? undefined : -1;
 
   return (
     <nav
-      className={`fixed inset-x-0 top-0 z-[100] transition-all duration-400 ${
-        scrolled
-          ? "py-3 bg-page/80 backdrop-blur-xl backdrop-saturate-150 shadow-[0_1px_0_rgba(123,63,140,0.08),0_8px_30px_rgba(74,31,92,0.06)]"
-          : "pt-9 pb-5"
+      aria-hidden={!visible}
+      className={`fixed inset-x-0 top-0 z-[100] py-3 bg-page/80 backdrop-blur-xl backdrop-saturate-150 shadow-[0_1px_0_rgba(123,63,140,0.08),0_8px_30px_rgba(74,31,92,0.06)] transition-all duration-400 ${
+        visible ? "" : "pointer-events-none -translate-y-full opacity-0"
       }`}
     >
       <div className="mx-auto flex max-w-shell items-center justify-between px-6">
-        <a href="#top" className="flex items-center gap-3" aria-label="A Healing Vaastu home">
+        <a href="#top" tabIndex={tab} className="flex items-center gap-3" aria-label="A Healing Vaastu home">
           <Image
             src="/logo.png"
             alt="A Healing Vaastu"
             width={44}
             height={44}
             className="rounded-xl shadow-[0_2px_10px_rgba(74,31,92,0.18)]"
-            priority
           />
           <span className="font-display text-[1.05rem] font-semibold leading-[1.12] tracking-[0.01em] text-ink">
             A Healing
@@ -47,6 +60,7 @@ export default function Nav() {
             <li key={l.href}>
               <a
                 href={l.href}
+                tabIndex={tab}
                 className="rounded-full px-[0.95rem] py-2 text-[0.9rem] font-medium text-ink/80 transition hover:bg-plum/[0.07] hover:text-ink"
               >
                 {l.label}
@@ -56,6 +70,7 @@ export default function Nav() {
           <li className="ml-2">
             <a
               href="#contact"
+              tabIndex={tab}
               className="group inline-flex items-center gap-2 rounded-full bg-ink py-2 pl-5 pr-2 text-[0.9rem] font-semibold text-page shadow-[0_6px_18px_rgba(42,14,61,0.28)] transition hover:-translate-y-px hover:bg-plum"
             >
               Book Consultation
@@ -68,6 +83,7 @@ export default function Nav() {
 
         {/* mobile toggle */}
         <button
+          tabIndex={tab}
           className="text-ink md:hidden"
           aria-label="Toggle navigation"
           aria-expanded={open}

@@ -38,7 +38,7 @@ app/
   api/contact/route.ts  POST endpoint → validates + emails via Spacemail SMTP (Nodemailer)
 components/
   ui/                   Reveal, Lotus, VastuCompass, SectionHeading (reusable)
-  sections/             Nav, Hero, TrustBar, Stats, Services, Elements,
+  sections/             Nav, Hero, Stats, Services, Elements,
                         About, Process, Testimonials, Blog, Contact, Footer
 lib/content.ts          all copy & data in one place
 public/logo.png         brand logo

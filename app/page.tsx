@@ -1,6 +1,5 @@
 import Nav from "@/components/sections/Nav";
 import Hero from "@/components/sections/Hero";
-import TrustBar from "@/components/sections/TrustBar";
 import Stats from "@/components/sections/Stats";
 import Services from "@/components/sections/Services";
 import Elements from "@/components/sections/Elements";
@@ -18,7 +17,6 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <TrustBar />
         <Stats />
         <Services />
         <Elements />

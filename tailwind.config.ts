@@ -20,8 +20,8 @@ const config: Config = {
         line: "rgba(123,63,140,0.12)",
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "serif"],
-        sans: ["var(--font-hanken)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       maxWidth: { shell: "1240px" },
       borderRadius: { "4xl": "2rem" },
