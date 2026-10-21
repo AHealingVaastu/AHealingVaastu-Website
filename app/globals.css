@@ -205,6 +205,13 @@ section[id] { scroll-margin-top: 90px; }
 .lotus.bloomed .lp-base { transform: scale(1); opacity: 1; }
 
 /* ============================================================
+   TESTIMONIAL PROGRESS (fills, then advances to the next story)
+   ============================================================ */
+@keyframes story-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.story-progress { transform-origin: left; animation: story-progress 9s linear forwards; }
+.stories:hover .story-progress { animation-play-state: paused; }
+
+/* ============================================================
    REDUCED MOTION
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
