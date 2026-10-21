@@ -43,22 +43,26 @@ section[id] { scroll-margin-top: 90px; }
 /* ============================================================
    TYPOGRAPHY HELPERS
    ============================================================ */
-.font-display { font-family: var(--font-sans), system-ui, sans-serif; }
+.font-display { font-family: var(--font-display), system-ui, sans-serif; }
 
-/* gold→terracotta gradient accent used on italic emphasis */
+/* gold→terracotta gradient accent used on headline emphasis */
 .text-accent {
-  font-family: var(--font-accent), Georgia, serif;
-  font-style: italic;
   font-weight: 500;
   background: linear-gradient(100deg, #B8821E, #E2A93C 50%, #C1440E);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+/* magenta→plum accent for the hero headline, sits on the pink mesh */
+.text-accent-plum {
+  font-weight: 500;
+  background: linear-gradient(100deg, #8E2C8A, #3D1556);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 /* light-on-dark accent (footer / dark areas) */
 .text-accent-light {
-  font-family: var(--font-accent), Georgia, serif;
-  font-style: italic;
   font-weight: 500;
   background: linear-gradient(100deg, #E8D5A3, #F4E3B0 50%, #E7A98C);
   -webkit-background-clip: text;

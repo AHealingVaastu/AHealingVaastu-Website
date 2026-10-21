@@ -158,7 +158,7 @@ export default function Hero() {
               >
                 Ancient Wisdom,
                 <br />
-                Modern <span className="text-accent">Harmony.</span>
+                Modern <span className="text-accent-plum">Harmony.</span>
               </motion.h1>
 
               <motion.p
