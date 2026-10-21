@@ -1,111 +1,142 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Star, ArrowLeft, ArrowRight } from "lucide-react";
-import SectionHeading from "@/components/ui/SectionHeading";
+import Reveal from "@/components/ui/Reveal";
+import SectionLabel from "@/components/ui/SectionLabel";
 import { testimonials } from "@/lib/content";
 
-const avatarGrad: Record<string, string> = {
-  av1: "from-gold to-rose",
-  av2: "from-plum to-rose",
-  av3: "from-terra to-gold",
-  av4: "from-rose to-plum",
-};
-
-function usePerView() {
-  const [pv, setPv] = useState(3);
-  useEffect(() => {
-    const calc = () => setPv(window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3);
-    calc();
-    window.addEventListener("resize", calc);
-    return () => window.removeEventListener("resize", calc);
-  }, []);
-  return pv;
-}
+const pad = (n: number) => String(n).padStart(2, "0");
 
 export default function Testimonials() {
-  const perView = usePerView();
-  const maxSlide = Math.max(0, testimonials.length - perView);
-  const [current, setCurrent] = useState(0);
-
-  const clamped = Math.min(current, maxSlide);
-  const go = useCallback((i: number) => setCurrent(Math.max(0, Math.min(i, maxSlide))), [maxSlide]);
-
-  useEffect(() => {
-    const t = setInterval(() => setCurrent((c) => (c >= maxSlide ? 0 : c + 1)), 5500);
-    return () => clearInterval(t);
-  }, [maxSlide]);
-
-  const dots = useMemo(() => Array.from({ length: maxSlide + 1 }), [maxSlide]);
+  const reduce = useReducedMotion();
+  const [active, setActive] = useState(0);
+  const total = testimonials.length;
+  const go = (i: number) => setActive((i + total) % total);
+  const t = testimonials[active];
 
   return (
-    <section id="testimonials" className="bg-gradient-to-b from-[#F4EAF3] to-[#F8EFE4] px-6 py-16">
-      <div className="mx-auto max-w-shell">
-        <div className="mb-10">
-          <SectionHeading
-            eyebrow="Client Stories"
-            title={<>Transformed Spaces, <span className="text-accent">Transformed Lives</span></>}
-            sub="Real results from families and businesses across Canada, the US, India, and beyond."
-          />
-        </div>
+    <section id="testimonials" aria-label="Testimonials" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
+      <div className="rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+        {/* heading */}
+        <Reveal className="px-4 pb-8 pt-8 md:px-10 md:pb-10 md:pt-12">
+          <SectionLabel index="05" label="Client stories" />
+          <div className="mt-6 grid grid-cols-1 items-center gap-5 md:grid-cols-[1.1fr_0.9fr] md:gap-10">
+            <h2 className="font-display text-[clamp(2.2rem,4vw,3.4rem)] font-normal leading-[1.08] tracking-[-0.025em] text-ink">
+              Transformed Spaces,
+              <br />
+              <span className="text-accent-plum">Transformed Lives</span>
+            </h2>
+            <p className="max-w-[440px] text-[1rem] leading-[1.65] text-body-muted">
+              Real results from families and businesses across Canada, the US, India, and beyond.
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="overflow-hidden">
-          <div
-            className="flex gap-7 transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(calc(-${clamped} * (100% / ${perView})))` }}
-          >
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="flex shrink-0 flex-col rounded-[22px] border border-line bg-white p-8 shadow-[0_4px_20px_rgba(74,31,92,0.05)] transition hover:-translate-y-1 hover:border-gold/35 hover:shadow-[0_16px_40px_rgba(74,31,92,0.1)]"
-                style={{ flex: `0 0 calc((100% - ${(perView - 1) * 1.75}rem) / ${perView})` }}
-              >
-                <div className="mb-4 flex gap-1 text-gold">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} size={16} fill="currentColor" strokeWidth={0} />
-                  ))}
+        {/* stories panel: featured quote above a client strip; the 1px gap shows as divider lines */}
+        <Reveal delay={0.1}>
+          <div className="stories grid gap-px overflow-hidden rounded-[30px] bg-line">
+            {/* featured quote */}
+            <div className="bg-[#FFFCF6] px-6 py-10 md:px-14 md:py-14">
+              <div className="flex gap-1 text-plum" aria-label="Rated 5 out of 5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={15} fill="currentColor" strokeWidth={0} aria-hidden="true" />
+                ))}
+              </div>
+
+              {/* every quote shares one grid cell so the panel keeps the height of the longest */}
+              <div className="mt-6 grid max-w-[920px]" aria-live="polite">
+                {testimonials.map((q, i) => {
+                  const cls =
+                    "[grid-area:1/1] font-display text-[clamp(1.3rem,2.3vw,1.9rem)] font-normal leading-[1.42] tracking-[-0.015em] text-ink";
+                  return i === active ? (
+                    <motion.blockquote
+                      key={q.name}
+                      initial={reduce ? false : { opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, ease: [0.2, 0.7, 0.2, 1] }}
+                      className={cls}
+                    >
+                      &ldquo;{q.quote}&rdquo;
+                    </motion.blockquote>
+                  ) : (
+                    <blockquote key={q.name} className={`invisible ${cls}`} aria-hidden="true">
+                      &ldquo;{q.quote}&rdquo;
+                    </blockquote>
+                  );
+                })}
+              </div>
+
+              <div className="mt-8 flex flex-wrap items-end justify-between gap-6 border-t border-line pt-6">
+                <div>
+                  <span className="block text-[1rem] font-medium text-ink">{t.name}</span>
+                  <span className="mt-0.5 block text-[0.82rem] text-body-faint">{t.location}</span>
                 </div>
-                <p className="mb-6 text-[0.94rem] leading-[1.8] text-body-muted">&ldquo;{t.quote}&rdquo;</p>
-                <div className="mt-auto flex items-center gap-3">
-                  <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br font-display text-base font-semibold text-white ${avatarGrad[t.tone]}`}>
-                    {t.avatar}
-                  </div>
-                  <div>
-                    <span className="block text-[0.93rem] font-bold text-ink">{t.name}</span>
-                    <span className="text-[0.78rem] text-body-faint">{t.location}</span>
-                  </div>
+                <div className="flex items-center gap-3">
+                  <span className="mr-2 font-display text-[0.95rem] tabular-nums text-body-faint">
+                    <span className="text-ink">{pad(active + 1)}</span> / {pad(total)}
+                  </span>
+                  <button
+                    type="button"
+                    aria-label="Previous story"
+                    onClick={() => go(active - 1)}
+                    className="grid h-11 w-11 place-items-center rounded-full border border-line bg-white text-ink transition [@media(hover:hover)]:hover:bg-ink [@media(hover:hover)]:hover:text-[#FFFCF6]"
+                  >
+                    <ArrowLeft size={16} strokeWidth={2} />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Next story"
+                    onClick={() => go(active + 1)}
+                    className="grid h-11 w-11 place-items-center rounded-full bg-ink text-[#FFFCF6] transition hover:bg-plum"
+                  >
+                    <ArrowRight size={16} strokeWidth={2} />
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        <div className="mt-9 flex items-center justify-center gap-4">
-          <button
-            aria-label="Previous testimonial"
-            onClick={() => go(clamped === 0 ? maxSlide : clamped - 1)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-gold-dark shadow-[0_2px_8px_rgba(74,31,92,0.06)] transition hover:scale-105 hover:border-ink hover:bg-ink hover:text-page"
-          >
-            <ArrowLeft size={16} strokeWidth={2.5} />
-          </button>
-          <div className="flex gap-[0.45rem]">
-            {dots.map((_, i) => (
-              <button
-                key={i}
-                aria-label={`Go to slide ${i + 1}`}
-                onClick={() => go(i)}
-                className={`h-[7px] rounded-full transition-all ${i === clamped ? "w-5 bg-gold-dark" : "w-[7px] bg-plum/25"}`}
-              />
-            ))}
+            {/* client strip (sm and up); the active cell's bar fills, then moves on */}
+            <ul className="hidden grid-cols-2 gap-px sm:grid lg:grid-cols-4">
+              {testimonials.map((c, i) => {
+                const on = i === active;
+                return (
+                  <li key={c.name}>
+                    <button
+                      type="button"
+                      onClick={() => go(i)}
+                      aria-current={on}
+                      className={`relative flex h-full w-full items-center gap-3 px-5 py-5 text-left transition-colors duration-300 ${
+                        on ? "bg-white" : "bg-[#FFFCF6] hover:bg-white"
+                      }`}
+                    >
+                      <span
+                        className={`grid h-9 w-9 shrink-0 place-items-center rounded-full font-display text-[0.95rem] transition-colors duration-300 ${
+                          on ? "bg-ink text-[#FFFCF6]" : "border border-line bg-white text-body-muted"
+                        }`}
+                      >
+                        {c.avatar}
+                      </span>
+                      <span className="min-w-0">
+                        <span className={`block truncate text-[0.88rem] font-medium ${on ? "text-ink" : "text-ink/70"}`}>{c.name}</span>
+                        <span className="block truncate text-[0.74rem] text-body-faint">{c.location}</span>
+                      </span>
+                      {on && !reduce && (
+                        <span
+                          key={active}
+                          onAnimationEnd={() => go(active + 1)}
+                          className="story-progress absolute inset-x-0 bottom-0 h-[2px] bg-plum"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-          <button
-            aria-label="Next testimonial"
-            onClick={() => go(clamped >= maxSlide ? 0 : clamped + 1)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-gold-dark shadow-[0_2px_8px_rgba(74,31,92,0.06)] transition hover:scale-105 hover:border-ink hover:bg-ink hover:text-page"
-          >
-            <ArrowRight size={16} strokeWidth={2.5} />
-          </button>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
