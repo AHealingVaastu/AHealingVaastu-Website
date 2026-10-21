@@ -1,12 +1,29 @@
 import Image from "next/image";
-import { Facebook, Instagram, Youtube, ArrowRight } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import Lotus from "@/components/ui/Lotus";
 import { business } from "@/lib/content";
 
 const cols = [
-  { title: "Services", links: ["Residential Vastu", "Commercial Vastu", "Astrological Guidance", "Online Consultations"] },
-  { title: "Company", links: ["About Us", "Our Process", "Testimonials", "Vastu Blog", "Contact"] },
+  {
+    title: "Services",
+    links: [
+      { label: "Residential Vastu", href: "#services" },
+      { label: "Commercial Vastu", href: "#services" },
+      { label: "Astrological Guidance", href: "#services" },
+      { label: "Online Consultations", href: "#services" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About Us", href: "#about" },
+      { label: "Our Process", href: "#process" },
+      { label: "Testimonials", href: "#testimonials" },
+      { label: "Vastu Blog", href: "#blog" },
+      { label: "Contact", href: "#contact" },
+    ],
+  },
 ];
 
 const socialLinks = [
@@ -15,49 +32,57 @@ const socialLinks = [
   { icon: Youtube, href: business.socials.youtube, label: "YouTube" },
 ].filter((s) => s.href);
 
+const colTitle = "text-[0.72rem] font-medium uppercase tracking-[0.18em] text-body-muted";
+const colLink = "text-[0.9rem] text-ink/80 transition hover:text-plum";
+
 export default function Footer() {
   return (
-    <footer className="mesh-outro grain relative overflow-hidden">
-      {/* bottom-weighted scrim: keeps the vibrant outro up top, guarantees text contrast over the warm bloom below */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_28%,rgba(20,6,36,0.55)_100%)]" />
-      <div className="relative z-[1] mx-auto max-w-shell px-6 pb-9 pt-16">
-        {/* closing statement — the "outro" */}
-        <Reveal className="mb-10 text-center">
-          <div className="mb-5 flex justify-center">
-            <Lotus width={70} stroke="#F4E3B0" />
-          </div>
-          <h2 className="mx-auto max-w-3xl font-display text-[clamp(1.9rem,4vw,3.2rem)] font-semibold leading-[1.12] tracking-[-0.015em] text-[#FFF8E4]">
-            Let your space <span className="text-accent-light">breathe</span>,
-            <br className="hidden sm:block" /> and watch your life <span className="text-accent-light">bloom.</span>
-          </h2>
-          <a
-            href="#contact"
-            className="group mt-8 inline-flex items-center gap-[0.85rem] rounded-full bg-[#FFF8E4] py-[0.55rem] pl-6 pr-[0.6rem] text-[0.96rem] font-semibold text-ink shadow-[0_12px_34px_rgba(0,0,0,0.28)] transition hover:-translate-y-0.5"
-          >
-            Begin Your Journey
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-plum to-[#4A1F5C] text-[#FFF8E4] transition group-hover:-rotate-45">
-              <ArrowRight size={15} strokeWidth={2.5} />
-            </span>
-          </a>
-        </Reveal>
+    <footer className="bg-page px-3 pb-3 md:px-5 md:pb-5">
+      <div className="rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+        {/* closing statement on the outro mesh, mirroring the hero card */}
+        <div className="mesh-outro grain relative overflow-hidden rounded-[30px]">
+          {/* soft wash over the warm corner keeps the gold accents legible */}
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,transparent_35%,rgba(123,63,140,0.6)_100%)]" aria-hidden="true" />
+          <Reveal className="relative z-[2] mx-auto max-w-shell px-6 py-16 text-center md:px-14 md:py-24">
+            <div className="flex justify-center">
+              <Lotus width={64} stroke="#F4E3B0" />
+            </div>
+            <h2 className="mx-auto mt-6 max-w-3xl font-display text-[clamp(2.2rem,5vw,4.2rem)] font-normal leading-[1.08] tracking-[-0.025em] text-[#FFFCF6]">
+              Let your space <span className="text-accent-light">breathe</span>,
+              <br className="hidden sm:block" /> and watch your life <span className="text-accent-light">bloom.</span>
+            </h2>
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
+              <a
+                href="#contact"
+                className="inline-flex items-center rounded-full bg-[#FFFCF6] px-7 py-[0.95rem] text-[0.96rem] font-medium text-ink shadow-[0_12px_34px_rgba(20,6,36,0.3)] transition hover:-translate-y-0.5 hover:bg-white"
+              >
+                Begin Your Journey
+              </a>
+              <a
+                href={business.phoneHref}
+                className="text-[0.96rem] font-medium text-[#FFFCF6] underline decoration-[#FFFCF6]/40 underline-offset-4 transition hover:decoration-[#FFFCF6]"
+              >
+                Or call {business.phone}
+              </a>
+            </div>
+          </Reveal>
+        </div>
 
-        <div className="my-12 h-px bg-white/10" />
-
-        {/* columns */}
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-[2fr_1fr_1fr_1fr]">
+        {/* link columns */}
+        <div className="grid grid-cols-1 gap-x-8 gap-y-10 px-4 pb-6 pt-10 sm:grid-cols-2 md:px-10 lg:grid-cols-[1.6fr_1fr_1fr_1.3fr]">
           <div>
-            <div className="mb-4 flex items-center gap-3">
-              <Image src="/logo.png" alt="A Healing Vaastu" width={52} height={52} className="rounded-xl" />
-              <span className="font-display text-base font-semibold uppercase leading-[1.15] tracking-[0.02em] text-gold-light">
+            <a href="#top" className="flex items-center gap-3" aria-label="A Healing Vaastu home">
+              <Image src="/logo.png" alt="A Healing Vaastu" width={44} height={44} className="rounded-xl shadow-[0_2px_10px_rgba(74,31,92,0.18)]" />
+              <span className="font-display text-[1.05rem] font-semibold leading-[1.12] tracking-[0.01em] text-ink">
                 A Healing
                 <br />
                 Vaastu
               </span>
-            </div>
-            <p className="mb-6 max-w-xs text-[0.88rem] leading-relaxed text-cream/70">
+            </a>
+            <p className="mt-5 max-w-xs text-[0.88rem] leading-[1.65] text-body-muted">
               Ancient Vastu Shastra wisdom applied to modern homes and businesses. Serving clients across Canada, the US, and worldwide since {business.since}.
             </p>
-            <div className="flex gap-[0.65rem]">
+            <div className="mt-6 flex gap-2">
               {socialLinks.map((s) => (
                 <a
                   key={s.label}
@@ -65,9 +90,9 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="flex h-[38px] w-[38px] items-center justify-center rounded-[10px] border border-gold/25 bg-gold/[0.09] text-gold-light transition hover:-translate-y-0.5 hover:bg-gold/20"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-line bg-white text-ink transition hover:border-ink hover:bg-ink hover:text-[#FFFCF6]"
                 >
-                  <s.icon size={16} />
+                  <s.icon size={16} strokeWidth={1.75} />
                 </a>
               ))}
             </div>
@@ -75,11 +100,13 @@ export default function Footer() {
 
           {cols.map((c) => (
             <div key={c.title}>
-              <h4 className="mb-[1.1rem] text-[0.8rem] font-bold uppercase tracking-[0.1em] text-gold-light">{c.title}</h4>
-              <ul className="space-y-[0.55rem]">
+              <h4 className={colTitle}>{c.title}</h4>
+              <ul className="mt-5 space-y-3">
                 {c.links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="text-[0.88rem] text-cream/70 transition hover:text-gold-light">{l}</a>
+                  <li key={l.label}>
+                    <a href={l.href} className={colLink}>
+                      {l.label}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -87,22 +114,34 @@ export default function Footer() {
           ))}
 
           <div>
-            <h4 className="mb-[1.1rem] text-[0.8rem] font-bold uppercase tracking-[0.1em] text-gold-light">Contact</h4>
-            <ul className="space-y-[0.55rem] text-[0.88rem] text-cream/70">
-              <li><a href={business.phoneHref} className="transition hover:text-gold-light">{business.phone}</a></li>
-              <li><a href={`mailto:${business.email}`} className="transition hover:text-gold-light">{business.email}</a></li>
+            <h4 className={colTitle}>Contact</h4>
+            <ul className="mt-5 space-y-3 text-[0.9rem] text-ink/80">
+              <li>
+                <a href={business.phoneHref} className={colLink}>
+                  {business.phone}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${business.email}`} className={`${colLink} break-words`}>
+                  {business.email}
+                </a>
+              </li>
               <li>Brampton, ON, Canada</li>
-              <li>{business.hours}</li>
+              <li className="text-body-muted">{business.hours}</li>
             </ul>
           </div>
         </div>
 
-        {/* bottom bar — subtle dark base keeps text legible over the warm bloom */}
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-ink/25 px-5 py-4 backdrop-blur-sm">
-          <span className="text-[0.82rem] text-cream/65">© {new Date().getFullYear()} A Healing Vaastu. All rights reserved.</span>
+        {/* bottom bar */}
+        <div className="mx-4 flex flex-wrap items-center justify-between gap-4 border-t border-line pb-3 pr-[4.5rem] pt-5 md:mx-10 md:pb-4">
+          <span className="text-[0.8rem] text-body-faint">© {new Date().getFullYear()} A Healing Vaastu. All rights reserved.</span>
           <div className="flex gap-6">
-            <a href="#" className="text-[0.82rem] text-cream/65 transition hover:text-gold-light">Privacy Policy</a>
-            <a href="#" className="text-[0.82rem] text-cream/65 transition hover:text-gold-light">Terms of Service</a>
+            <a href="#" className="text-[0.8rem] text-body-faint transition hover:text-ink">
+              Privacy Policy
+            </a>
+            <a href="#" className="text-[0.8rem] text-body-faint transition hover:text-ink">
+              Terms of Service
+            </a>
           </div>
         </div>
       </div>
