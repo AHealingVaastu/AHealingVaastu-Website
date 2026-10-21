@@ -36,14 +36,12 @@ export default function Footer() {
       <div className="rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         {/* closing statement on the outro mesh, mirroring the hero card */}
         <div className="mesh-outro grain relative overflow-hidden rounded-[30px]">
-          {/* soft wash over the warm corner keeps the gold accents legible */}
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,transparent_35%,rgba(123,63,140,0.6)_100%)]" aria-hidden="true" />
           <Reveal className="relative z-[2] mx-auto max-w-shell px-6 py-16 text-center md:px-14 md:py-24">
             <div className="flex justify-center">
               <Lotus width={64} stroke="#F4E3B0" />
             </div>
             <h2 className="mx-auto mt-6 max-w-3xl font-display text-[clamp(2.2rem,5vw,4.2rem)] font-normal leading-[1.08] tracking-[-0.025em] text-[#FFFCF6]">
-              Let your space <span className="text-accent-plum">breathe</span>,
+              Let your space <span className="text-accent-plum">breathe,</span>
               <br className="hidden sm:block" /> and watch your life <span className="text-accent-plum">bloom.</span>
             </h2>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
