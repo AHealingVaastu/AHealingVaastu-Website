@@ -144,12 +144,12 @@ export default function Hero() {
       : { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.7, delay, ease } };
 
   return (
-    <section id="top" aria-label="Hero" className="bg-page p-3 md:p-5">
-      <div className="rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
-        <div className="mesh-hero grain relative overflow-hidden rounded-[30px]">
+    <section id="top" aria-label="Hero" className="flex min-h-[100svh] flex-col bg-page p-3 md:p-5">
+      <div className="flex flex-1 flex-col rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+        <div className="mesh-hero grain relative flex flex-1 flex-col overflow-hidden rounded-[30px]">
           <HeroNav />
 
-          <div className="relative z-[2] mx-auto grid min-h-[620px] max-w-shell grid-cols-1 items-center gap-10 px-6 pb-14 pt-32 md:grid-cols-2 md:px-14 md:pt-36">
+          <div className="relative z-[2] mx-auto grid min-h-[620px] w-full max-w-shell flex-1 grid-cols-1 items-center gap-10 px-6 pb-14 pt-32 md:grid-cols-2 md:px-14 md:pt-36">
             {/* LEFT: copy */}
             <div className="text-center md:text-left">
               <motion.h1
