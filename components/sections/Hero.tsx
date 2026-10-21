@@ -46,13 +46,13 @@ export default function Hero() {
 
   return (
     <section id="top" aria-label="Hero" className="flex min-h-[100svh] flex-col bg-page p-3 md:p-5">
-      <div className="flex flex-1 flex-col mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div className="mx-auto flex w-full max-w-frame flex-1 flex-col rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         <div className="mesh-hero grain relative flex flex-1 flex-col overflow-hidden rounded-[30px]">
           <div className="absolute inset-x-3 top-3 z-[6] md:inset-x-7 md:top-7">
             <PillNav menuId="hero-menu" label="Hero navigation" priority />
           </div>
 
-          <div className="relative z-[2] mx-auto grid min-h-[620px] w-full max-w-shell flex-1 grid-cols-1 items-center gap-10 px-6 pb-14 pt-32 md:grid-cols-2 md:px-14 md:pt-36">
+          <div className="relative z-[2] mx-auto grid w-full max-w-shell flex-1 grid-cols-1 items-center gap-10 px-6 pb-14 pt-32 md:grid-cols-2 md:px-14 md:pt-[clamp(7rem,18svh,9rem)]">
             {/* LEFT: copy */}
             <div className="text-center md:text-left">
               <motion.h1
@@ -95,7 +95,7 @@ export default function Hero() {
               initial={reduce ? undefined : { opacity: 0, scale: 0.92 }}
               animate={reduce ? undefined : { opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, delay: 0.2, ease }}
-              className="relative mx-auto aspect-square w-full max-w-[500px]"
+              className="relative mx-auto mt-16 aspect-square w-full max-w-[500px] md:mt-0 md:max-w-[clamp(300px,calc(100svh-25.5rem),500px)]"
             >
               {/* centre: 3D Vastu compass with hovering house */}
               <div className="absolute left-1/2 top-1/2 z-[2] h-full w-full -translate-x-1/2 -translate-y-1/2" aria-hidden="true">
@@ -106,12 +106,12 @@ export default function Hero() {
               <GlassTag
                 title="Residential Vastu"
                 sub="Book home consultation"
-                className="bottom-6 left-0 md:-left-[6%] xl:bottom-[16%]"
+                className="bottom-[4%] left-0 md:-left-[6%] xl:bottom-[10%]"
               />
               <GlassTag
                 title="Business Vastu"
                 sub="Book business audit"
-                className="-bottom-11 right-0 md:-right-[4%] xl:-right-[9%] xl:bottom-auto xl:top-[-5%]"
+                className="-top-14 right-0 md:-right-[4%] lg:-right-16 lg:-top-12"
               />
             </motion.div>
           </div>
