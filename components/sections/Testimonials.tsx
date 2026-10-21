@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Star, ArrowLeft, ArrowRight } from "lucide-react";
+import { Star } from "lucide-react";
+import { HoverGroup, GroupIcon } from "@/components/icons/hover-group";
+import { ArrowLeftIcon } from "@/components/icons/arrow-left";
+import { ArrowRightIcon } from "@/components/icons/arrow-right";
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { testimonials } from "@/lib/content";
@@ -77,22 +80,24 @@ export default function Testimonials() {
                   <span className="mr-2 font-display text-[0.95rem] tabular-nums text-body-faint">
                     <span className="text-ink">{pad(active + 1)}</span> / {pad(total)}
                   </span>
-                  <button
+                  <HoverGroup
+                    as="button"
                     type="button"
                     aria-label="Previous story"
                     onClick={() => go(active - 1)}
                     className="grid h-11 w-11 place-items-center rounded-full border border-line bg-white text-ink transition [@media(hover:hover)]:hover:bg-ink [@media(hover:hover)]:hover:text-[#FFFCF6]"
                   >
-                    <ArrowLeft size={16} strokeWidth={2} />
-                  </button>
-                  <button
+                    <GroupIcon icon={ArrowLeftIcon} size={16} strokeWidth={2} />
+                  </HoverGroup>
+                  <HoverGroup
+                    as="button"
                     type="button"
                     aria-label="Next story"
                     onClick={() => go(active + 1)}
                     className="grid h-11 w-11 place-items-center rounded-full bg-ink text-[#FFFCF6] transition hover:bg-plum"
                   >
-                    <ArrowRight size={16} strokeWidth={2} />
-                  </button>
+                    <GroupIcon icon={ArrowRightIcon} size={16} strokeWidth={2} />
+                  </HoverGroup>
                 </div>
               </div>
             </div>

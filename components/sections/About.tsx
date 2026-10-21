@@ -1,4 +1,5 @@
-import { BadgeCheck } from "lucide-react";
+import { HoverGroup, GroupIcon } from "@/components/icons/hover-group";
+import { CircleCheckIcon } from "@/components/icons/circle-check";
 import Reveal from "@/components/ui/Reveal";
 import Image from "next/image";
 import SectionLabel from "@/components/ui/SectionLabel";
@@ -48,10 +49,10 @@ export default function About() {
             {/* credentials: the 1px gap shows as divider lines */}
             <ul className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-[24px] bg-line sm:grid-cols-2">
               {credentials.map((c) => (
-                <li key={c} className="flex items-start gap-3 bg-[#FFFCF6] px-5 py-4 text-[0.88rem] leading-[1.5] text-ink">
-                  <BadgeCheck size={18} strokeWidth={1.5} className="mt-px shrink-0 text-plum" aria-hidden="true" />
+                <HoverGroup as="li" key={c} className="flex items-start gap-3 bg-[#FFFCF6] px-5 py-4 text-[0.88rem] leading-[1.5] text-ink">
+                  <GroupIcon icon={CircleCheckIcon} size={18} strokeWidth={1.5} className="mt-px shrink-0 text-plum" />
                   {c}
-                </li>
+                </HoverGroup>
               ))}
             </ul>
 

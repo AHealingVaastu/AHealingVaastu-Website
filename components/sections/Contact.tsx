@@ -1,16 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Phone, Mail, Calendar, Check, Loader2 } from "lucide-react";
+import { HoverGroup, GroupIcon, StateIcon } from "@/components/icons/hover-group";
+import { MapPinIcon } from "@/components/icons/map-pin";
+import { PhoneIcon } from "@/components/icons/phone";
+import { MailCheckIcon } from "@/components/icons/mail-check";
+import { CalendarDaysIcon } from "@/components/icons/calendar-days";
+import { CheckIcon } from "@/components/icons/check";
+import { LoaderCircleIcon } from "@/components/icons/loader-circle";
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { business, serviceOptions, propertyOptions } from "@/lib/content";
 
 const info = [
-  { icon: MapPin, title: "Location", lines: [business.location, business.area] },
-  { icon: Phone, title: "Phone & WhatsApp", lines: [business.phone, business.bookingNote], href: business.phoneHref },
-  { icon: Mail, title: "Email", lines: [business.email, "We respond within 24 hours"], href: `mailto:${business.email}` },
-  { icon: Calendar, title: "Consultation Hours", lines: business.hoursLines },
+  { icon: MapPinIcon, title: "Location", lines: [business.location, business.area] },
+  { icon: PhoneIcon, title: "Phone & WhatsApp", lines: [business.phone, business.bookingNote], href: business.phoneHref },
+  { icon: MailCheckIcon, title: "Email", lines: [business.email, "We respond within 24 hours"], href: `mailto:${business.email}` },
+  { icon: CalendarDaysIcon, title: "Consultation Hours", lines: business.hoursLines },
 ];
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -86,8 +92,8 @@ export default function Contact() {
             {/* contact details: the 1px gap shows as divider lines */}
             <ul className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-[24px] bg-line sm:grid-cols-2">
               {info.map((it) => (
-                <li key={it.title} className="flex gap-3 bg-[#FFFCF6] px-5 py-5">
-                  <it.icon size={20} strokeWidth={1.5} className="mt-0.5 shrink-0 text-plum" aria-hidden="true" />
+                <HoverGroup as="li" key={it.title} className="flex gap-3 bg-[#FFFCF6] px-5 py-5">
+                  <GroupIcon icon={it.icon} size={20} strokeWidth={1.5} className="mt-0.5 shrink-0 text-plum" />
                   <div className="min-w-0">
                     <span className="block text-[0.9rem] font-medium text-ink">{it.title}</span>
                     {it.lines.map((l, i) =>
@@ -102,7 +108,7 @@ export default function Contact() {
                       )
                     )}
                   </div>
-                </li>
+                </HoverGroup>
               ))}
             </ul>
           </Reveal>
@@ -112,7 +118,7 @@ export default function Contact() {
             {status === "success" ? (
               <div className="flex flex-col items-center py-14 text-center">
                 <span className="grid h-14 w-14 place-items-center rounded-full bg-ink text-[#FFFCF6]">
-                  <Check size={26} strokeWidth={2} />
+                  <StateIcon icon={CheckIcon} size={26} strokeWidth={2} />
                 </span>
                 <h3 className="mt-5 font-display text-[1.6rem] font-normal tracking-[-0.02em] text-ink">Message received</h3>
                 <p className="mt-2 max-w-sm text-[0.94rem] leading-[1.65] text-body-muted">
@@ -170,7 +176,7 @@ export default function Contact() {
                 >
                   {status === "loading" ? (
                     <>
-                      <Loader2 size={18} className="animate-spin" /> Sending…
+                      <StateIcon icon={LoaderCircleIcon} size={18} strokeWidth={2} /> Sending…
                     </>
                   ) : (
                     "Request Free Consultation"

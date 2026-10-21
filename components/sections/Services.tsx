@@ -1,9 +1,23 @@
-import { Home, Briefcase, Compass, Monitor, Key, Sparkles, Plus } from "lucide-react";
+import { HoverGroup, GroupIcon } from "@/components/icons/hover-group";
+import { HomeIcon } from "@/components/icons/home";
+import { BriefcaseBusinessIcon } from "@/components/icons/briefcase-business";
+import { CompassIcon } from "@/components/icons/compass";
+import { MonitorCheckIcon } from "@/components/icons/monitor-check";
+import { KeyIcon } from "@/components/icons/key";
+import { SparklesIcon } from "@/components/icons/sparkles";
+import { PlusIcon } from "@/components/icons/plus";
 import Reveal from "@/components/ui/Reveal";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { services } from "@/lib/content";
 
-const icons = { home: Home, briefcase: Briefcase, compass: Compass, monitor: Monitor, key: Key, sparkles: Sparkles };
+const icons = {
+  home: HomeIcon,
+  briefcase: BriefcaseBusinessIcon,
+  compass: CompassIcon,
+  monitor: MonitorCheckIcon,
+  key: KeyIcon,
+  sparkles: SparklesIcon,
+};
 
 export default function Services() {
   return (
@@ -30,10 +44,10 @@ export default function Services() {
             {services.map((s, i) => {
               const Icon = icons[s.icon];
               return (
-                <li key={s.title} className="group relative flex flex-col bg-[#FFFCF6] px-7 py-8 transition-colors duration-300 hover:bg-white md:px-8 md:py-9">
+                <HoverGroup as="li" key={s.title} className="group relative flex flex-col bg-[#FFFCF6] px-7 py-8 transition-colors duration-300 hover:bg-white md:px-8 md:py-9">
                   <div className="flex items-center justify-between">
                     <span className="grid h-11 w-11 place-items-center rounded-full border border-line bg-white text-body-muted transition-colors duration-300 group-hover:text-plum">
-                      <Icon size={20} strokeWidth={1.5} aria-hidden="true" />
+                      <GroupIcon icon={Icon} size={20} strokeWidth={1.5} />
                     </span>
                     <span className="font-display text-[0.9rem] tracking-[-0.01em] text-body-faint">
                       {String(i + 1).padStart(2, "0")}
@@ -51,10 +65,10 @@ export default function Services() {
                   >
                     {s.cta}
                     <span className="grid h-[34px] w-[34px] shrink-0 place-items-center rounded-full bg-ink text-[#FFFCF6]">
-                      <Plus size={16} strokeWidth={2} className="transition-transform duration-300 group-hover:rotate-90" />
+                      <GroupIcon icon={PlusIcon} size={16} strokeWidth={2} />
                     </span>
                   </a>
-                </li>
+                </HoverGroup>
               );
             })}
           </ul>

@@ -1,5 +1,8 @@
 import Image from "next/image";
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { HoverGroup, GroupIcon } from "@/components/icons/hover-group";
+import { FacebookIcon } from "@/components/icons/facebook";
+import { InstagramIcon } from "@/components/icons/instagram";
+import { YoutubeIcon } from "@/components/icons/youtube";
 import Reveal from "@/components/ui/Reveal";
 import { business, services } from "@/lib/content";
 
@@ -21,9 +24,9 @@ const cols = [
 ];
 
 const socialLinks = [
-  { icon: Instagram, href: business.socials.instagram, label: "Instagram" },
-  { icon: Facebook, href: business.socials.facebook, label: "Facebook" },
-  { icon: Youtube, href: business.socials.youtube, label: "YouTube" },
+  { icon: InstagramIcon, href: business.socials.instagram, label: "Instagram" },
+  { icon: FacebookIcon, href: business.socials.facebook, label: "Facebook" },
+  { icon: YoutubeIcon, href: business.socials.youtube, label: "YouTube" },
 ].filter((s) => s.href);
 
 const colTitle = "text-[0.72rem] font-medium uppercase tracking-[0.18em] text-body-muted";
@@ -76,7 +79,8 @@ export default function Footer() {
             </p>
             <div className="mt-6 flex gap-2">
               {socialLinks.map((s) => (
-                <a
+                <HoverGroup
+                  as="a"
                   key={s.label}
                   href={s.href}
                   target="_blank"
@@ -84,8 +88,8 @@ export default function Footer() {
                   aria-label={s.label}
                   className="grid h-10 w-10 place-items-center rounded-full border border-line bg-white text-ink transition hover:border-ink hover:bg-ink hover:text-[#FFFCF6]"
                 >
-                  <s.icon size={16} strokeWidth={1.75} />
-                </a>
+                  <GroupIcon icon={s.icon} size={16} strokeWidth={1.75} />
+                </HoverGroup>
               ))}
             </div>
           </div>
