@@ -21,7 +21,7 @@ export const business = {
   since: 2018,
   socials: {
     instagram: "https://www.instagram.com/ahealingvaastu?igsh=bDc3c3d5bXY2bzV5",
-    facebook: "",
+    facebook: "https://www.facebook.com/profile.php?id=100072550553691",
     youtube: "",
   },
 };
