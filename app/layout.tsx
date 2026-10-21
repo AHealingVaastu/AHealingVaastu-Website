@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Fraunces, Hanken_Grotesk } from "next/font/google";
+import { Inter_Tight, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const interTight = Inter_Tight({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-fraunces",
-  axes: ["opsz"],
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const hanken = Hanken_Grotesk({
+const playfair = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-hanken",
-  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-accent",
+  style: ["normal", "italic"],
 });
 
 const siteUrl = "https://ahealingvaastu.com";
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${hanken.variable}`}>
+    <html lang="en" className={`${interTight.variable} ${playfair.variable}`}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );

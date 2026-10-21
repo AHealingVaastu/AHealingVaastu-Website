@@ -43,10 +43,11 @@ section[id] { scroll-margin-top: 90px; }
 /* ============================================================
    TYPOGRAPHY HELPERS
    ============================================================ */
-.font-display { font-family: var(--font-fraunces), serif; }
+.font-display { font-family: var(--font-sans), system-ui, sans-serif; }
 
 /* gold→terracotta gradient accent used on italic emphasis */
 .text-accent {
+  font-family: var(--font-accent), Georgia, serif;
   font-style: italic;
   font-weight: 500;
   background: linear-gradient(100deg, #B8821E, #E2A93C 50%, #C1440E);
@@ -56,6 +57,7 @@ section[id] { scroll-margin-top: 90px; }
 }
 /* light-on-dark accent (footer / dark areas) */
 .text-accent-light {
+  font-family: var(--font-accent), Georgia, serif;
   font-style: italic;
   font-weight: 500;
   background: linear-gradient(100deg, #E8D5A3, #F4E3B0 50%, #E7A98C);
@@ -67,7 +69,7 @@ section[id] { scroll-margin-top: 90px; }
 /* ============================================================
    MESH GRADIENTS
    ============================================================ */
-/* HERO — warm gold (top-left) → pink → purple → deep purple (bottom-right) */
+/* HERO: warm gold (top-left) → pink → purple → deep purple (bottom-right) */
 .mesh-hero {
   background:
     radial-gradient(ellipse 95% 85% at 6% 4%,    #F8EAC6 0%, transparent 46%),
@@ -77,7 +79,7 @@ section[id] { scroll-margin-top: 90px; }
     linear-gradient(122deg, #F5E1B6 0%, #E199BE 25%, #A552C0 50%, #5A2188 73%, #1F0A3A 100%);
 }
 
-/* FOOTER OUTRO — the exact hero mesh, point-reflected 180° so it reads
+/* FOOTER OUTRO: the exact hero mesh, point-reflected 180° so it reads
    as an inverted "outro": deep purple at the top (flows from the page)
    blooming into warm gold/rose toward the bottom. */
 .mesh-outro {
@@ -89,7 +91,7 @@ section[id] { scroll-margin-top: 90px; }
     linear-gradient(302deg, #F5E1B6 0%, #E199BE 25%, #A552C0 50%, #5A2188 73%, #1F0A3A 100%);
 }
 
-/* ABOUT portrait frame — branded mini-mesh */
+/* ABOUT portrait frame: branded mini-mesh */
 .mesh-frame {
   background:
     radial-gradient(ellipse 80% 60% at 25% 18%, #E7BFD6 0%, transparent 55%),

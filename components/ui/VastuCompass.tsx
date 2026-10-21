@@ -111,7 +111,7 @@ function Compass() {
             fontWeight="700"
             textAnchor="middle"
             dominantBaseline="middle"
-            fontFamily="var(--font-hanken), sans-serif"
+            fontFamily="var(--font-sans), sans-serif"
           >
             {d.label}
           </text>
