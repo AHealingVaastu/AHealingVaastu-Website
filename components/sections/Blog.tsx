@@ -1,63 +1,68 @@
-import { Home, Briefcase, Info, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
+import SectionLabel from "@/components/ui/SectionLabel";
 import { posts } from "@/lib/content";
-
-const tagClasses: Record<string, string> = {
-  gold: "bg-gold/15 text-gold-dark",
-  purple: "bg-plum/[0.12] text-plum",
-  rose: "bg-rose/[0.13] text-rose",
-};
-const cardGrad = ["from-terra to-gold", "from-plum to-rose", "from-rose to-plum-deep"];
-const cardIcon = [Home, Briefcase, Info];
 
 export default function Blog() {
   return (
-    <section id="blog" className="bg-page">
-      <div className="mx-auto max-w-shell px-6 py-16">
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <Reveal>
-              <div className="mb-4 inline-flex items-center gap-2 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-gold-dark">
-                <span className="h-[7px] w-[7px] rounded-full bg-gold ring-4 ring-gold/20" />
-                Vastu Wisdom
-              </div>
-              <h2 className="font-display text-[clamp(2rem,3.6vw,3rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-ink">
-                Knowledge for <span className="text-accent">Every Home</span>
-              </h2>
-            </Reveal>
-          </div>
-          <Reveal>
-            <a href="#" className="inline-flex shrink-0 items-center gap-[0.45rem] text-[0.88rem] font-bold text-gold-dark transition-all hover:gap-[0.7rem]">
-              View All Articles <ArrowRight size={14} strokeWidth={2.5} />
+    <section id="blog" aria-label="Blog" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
+      <div className="rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+        {/* heading */}
+        <Reveal className="px-4 pb-8 pt-8 md:px-10 md:pb-10 md:pt-12">
+          <SectionLabel index="06" label="Vastu wisdom" />
+          <div className="mt-6 flex flex-wrap items-end justify-between gap-x-10 gap-y-5">
+            <h2 className="font-display text-[clamp(2.2rem,4vw,3.4rem)] font-normal leading-[1.08] tracking-[-0.025em] text-ink">
+              Knowledge for
+              <br />
+              <span className="text-accent-plum">Every Home</span>
+            </h2>
+            <a
+              href="#"
+              className="text-[0.96rem] font-medium text-ink underline decoration-ink/30 underline-offset-4 transition hover:decoration-ink md:mb-2"
+            >
+              View all articles
             </a>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((p, i) => {
-            const Icon = cardIcon[i];
-            return (
-              <Reveal key={p.title} delay={i * 0.08}>
-                <article className="group cursor-pointer overflow-hidden rounded-[20px] border border-line bg-white transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_46px_rgba(74,31,92,0.1)]">
-                  <div className={`flex aspect-[16/9] items-center justify-center bg-gradient-to-br ${cardGrad[i]} transition-transform duration-500 group-hover:scale-[1.04]`}>
-                    <Icon size={48} strokeWidth={1.25} className="text-white/50" />
-                  </div>
-                  <div className="p-6">
-                    <span className={`mb-[0.65rem] inline-block rounded-full px-[0.7rem] py-[0.18rem] text-[0.72rem] font-bold uppercase tracking-[0.06em] ${tagClasses[p.tone]}`}>
-                      {p.tag}
+        {/* article index */}
+        <Reveal delay={0.1}>
+          <div className="overflow-hidden rounded-[30px] bg-[#FFFCF6]">
+            <ol className="group/list">
+              {posts.map((p, i) => (
+                <li key={p.title} className={i > 0 ? "border-t border-line" : ""}>
+                  <a
+                    href="#"
+                    className="group/row grid grid-cols-[2.25rem_1fr] gap-x-4 px-6 py-8 transition-opacity duration-300 md:grid-cols-[3.25rem_1fr_auto] md:items-center md:gap-x-8 md:px-10 md:py-10 lg:group-hover/list:opacity-40 lg:hover:!opacity-100"
+                  >
+                    <span className="pt-2 font-display text-[0.95rem] tabular-nums text-plum md:self-start md:pt-3">
+                      {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="mb-2 font-display text-[1.15rem] font-semibold leading-[1.3] text-ink">{p.title}</h3>
-                    <p className="mb-[0.9rem] text-[0.86rem] leading-relaxed text-body-muted">{p.excerpt}</p>
-                    <div className="flex items-center justify-between text-[0.78rem] text-body-faint">
-                      <span>{p.read}</span>
-                      <span>{p.date}</span>
+                    <div className="min-w-0">
+                      <h3 className="font-display text-[clamp(1.55rem,3.4vw,2.9rem)] font-normal leading-[1.1] tracking-[-0.025em] text-ink transition-transform duration-500 ease-out lg:group-hover/row:translate-x-2">
+                        {p.title}
+                      </h3>
+                      <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.78rem] text-body-faint">
+                        <span className="font-medium uppercase tracking-[0.14em] text-plum">{p.tag}</span>
+                        <span className="h-3 w-px bg-line" aria-hidden="true" />
+                        <span>{p.read}</span>
+                        <span className="hidden h-3 w-px bg-line sm:block" aria-hidden="true" />
+                        <span className="basis-full sm:basis-auto">{p.date}</span>
+                      </div>
+                      <p className="mt-3 max-w-[560px] text-[0.9rem] leading-[1.65] text-body-muted">{p.excerpt}</p>
                     </div>
-                  </div>
-                </article>
-              </Reveal>
-            );
-          })}
-        </div>
+                    <span
+                      className="hidden h-12 w-12 shrink-0 place-items-center rounded-full border border-line bg-white text-ink transition-colors duration-300 group-hover/row:border-ink group-hover/row:bg-ink group-hover/row:text-[#FFFCF6] md:grid"
+                      aria-hidden="true"
+                    >
+                      <ArrowUpRight size={18} strokeWidth={2} className="transition-transform duration-300 group-hover/row:rotate-45" />
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
