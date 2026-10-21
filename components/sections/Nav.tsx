@@ -25,7 +25,7 @@ export default function Nav() {
   return (
     <div
       aria-hidden={!visible}
-      className={`fixed inset-x-0 top-0 z-[100] px-3 pt-3 transition-all duration-500 ease-out md:px-5 md:pt-4 ${
+      className={`fixed inset-x-0 top-0 z-[100] px-3 pt-3 transition-all [@media(max-height:500px)]:pt-2 duration-500 ease-out md:px-5 md:pt-4 ${
         visible ? "" : "pointer-events-none -translate-y-[130%] opacity-0"
       }`}
     >

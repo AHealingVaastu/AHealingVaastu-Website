@@ -8,8 +8,8 @@ import { credentials, business } from "@/lib/content";
 export default function About() {
   return (
     <section id="about" aria-label="About" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
-        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-4">
+      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,560px)_1fr] xl:gap-8 lg:gap-4">
           {/* portrait card */}
           <Reveal direction="right">
             <div className="mesh-frame grain relative flex aspect-[4/5] w-full md:aspect-[16/10] lg:aspect-[4/5] items-center justify-center overflow-hidden rounded-[30px]">
@@ -18,7 +18,7 @@ export default function About() {
 
               <div className="glass absolute right-4 top-4 z-[2] rounded-[18px] px-4 py-3 text-center shadow-[0_12px_30px_rgba(31,10,58,0.22)]">
                 <span className="block font-display text-[1.6rem] font-normal leading-none tracking-[-0.02em] text-[#FFFCF6]">7+</span>
-                <span className="mt-1 block text-[0.72rem] text-[#FFFCF6]/75">Years of practice</span>
+                <span className="mt-1 block text-[0.75rem] text-[#FFFCF6]/75">Years of practice</span>
               </div>
 
               <div className="glass absolute inset-x-4 bottom-4 z-[2] rounded-[18px] px-5 py-4 shadow-[0_12px_30px_rgba(31,10,58,0.22)]">
@@ -65,7 +65,7 @@ export default function About() {
               </a>
               <a
                 href="#testimonials"
-                className="text-[0.96rem] font-medium text-ink underline decoration-ink/30 underline-offset-4 transition hover:decoration-ink"
+                className="tap text-[0.96rem] font-medium text-ink underline decoration-ink/30 underline-offset-4 transition hover:decoration-ink"
               >
                 Read client stories
               </a>

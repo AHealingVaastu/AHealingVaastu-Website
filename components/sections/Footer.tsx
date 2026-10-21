@@ -29,13 +29,13 @@ const socialLinks = [
   { icon: YoutubeIcon, href: business.socials.youtube, label: "YouTube" },
 ].filter((s) => s.href);
 
-const colTitle = "text-[0.72rem] font-medium uppercase tracking-[0.18em] text-body-muted";
-const colLink = "text-[0.9rem] text-ink/80 transition hover:text-plum";
+const colTitle = "text-[0.75rem] font-medium uppercase tracking-[0.18em] text-body-muted";
+const colLink = "inline-block py-[0.6rem] text-[0.9rem] text-ink/80 transition hover:text-plum";
 
 export default function Footer() {
   return (
     <footer className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         {/* closing statement on the outro mesh, mirroring the hero card */}
         <div className="mesh-outro grain relative overflow-hidden rounded-[30px]">
           <Reveal className="relative z-[2] mx-auto max-w-shell px-6 py-16 text-center md:px-14 md:py-24">
@@ -55,7 +55,7 @@ export default function Footer() {
               </a>
               <a
                 href={business.phoneHref}
-                className="text-[0.96rem] font-medium text-[#FFFCF6] underline decoration-[#FFFCF6]/40 underline-offset-4 transition hover:decoration-[#FFFCF6]"
+                className="tap text-[0.96rem] font-medium text-[#FFFCF6] underline decoration-[#FFFCF6]/40 underline-offset-4 transition hover:decoration-[#FFFCF6]"
               >
                 Or call {business.phone}
               </a>
@@ -97,7 +97,7 @@ export default function Footer() {
           {cols.map((c) => (
             <div key={c.title}>
               <h4 className={colTitle}>{c.title}</h4>
-              <ul className="mt-5 space-y-3">
+              <ul className="mt-2">
                 {c.links.map((l) => (
                   <li key={l.label}>
                     <a href={l.href} className={colLink}>
@@ -111,7 +111,7 @@ export default function Footer() {
 
           <div>
             <h4 className={colTitle}>Contact</h4>
-            <ul className="mt-5 space-y-3 text-[0.9rem] text-ink/80">
+            <ul className="mt-2 text-[0.9rem] text-ink/80">
               <li>
                 <a href={business.phoneHref} className={colLink}>
                   {business.phone}
@@ -122,8 +122,8 @@ export default function Footer() {
                   {business.email}
                 </a>
               </li>
-              <li>Brampton, ON, Canada</li>
-              <li className="text-body-muted">{business.hours}</li>
+              <li className="py-[0.6rem]">Brampton, ON, Canada</li>
+              <li className="py-[0.6rem] text-body-muted">{business.hours}</li>
             </ul>
           </div>
         </div>
@@ -132,10 +132,10 @@ export default function Footer() {
         <div className="mx-4 flex flex-wrap items-center justify-between gap-4 border-t border-line pb-3 pr-[4.5rem] pt-5 md:mx-10 md:pb-4">
           <span className="text-[0.8rem] text-body-faint">© {new Date().getFullYear()} A Healing Vaastu. All rights reserved.</span>
           <div className="flex gap-6">
-            <a href="#" className="text-[0.8rem] text-body-faint transition hover:text-ink">
+            <a href="#" className="tap text-[0.8rem] text-body-faint transition hover:text-ink">
               Privacy Policy
             </a>
-            <a href="#" className="text-[0.8rem] text-body-faint transition hover:text-ink">
+            <a href="#" className="tap text-[0.8rem] text-body-faint transition hover:text-ink">
               Terms of Service
             </a>
           </div>

@@ -7,7 +7,7 @@ import { posts } from "@/lib/content";
 export default function Blog() {
   return (
     <section id="blog" aria-label="Blog" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         {/* heading */}
         <Reveal className="px-4 pb-8 pt-8 md:px-10 md:pb-10 md:pt-12">
           <SectionLabel index="06" label="Vastu wisdom" />
@@ -19,7 +19,7 @@ export default function Blog() {
             </h2>
             <a
               href="#"
-              className="text-[0.96rem] font-medium text-ink underline decoration-ink/30 underline-offset-4 transition hover:decoration-ink md:mb-2"
+              className="tap text-[0.96rem] font-medium text-ink underline decoration-ink/30 underline-offset-4 transition hover:decoration-ink md:mb-2"
             >
               View all articles
             </a>

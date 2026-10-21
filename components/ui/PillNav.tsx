@@ -37,11 +37,11 @@ export default function PillNav({
     <>
       <nav
         aria-label={label}
-        className={`flex items-center justify-between gap-3 rounded-full border border-white/60 py-[0.6rem] pl-4 pr-[0.6rem] backdrop-blur-[16px] backdrop-saturate-[1.4] md:pl-5 ${
+        className={`flex items-center justify-between gap-3 rounded-full border border-white/60 py-[0.6rem] pl-4 pr-[0.6rem] backdrop-blur-[16px] [@media(max-height:500px)]:py-[0.3rem] backdrop-saturate-[1.4] md:pl-5 ${
           floating ? "bg-[#FFFCF6]/80 shadow-[0_10px_34px_rgba(74,31,92,0.12)]" : "bg-[#FFFCF6]/55 shadow-[0_8px_30px_rgba(74,31,92,0.08)]"
         }`}
       >
-        <a href="#top" tabIndex={tab} className="flex shrink-0 items-center gap-3" aria-label="A Healing Vaastu home">
+        <a href="#top" tabIndex={tab} className="flex min-h-10 min-w-10 shrink-0 items-center gap-3" aria-label="A Healing Vaastu home">
           <Image
             src="/logo.png"
             alt="A Healing Vaastu"
@@ -77,7 +77,7 @@ export default function PillNav({
             as="a"
             href={business.phoneHref}
             tabIndex={tab}
-            className="hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white/70 px-4 py-[0.55rem] text-[0.88rem] font-medium text-ink transition hover:bg-white xl:inline-flex"
+            className="hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white/70 px-4 py-[0.65rem] text-[0.88rem] font-medium text-ink transition hover:bg-white xl:inline-flex"
           >
             <GroupIcon icon={PhoneIcon} size={14} strokeWidth={2} />
             {business.phone}

@@ -46,7 +46,7 @@ export default function Hero() {
 
   return (
     <section id="top" aria-label="Hero" className="flex min-h-[100svh] flex-col bg-page p-3 md:p-5">
-      <div className="flex flex-1 flex-col rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div className="flex flex-1 flex-col mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         <div className="mesh-hero grain relative flex flex-1 flex-col overflow-hidden rounded-[30px]">
           <div className="absolute inset-x-3 top-3 z-[6] md:inset-x-7 md:top-7">
             <PillNav menuId="hero-menu" label="Hero navigation" priority />
@@ -83,7 +83,7 @@ export default function Hero() {
                 </a>
                 <a
                   href="#services"
-                  className="text-[0.96rem] font-medium text-ink underline decoration-ink/30 underline-offset-4 transition hover:decoration-ink"
+                  className="tap text-[0.96rem] font-medium text-ink underline decoration-ink/30 underline-offset-4 transition hover:decoration-ink"
                 >
                   Explore Services
                 </a>
@@ -106,12 +106,12 @@ export default function Hero() {
               <GlassTag
                 title="Residential Vastu"
                 sub="Book home consultation"
-                className="bottom-[16%] left-0 md:-left-[6%]"
+                className="bottom-6 left-0 md:-left-[6%] xl:bottom-[16%]"
               />
               <GlassTag
                 title="Business Vastu"
                 sub="Book business audit"
-                className="-bottom-[6%] right-0 md:-right-[4%] xl:bottom-auto xl:top-[-2%]"
+                className="-bottom-11 right-0 md:-right-[4%] xl:-right-[9%] xl:bottom-auto xl:top-[-5%]"
               />
             </motion.div>
           </div>
