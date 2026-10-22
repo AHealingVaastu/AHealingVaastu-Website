@@ -40,13 +40,19 @@ In the same Node.js App screen, add these under **Environment Variables**:
 |---|---|
 | `SMTP_HOST` | `mail.spacemail.com` |
 | `SMTP_PORT` | `465` |
-| `SMTP_USER` | the full mailbox address, e.g. `bookings@ahealingvaastu.com` |
-| `SMTP_PASSWORD` | that mailbox's password |
-| `CONTACT_TO_EMAIL` | `contact@ahealingvaastu.com` (where leads should land — can match `SMTP_USER` or be different) |
+| `SMTP_USER` | `contact@ahealingvaastu.com` (the real mailbox the site logs in as) |
+| `SMTP_PASSWORD` | that mailbox's password (the one you use for webmail) |
+| `SMTP_FROM` | `bookings@ahealingvaastu.com` (optional "from" address; an alias of the mailbox above) |
+| `CONTACT_TO_EMAIL` | `contact@ahealingvaastu.com` (where leads land) |
 
-`SMTP_USER` must be a real mailbox you've created in Spaceship's email
-hosting (Spacemail) — create it first under your hosting's **Email
-Accounts** section if it doesn't exist yet.
+`SMTP_USER` must be a real mailbox in Spacemail, not an alias: an alias has
+no password of its own, so the site cannot log in as it. Aliases such as
+`bookings@` can only be used as `SMTP_FROM`. If Spacemail refuses to send
+from the alias, delete `SMTP_FROM` and emails will come from `SMTP_USER`.
+
+If the Spacemail subscription lapses and is renewed, check the mailbox still
+exists and its password still works in webmail, then re-enter
+`SMTP_PASSWORD` here.
 
 Save, then **Restart** the application so it picks them up.
 
@@ -62,8 +68,8 @@ Save, then **Restart** the application so it picks them up.
 source /home/<user>/nodevenv/ahealingvaastu/18/bin/activate
 cd /home/<user>/ahealingvaastu
 
-# 3. Install dependencies and build:
-npm ci --omit=dev --no-audit
+# 3. Install dependencies (including the build tools) and build:
+npm ci --include=dev --no-audit
 npm run build
 
 # 4. Restart via cPanel's Node.js App screen (or):
@@ -89,7 +95,7 @@ Every time you change the site:
 source /home/<user>/nodevenv/ahealingvaastu/18/bin/activate
 cd /home/<user>/ahealingvaastu
 git pull            # or re-upload changed files
-npm ci --omit=dev
+npm ci --include=dev --no-audit
 npm run build
 ```
 Then click **Restart** in cPanel's Node.js App screen.
@@ -102,6 +108,14 @@ Then click **Restart** in cPanel's Node.js App screen.
 - **Logs**: cPanel's Node.js App screen usually links to the app's log file;
   `passenger-status` and `passenger-config restart-app <path>` are also
   available over SSH if your plan includes it.
+- **Build fails with `Cannot find module 'tailwindcss'` or `Can't resolve '@/...'`**:
+  the app runs in Production mode, so a plain `npm ci` skips the build tools.
+  Install with `npm ci --include=dev`, then build again.
+- **Form shows "We couldn't send your message right now"**: the app log has a
+  line starting `[contact] email send failed`. `EAUTH` means a wrong
+  `SMTP_USER` or `SMTP_PASSWORD`; `ECONNECTION`, `ETIMEDOUT` or `ENOTFOUND`
+  mean a wrong host or port; a `550` error means the receiving mailbox does
+  not exist.
 - **Contact form "sends" but no email arrives**: check `SMTP_USER` and
   `SMTP_PASSWORD` are set correctly in cPanel's environment variables (not
   just your local `.env.local`, which never reaches the server), and that
