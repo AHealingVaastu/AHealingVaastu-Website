@@ -140,6 +140,12 @@ export default function Contact() {
                   <p className="mt-1 text-[0.88rem] text-body-muted">Free 15-minute discovery call included with every enquiry.</p>
                 </div>
 
+                {/* honeypot: hidden from people and screen readers, filled in by bots */}
+                <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+                  <label htmlFor="website">Website</label>
+                  <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+                </div>
+
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
                     <label htmlFor="firstName" className={label}>First name *</label>

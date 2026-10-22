@@ -42,8 +42,13 @@ In the same Node.js App screen, add these under **Environment Variables**:
 | `SMTP_PORT` | `465` |
 | `SMTP_USER` | `contact@ahealingvaastu.com` (the real mailbox the site logs in as) |
 | `SMTP_PASSWORD` | that mailbox's password (the one you use for webmail) |
-| `SMTP_FROM` | `bookings@ahealingvaastu.com` (optional "from" address; an alias of the mailbox above) |
+| `SMTP_FROM` | `bookings@ahealingvaastu.com` (optional; client-facing emails come from this alias of the mailbox above) |
 | `CONTACT_TO_EMAIL` | `contact@ahealingvaastu.com` (where leads land) |
+
+Each enquiry sends two emails: a notification to `CONTACT_TO_EMAIL` from
+`SMTP_USER` (shown as "Client Name via A Healing Vaastu", Reply goes to the
+client), and an acknowledgement to the client from `SMTP_FROM` (shown as
+"Anjli Gupta from A Healing Vaastu", replies come back to `CONTACT_TO_EMAIL`).
 
 `SMTP_USER` must be a real mailbox in Spacemail, not an alias: an alias has
 no password of its own, so the site cannot log in as it. Aliases such as
