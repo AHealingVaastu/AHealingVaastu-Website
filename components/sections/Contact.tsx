@@ -50,11 +50,14 @@ function Pills({ name, legend, options, required = false }: { name: string; lege
 export default function Contact() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  // true when the message itself could not be delivered (not a validation error)
+  const [sendFailed, setSendFailed] = useState(false);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
     setError("");
+    setSendFailed(false);
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
     try {
@@ -63,13 +66,18 @@ export default function Contact() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error || "Something went wrong. Please try again.");
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setSendFailed(res.status >= 500);
+        throw new Error(json.error || "Something went wrong. Please try again.");
+      }
       setStatus("success");
       form.reset();
     } catch (err) {
       setStatus("error");
-      setError(err instanceof Error ? err.message : "Something went wrong.");
+      // a network failure never reached the server, so offer the direct contacts too
+      if (!(err instanceof Error) || err.name === "TypeError") setSendFailed(true);
+      setError(err instanceof Error && err.name !== "TypeError" ? err.message : "We couldn't send your message right now.");
     }
   }
 
@@ -132,6 +140,12 @@ export default function Contact() {
                   <p className="mt-1 text-[0.88rem] text-body-muted">Free 15-minute discovery call included with every enquiry.</p>
                 </div>
 
+                {/* honeypot: hidden from people and screen readers, filled in by bots */}
+                <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+                  <label htmlFor="website">Website</label>
+                  <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+                </div>
+
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
                     <label htmlFor="firstName" className={label}>First name *</label>
@@ -167,7 +181,24 @@ export default function Contact() {
                   />
                 </div>
 
-                {status === "error" && <p className="text-[0.86rem] font-medium text-rose">{error}</p>}
+                {status === "error" && (
+                  <p className="text-[0.86rem] font-medium leading-[1.6] text-rose" role="alert">
+                    {error}
+                    {sendFailed && (
+                      <>
+                        {" "}Please email us at{" "}
+                        <a href={`mailto:${business.email}`} className="tap underline underline-offset-2">
+                          {business.email}
+                        </a>{" "}
+                        or call{" "}
+                        <a href={business.phoneHref} className="tap whitespace-nowrap underline underline-offset-2">
+                          {business.phone}
+                        </a>
+                        .
+                      </>
+                    )}
+                  </p>
+                )}
 
                 <button
                   type="submit"

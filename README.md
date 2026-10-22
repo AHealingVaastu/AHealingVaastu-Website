@@ -55,8 +55,9 @@ See `.env.example`. All optional in development.
 |----------|---------|
 | `SMTP_HOST` | Spacemail SMTP host (`mail.spacemail.com`) |
 | `SMTP_PORT` | `465` |
-| `SMTP_USER` | the sending mailbox's full address |
+| `SMTP_USER` | the real Spacemail mailbox the site logs in as (`contact@ahealingvaastu.com`) |
 | `SMTP_PASSWORD` | that mailbox's password |
+| `SMTP_FROM` | optional address client emails come from, an alias of that mailbox (`bookings@ahealingvaastu.com`) |
 | `CONTACT_TO_EMAIL` | inbox that receives booking leads |
 
 ## Deploy

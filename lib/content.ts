@@ -183,13 +183,9 @@ export const posts = [
   { tag: "Foundation", tone: "rose", title: "The 5 Elements of Vastu Shastra: A Modern Explanation", excerpt: "Prithvi, Jal, Agni, Vayu, and Akash. These ancient Sanskrit concepts translate directly into modern architectural and interior design principles that any homeowner can apply.", read: "6 min read", date: "April 2025" },
 ];
 
-export const serviceOptions = [
-  { value: "residential", label: "Residential Vastu" },
-  { value: "commercial", label: "Commercial Vastu" },
-  { value: "astrology", label: "Astrological Guidance" },
-  { value: "online", label: "Online Consultation" },
-  { value: "combined", label: "Combined (Vastu + Astrology)" },
-];
+// one option per service, labelled with the service's title so the form, emails and Services section stay in step
+const serviceValues = ["residential", "business", "pre-purchase", "astrology", "horoscope-report", "online"];
+export const serviceOptions = services.map((s, i) => ({ value: serviceValues[i], label: s.title }));
 
 export const propertyOptions = [
   { value: "house", label: "House / Detached" },
