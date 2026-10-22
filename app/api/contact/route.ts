@@ -110,6 +110,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, delivered: true });
   } catch (err) {
     console.error("[contact] email send failed:", err);
-    return NextResponse.json({ error: "We couldn't send your message right now. Please email us directly." }, { status: 502 });
+    return NextResponse.json({ error: "We couldn't send your message right now." }, { status: 502 });
   }
 }
