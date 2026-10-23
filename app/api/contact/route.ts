@@ -74,7 +74,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Too many requests. Please try again in a few minutes." }, { status: 429 });
   }
 
-  const enquiry = { firstName, lastName, email, phone, service: serviceLabel, propertyType: propertyLabel, message };
+  const enquiry = { firstName, lastName, email, phone, serviceValue: service, service: serviceLabel, propertyType: propertyLabel, message };
 
   // Spacemail (Spaceship's email hosting) SMTP — sends via the mailbox you
   // already own on the domain, so no third-party email service is needed.
