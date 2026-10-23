@@ -30,7 +30,7 @@ export default function About() {
 
               <div className="glass absolute inset-x-4 bottom-4 z-[2] rounded-[18px] !bg-[#2A0E3D]/30 px-5 py-4 shadow-[0_12px_30px_rgba(31,10,58,0.22)]">
                 <span className="block text-[1rem] font-medium text-[#FFFCF6]">{business.consultant}</span>
-                <span className="mt-0.5 block text-[0.8rem] text-[#FFFCF6]/75">Vastu &amp; Vedic Astrology Consultant</span>
+                <span className="mt-0.5 block text-[0.8rem] text-[#FFFCF6]/75">Vedic Vastu &amp; Astrology Expert</span>
               </div>
             </div>
           </Reveal>
