@@ -13,17 +13,24 @@ export default function About() {
           {/* portrait card */}
           <Reveal direction="right">
             <div className="mesh-frame grain relative flex aspect-[4/5] w-full md:aspect-[16/10] lg:aspect-[4/5] items-center justify-center overflow-hidden rounded-[30px]">
-              {/* Swap this whole block for <Image src="/your-photo.jpg" fill className="object-cover" /> */}
-              <Image src="/lotus.png" alt="" width={180} height={125} className="relative z-[1] opacity-90" aria-hidden="true" />
+              <Image
+                src="/anjli-gupta.jpg"
+                alt={`${business.consultant}, Vastu and astrology consultant`}
+                fill
+                sizes="(min-width: 1024px) 560px, 100vw"
+                className="object-cover object-[50%_30%]"
+              />
+              {/* soft dark fade so the name tag stays legible over the photo */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-2/5 bg-gradient-to-t from-[#1F0A3A]/60 to-transparent" aria-hidden="true" />
 
-              <div className="glass absolute right-4 top-4 z-[2] rounded-[18px] px-4 py-3 text-center shadow-[0_12px_30px_rgba(31,10,58,0.22)]">
+              <div className="glass absolute right-4 top-4 z-[2] rounded-[18px] !bg-[#2A0E3D]/35 px-4 py-3 text-center shadow-[0_12px_30px_rgba(31,10,58,0.22)]">
                 <span className="block font-display text-[1.6rem] font-normal leading-none tracking-[-0.02em] text-[#FFFCF6]">7+</span>
                 <span className="mt-1 block text-[0.75rem] text-[#FFFCF6]/75">Years of practice</span>
               </div>
 
-              <div className="glass absolute inset-x-4 bottom-4 z-[2] rounded-[18px] px-5 py-4 shadow-[0_12px_30px_rgba(31,10,58,0.22)]">
+              <div className="glass absolute inset-x-4 bottom-4 z-[2] rounded-[18px] !bg-[#2A0E3D]/30 px-5 py-4 shadow-[0_12px_30px_rgba(31,10,58,0.22)]">
                 <span className="block text-[1rem] font-medium text-[#FFFCF6]">{business.consultant}</span>
-                <span className="mt-0.5 block text-[0.8rem] text-[#FFFCF6]/75">Vastu &amp; Vedic Astrology Consultant</span>
+                <span className="mt-0.5 block text-[0.8rem] text-[#FFFCF6]/75">Vedic Vastu &amp; Astrology Expert</span>
               </div>
             </div>
           </Reveal>

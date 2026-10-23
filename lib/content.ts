@@ -95,10 +95,10 @@ export const elements = [
 ] as const;
 
 export const credentials = [
-  "Certified by the Indian Council of Astrological Sciences",
-  "Advanced Vastu Shastra (Maharishi Mahesh Yogi tradition)",
-  "Vedic Jyotish (Astrology) practitioner since 2018",
-  "Member, Vastu Practitioners Association of Canada",
+  "Certified Astrologer by Institute for Research in Indian Wisdom",
+  "Certified in Astrology from Mahavastu",
+  "Certified in Vastu from Mahavastu",
+  "Vedic Jyotish and Vastu Practitioner since 2018",
 ];
 
 export const process = [
