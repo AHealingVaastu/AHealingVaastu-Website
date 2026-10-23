@@ -95,7 +95,7 @@ export const elements = [
 ] as const;
 
 export const credentials = [
-  "Institute For Research In Indian Wisdom for Astrology",
+  "Certified Astrologer by Institute for Research in Indian Wisdom",
   "Certified in Astrology from Mahavastu",
   "Certified in Vastu from Mahavastu",
   "Vedic Jyotish and Vastu Practitioner since 2018",
