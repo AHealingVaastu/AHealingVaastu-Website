@@ -24,7 +24,7 @@ const config: Config = {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         accent: ["var(--font-accent)", "Georgia", "serif"],
       },
-      maxWidth: { shell: "1240px", frame: "1680px" },
+      maxWidth: { shell: "77.5rem", frame: "none" },
       borderRadius: { "4xl": "2rem" },
       transitionTimingFunction: {
         "out-soft": "cubic-bezier(0.2, 0.7, 0.2, 1)",

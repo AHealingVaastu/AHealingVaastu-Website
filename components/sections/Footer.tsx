@@ -35,12 +35,12 @@ const colLink = "inline-block py-[0.6rem] text-[0.9rem] text-ink/80 transition h
 export default function Footer() {
   return (
     <footer className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div className="mx-auto max-w-frame rounded-[2.375rem] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_1.125rem_3.125rem_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         {/* closing statement on the outro mesh, mirroring the hero card */}
-        <div className="mesh-outro grain relative overflow-hidden rounded-[30px]">
+        <div className="mesh-outro grain relative overflow-hidden rounded-[1.875rem]">
           <Reveal className="relative z-[2] mx-auto max-w-shell px-6 py-16 text-center md:px-14 md:py-24">
             <div className="flex justify-center">
-              <Image src="/lotus.png" alt="" width={72} height={50} aria-hidden="true" />
+              <Image src="/lotus.png" alt="" width={72} height={50} className="h-[3.125rem] w-[4.5rem]" aria-hidden="true" />
             </div>
             <h2 className="mx-auto mt-6 max-w-3xl font-display text-[clamp(2.2rem,5vw,4.2rem)] font-normal leading-[1.08] tracking-[-0.025em] text-[#FFFCF6]">
               Let your space <span className="text-accent-plum">breathe,</span>
@@ -49,7 +49,7 @@ export default function Footer() {
             <div className="mt-9 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
               <a
                 href="#contact"
-                className="inline-flex items-center rounded-full bg-[#FFFCF6] px-7 py-[0.95rem] text-[0.96rem] font-medium text-ink shadow-[0_12px_34px_rgba(20,6,36,0.3)] transition hover:-translate-y-0.5 hover:bg-white"
+                className="inline-flex items-center rounded-full bg-[#FFFCF6] px-7 py-[0.95rem] text-[0.96rem] font-medium text-ink shadow-[0_0.75rem_2.125rem_rgba(20,6,36,0.3)] transition hover:-translate-y-0.5 hover:bg-white"
               >
                 Begin Your Journey
               </a>
@@ -67,7 +67,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 px-4 pb-6 pt-10 sm:grid-cols-2 md:px-10 lg:grid-cols-[1.6fr_1fr_1fr_1.3fr]">
           <div>
             <a href="#top" className="flex items-center gap-3" aria-label="A Healing Vaastu home">
-              <Image src="/logo.png" alt="A Healing Vaastu" width={44} height={44} className="rounded-xl shadow-[0_2px_10px_rgba(74,31,92,0.18)]" />
+              <Image src="/logo.png" alt="A Healing Vaastu" width={44} height={44} className="h-11 w-11 rounded-xl shadow-[0_0.125rem_0.625rem_rgba(74,31,92,0.18)]" />
               <span className="font-display text-[1.05rem] font-semibold leading-[1.12] tracking-[0.01em] text-ink">
                 A Healing
                 <br />

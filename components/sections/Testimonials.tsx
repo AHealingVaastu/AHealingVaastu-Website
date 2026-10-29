@@ -21,7 +21,7 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" aria-label="Testimonials" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div className="mx-auto max-w-frame rounded-[2.375rem] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_1.125rem_3.125rem_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         {/* heading */}
         <Reveal className="px-4 pb-8 pt-8 md:px-10 md:pb-10 md:pt-12">
           <SectionLabel index="05" label="Client stories" />
@@ -31,7 +31,7 @@ export default function Testimonials() {
               <br />
               <span className="text-accent-plum">Transformed Lives</span>
             </h2>
-            <p className="max-w-[440px] text-[1rem] leading-[1.65] text-body-muted">
+            <p className="max-w-[27.5rem] text-[1rem] leading-[1.65] text-body-muted">
               Real results from families and businesses across Canada, the US, India, and beyond.
             </p>
           </div>
@@ -39,17 +39,17 @@ export default function Testimonials() {
 
         {/* stories panel: featured quote above a client strip; the 1px gap shows as divider lines */}
         <Reveal delay={0.1}>
-          <div className="stories grid gap-px overflow-hidden rounded-[30px] bg-line">
+          <div className="stories grid gap-px overflow-hidden rounded-[1.875rem] bg-line">
             {/* featured quote */}
             <div className="bg-[#FFFCF6] px-6 py-10 md:px-14 md:py-14">
               <div className="flex gap-1 text-plum" aria-label="Rated 5 out of 5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={15} fill="currentColor" strokeWidth={0} aria-hidden="true" />
+                  <Star key={i} size="0.9375rem" fill="currentColor" strokeWidth={0} aria-hidden="true" />
                 ))}
               </div>
 
               {/* every quote shares one grid cell so the panel keeps the height of the longest */}
-              <div className="mt-6 grid max-w-[920px]" aria-live="polite">
+              <div className="mt-6 grid max-w-[57.5rem]" aria-live="polite">
                 {testimonials.map((q, i) => {
                   const cls =
                     "[grid-area:1/1] font-display text-[clamp(1.3rem,2.3vw,1.9rem)] font-normal leading-[1.42] tracking-[-0.015em] text-ink";
@@ -131,7 +131,7 @@ export default function Testimonials() {
                         <span
                           key={active}
                           onAnimationEnd={() => go(active + 1)}
-                          className="story-progress absolute inset-x-0 bottom-0 h-[2px] bg-plum"
+                          className="story-progress absolute inset-x-0 bottom-0 h-[0.125rem] bg-plum"
                           aria-hidden="true"
                         />
                       )}

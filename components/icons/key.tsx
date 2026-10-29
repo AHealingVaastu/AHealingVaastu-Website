@@ -61,7 +61,7 @@ const KeyIcon = forwardRef<KeyIconHandle, KeyIconProps>(
         <motion.svg
           animate={controls}
           fill="none"
-          height={size}
+          height={`${size / 16}rem`}
           initial="normal"
           stroke="currentColor"
           strokeLinecap="round"
@@ -88,7 +88,7 @@ const KeyIcon = forwardRef<KeyIconHandle, KeyIconProps>(
             },
           }}
           viewBox="0 0 24 24"
-          width={size}
+          width={`${size / 16}rem`}
           xmlns="http://www.w3.org/2000/svg"
         >
           <path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" />
