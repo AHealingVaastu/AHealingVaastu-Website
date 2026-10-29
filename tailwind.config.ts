@@ -24,6 +24,7 @@ const config: Config = {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         accent: ["var(--font-accent)", "Georgia", "serif"],
       },
+      screens: { "3xl": "1800px" },
       maxWidth: { shell: "1240px", frame: "1680px" },
       borderRadius: { "4xl": "2rem" },
       transitionTimingFunction: {
