@@ -81,13 +81,13 @@ const CircleCheckIcon = forwardRef<CircleCheckIconHandle, CircleCheckIconProps>(
       >
         <svg
           fill="none"
-          height={`${size / 16}rem`}
+          height={size}
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={strokeWidth}
           viewBox="0 0 24 24"
-          width={`${size / 16}rem`}
+          width={size}
           xmlns="http://www.w3.org/2000/svg"
         >
           <circle cx="12" cy="12" r="10" />

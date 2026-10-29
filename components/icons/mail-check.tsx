@@ -80,13 +80,13 @@ const MailCheckIcon = forwardRef<MailCheckIconHandle, MailCheckIconProps>(
       >
         <svg
           fill="none"
-          height={`${size / 16}rem`}
+          height={size}
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={strokeWidth}
           viewBox="0 0 24 24"
-          width={`${size / 16}rem`}
+          width={size}
           xmlns="http://www.w3.org/2000/svg"
         >
           <path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8" />

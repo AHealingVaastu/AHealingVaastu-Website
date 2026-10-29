@@ -22,7 +22,7 @@ const info = [
 type Status = "idle" | "loading" | "success" | "error";
 
 const field =
-  "w-full rounded-[0.875rem] border border-line bg-white px-4 py-3 text-[0.93rem] text-ink outline-none transition placeholder:text-body-faint/70 focus:border-plum/50 focus:ring-4 focus:ring-plum/10";
+  "w-full rounded-[14px] border border-line bg-white px-4 py-3 text-[0.93rem] text-ink outline-none transition placeholder:text-body-faint/70 focus:border-plum/50 focus:ring-4 focus:ring-plum/10";
 const label = "mb-2 block text-[0.8rem] font-medium text-ink/80";
 
 /** Native select styled like the text fields, with a custom chevron. */
@@ -106,7 +106,7 @@ export default function Contact() {
 
   return (
     <section id="contact" aria-label="Contact" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="mx-auto max-w-frame rounded-[2.375rem] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_1.125rem_3.125rem_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         <div className="grid grid-cols-1 items-start gap-2 lg:grid-cols-[0.9fr_1.1fr] lg:gap-4">
           {/* info */}
           <Reveal className="px-4 pb-6 pt-8 md:px-10 md:pt-12 lg:pb-12">
@@ -116,12 +116,12 @@ export default function Contact() {
               <br />
               <span className="text-accent-plum">Transformation</span>
             </h2>
-            <p className="mt-5 max-w-[27.5rem] text-[1rem] leading-[1.65] text-body-muted">
+            <p className="mt-5 max-w-[440px] text-[1rem] leading-[1.65] text-body-muted">
               Fill in the form and we&apos;ll respond within 24 hours to confirm your consultation. All enquiries are completely confidential.
             </p>
 
             {/* contact details: the 1px gap shows as divider lines */}
-            <ul className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-[1.5rem] bg-line sm:grid-cols-2">
+            <ul className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-[24px] bg-line sm:grid-cols-2">
               {info.map((it) => (
                 <HoverGroup as="li" key={it.title} className="flex gap-3 bg-[#FFFCF6] px-5 py-5">
                   <GroupIcon icon={it.icon} size={20} strokeWidth={1.5} className="mt-0.5 shrink-0 text-plum" />
@@ -145,7 +145,7 @@ export default function Contact() {
           </Reveal>
 
           {/* form */}
-          <Reveal delay={0.1} className="rounded-[1.875rem] bg-[#FFFCF6] px-6 py-8 md:px-10 md:py-10">
+          <Reveal delay={0.1} className="rounded-[30px] bg-[#FFFCF6] px-6 py-8 md:px-10 md:py-10">
             {status === "success" ? (
               <div className="flex flex-col items-center py-14 text-center">
                 <span className="grid h-14 w-14 place-items-center rounded-full bg-ink text-[#FFFCF6]">
@@ -202,7 +202,7 @@ export default function Contact() {
                     name="message"
                     rows={4}
                     placeholder="Tell us briefly about your space and the challenges you're experiencing…"
-                    className={`${field} min-h-[6.875rem] resize-y`}
+                    className={`${field} min-h-[110px] resize-y`}
                   />
                 </div>
 
@@ -228,7 +228,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-ink px-7 py-[0.95rem] text-[0.96rem] font-medium text-page shadow-[0_0.625rem_1.75rem_rgba(31,10,58,0.28)] transition hover:-translate-y-0.5 hover:bg-[#3D1556] disabled:cursor-not-allowed disabled:opacity-70"
+                  className="flex w-full items-center justify-center gap-2 rounded-full bg-ink px-7 py-[0.95rem] text-[0.96rem] font-medium text-page shadow-[0_10px_28px_rgba(31,10,58,0.28)] transition hover:-translate-y-0.5 hover:bg-[#3D1556] disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {status === "loading" ? (
                     <>

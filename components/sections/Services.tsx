@@ -22,7 +22,7 @@ const icons = {
 export default function Services() {
   return (
     <section id="services" aria-label="Services" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="mx-auto max-w-frame rounded-[2.375rem] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_1.125rem_3.125rem_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         {/* heading */}
         <Reveal className="px-4 pb-8 pt-8 md:px-10 md:pb-10 md:pt-12">
           <SectionLabel index="01" label="What we offer" />
@@ -32,7 +32,7 @@ export default function Services() {
               <br />
               <span className="text-accent-plum">Every Space</span>
             </h2>
-            <p className="max-w-[27.5rem] text-[1rem] leading-[1.65] text-body-muted">
+            <p className="max-w-[440px] text-[1rem] leading-[1.65] text-body-muted">
               Whether you seek harmony at home, prosperity in business, or deeper cosmic alignment, our consultations bring ancient Vastu principles to modern life.
             </p>
           </div>
@@ -40,7 +40,7 @@ export default function Services() {
 
         {/* services panel: the 1px gap shows as divider lines */}
         <Reveal delay={0.1}>
-          <ul className="grid grid-cols-1 gap-px overflow-hidden rounded-[1.875rem] bg-line md:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-px overflow-hidden rounded-[30px] bg-line md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => {
               const Icon = icons[s.icon];
               return (
@@ -64,7 +64,7 @@ export default function Services() {
                     className="mt-auto flex items-center justify-between gap-4 pt-7 text-[0.9rem] font-medium text-ink after:absolute after:inset-0 after:content-['']"
                   >
                     {s.cta}
-                    <span className="grid h-[2.125rem] w-[2.125rem] shrink-0 place-items-center rounded-full bg-ink text-[#FFFCF6]">
+                    <span className="grid h-[34px] w-[34px] shrink-0 place-items-center rounded-full bg-ink text-[#FFFCF6]">
                       <GroupIcon icon={PlusIcon} size={16} strokeWidth={2} />
                     </span>
                   </a>

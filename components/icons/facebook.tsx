@@ -84,12 +84,12 @@ const FacebookIcon = forwardRef<FacebookIconHandle, FacebookIconProps>(
       >
         <svg
           fill="none"
-          height={`${size / 16}rem`}
+          height={size}
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={strokeWidth}
-          width={`${size / 16}rem`}
+          width={size}
           xmlns="http://www.w3.org/2000/svg"
         >
           <motion.path
