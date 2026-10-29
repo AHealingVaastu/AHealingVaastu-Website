@@ -142,13 +142,13 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
       >
         <svg
           fill="none"
-          height={size}
+          height={`${size / 16}rem`}
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={strokeWidth}
           viewBox="0 0 24 24"
-          width={size}
+          width={`${size / 16}rem`}
           xmlns="http://www.w3.org/2000/svg"
         >
           <motion.rect

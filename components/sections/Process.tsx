@@ -28,11 +28,11 @@ export default function Process() {
 
   return (
     <section id="process" aria-label="Process" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div className="mx-auto max-w-frame rounded-[2.375rem] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_1.125rem_3.125rem_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         <div className="grid grid-cols-1 gap-2 lg:grid-cols-[0.9fr_1.1fr] lg:gap-4">
           {/* mesh card: pinned on desktop, tracks the active step */}
           <div className="lg:sticky lg:top-24 lg:self-start">
-            <div className="mesh-hero grain relative flex flex-col overflow-hidden rounded-[30px] px-6 pb-8 pt-8 md:px-10 md:pt-10 lg:h-[min(660px,calc(100svh-7.5rem))] lg:pb-6">
+            <div className="mesh-hero grain relative flex flex-col overflow-hidden rounded-[1.875rem] px-6 pb-8 pt-8 md:px-10 md:pt-10 lg:h-[min(41.25rem,calc(100svh-7.5rem))] lg:pb-6">
               <div className="relative z-[2]">
                 <SectionLabel index="04" label="How it works" />
                 <h2 className="mt-6 font-display text-[clamp(2.2rem,4vw,3.4rem)] font-normal leading-[1.08] tracking-[-0.025em] text-ink">
@@ -40,7 +40,7 @@ export default function Process() {
                   <br />
                   to <span className="text-accent-plum">Harmony</span>
                 </h2>
-                <p className="mt-5 max-w-[380px] text-[1rem] leading-[1.65] text-ink/70">
+                <p className="mt-5 max-w-[23.75rem] text-[1rem] leading-[1.65] text-ink/70">
                   A clear, compassionate process designed to bring measurable change to your space, and to your life.
                 </p>
               </div>
@@ -55,7 +55,7 @@ export default function Process() {
                 >
                   {step.n}
                 </motion.span>
-                <div className="glass mt-4 rounded-[18px] px-5 py-4 shadow-[0_12px_30px_rgba(31,10,58,0.22)]">
+                <div className="glass mt-4 rounded-[1.125rem] px-5 py-4 shadow-[0_0.75rem_1.875rem_rgba(31,10,58,0.22)]">
                   <div className="flex items-center justify-between gap-4">
                     <span className="text-[0.78rem] text-[#FFFCF6]/75">
                       Step {step.n} of {String(process.length).padStart(2, "0")}
@@ -64,7 +64,7 @@ export default function Process() {
                       {process.map((s, j) => (
                         <span
                           key={s.n}
-                          className={`h-[3px] w-4 rounded-full transition-colors duration-300 ${j <= active ? "bg-[#FFFCF6]" : "bg-[#FFFCF6]/25"}`}
+                          className={`h-[0.1875rem] w-4 rounded-full transition-colors duration-300 ${j <= active ? "bg-[#FFFCF6]" : "bg-[#FFFCF6]/25"}`}
                         />
                       ))}
                     </span>
@@ -84,7 +84,7 @@ export default function Process() {
                   rows.current[i] = el;
                 }}
                 data-index={i}
-                className={`grid grid-cols-[3.25rem_1fr] gap-x-5 border-line py-8 transition-opacity duration-500 md:grid-cols-[4.5rem_1fr] md:gap-x-8 md:py-10 lg:min-h-[min(34svh,300px)] lg:content-center ${
+                className={`grid grid-cols-[3.25rem_1fr] gap-x-5 border-line py-8 transition-opacity duration-500 md:grid-cols-[4.5rem_1fr] md:gap-x-8 md:py-10 lg:min-h-[min(34svh,18.75rem)] lg:content-center ${
                   i > 0 ? "border-t" : ""
                 } ${i === active ? "" : "lg:opacity-45"}`}
               >
@@ -97,7 +97,7 @@ export default function Process() {
                 </span>
                 <div>
                   <h3 className="font-display text-[1.35rem] font-medium leading-[1.2] tracking-[-0.015em] text-ink">{s.title}</h3>
-                  <p className="mt-3 max-w-[460px] text-[0.95rem] leading-[1.65] text-body-muted">{s.body}</p>
+                  <p className="mt-3 max-w-[28.75rem] text-[0.95rem] leading-[1.65] text-body-muted">{s.body}</p>
                 </div>
               </li>
             ))}

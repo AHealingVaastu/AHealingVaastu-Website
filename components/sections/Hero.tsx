@@ -24,13 +24,13 @@ function GlassTag({ title, sub, className }: { title: string; sub: string; class
     <HoverGroup
       as="a"
       href="#services"
-      className={`glass group absolute z-[4] flex items-center gap-3 rounded-[18px] py-[0.55rem] pl-4 pr-[0.55rem] shadow-[0_12px_30px_rgba(31,10,58,0.22)] transition duration-300 hover:-translate-y-0.5 ${className}`}
+      className={`glass group absolute z-[4] flex items-center gap-3 rounded-[1.125rem] py-[0.55rem] pl-4 pr-[0.55rem] shadow-[0_0.75rem_1.875rem_rgba(31,10,58,0.22)] transition duration-300 hover:-translate-y-0.5 ${className}`}
     >
       <span className="flex flex-col whitespace-nowrap text-left leading-tight">
         <span className="text-[0.92rem] font-medium text-[#FFFCF6]">{title}</span>
         <span className="mt-0.5 text-[0.78rem] text-[#FFFCF6]/75">{sub}</span>
       </span>
-      <span className="grid h-[34px] w-[34px] shrink-0 place-items-center rounded-full bg-ink text-[#FFFCF6]">
+      <span className="grid h-[2.125rem] w-[2.125rem] shrink-0 place-items-center rounded-full bg-ink text-[#FFFCF6]">
         <GroupIcon icon={PlusIcon} size={16} strokeWidth={2} />
       </span>
     </HoverGroup>
@@ -46,8 +46,8 @@ export default function Hero() {
 
   return (
     <section id="top" aria-label="Hero" className="flex min-h-[100svh] flex-col bg-page p-3 md:p-5">
-      <div className="mx-auto flex w-full max-w-frame flex-1 flex-col rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
-        <div className="mesh-hero grain relative flex flex-1 flex-col overflow-hidden rounded-[30px]">
+      <div className="mx-auto flex w-full max-w-frame flex-1 flex-col rounded-[2.375rem] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_1.125rem_3.125rem_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+        <div className="mesh-hero grain relative flex flex-1 flex-col overflow-hidden rounded-[1.875rem]">
           <div className="absolute inset-x-3 top-3 z-[6] md:inset-x-7 md:top-7">
             <PillNav menuId="hero-menu" label="Hero navigation" priority />
           </div>
@@ -66,7 +66,7 @@ export default function Hero() {
 
               <motion.p
                 {...rise(0.16)}
-                className="mx-auto mt-6 max-w-[420px] text-[1rem] leading-[1.65] text-ink/70 md:mx-0"
+                className="mx-auto mt-6 max-w-[26.25rem] text-[1rem] leading-[1.65] text-ink/70 md:mx-0"
               >
                 Transform your home or business through the sacred science of Vastu Shastra, aligning your space with nature&apos;s five elements for prosperity, health, and lasting peace.
               </motion.p>
@@ -77,7 +77,7 @@ export default function Hero() {
               >
                 <a
                   href="#contact"
-                  className="inline-flex items-center rounded-full bg-ink px-7 py-[0.95rem] text-[0.96rem] font-medium text-page shadow-[0_10px_28px_rgba(31,10,58,0.28)] transition hover:-translate-y-0.5 hover:bg-[#3D1556]"
+                  className="inline-flex items-center rounded-full bg-ink px-7 py-[0.95rem] text-[0.96rem] font-medium text-page shadow-[0_0.625rem_1.75rem_rgba(31,10,58,0.28)] transition hover:-translate-y-0.5 hover:bg-[#3D1556]"
                 >
                   Book Free Consultation
                 </a>
@@ -95,7 +95,7 @@ export default function Hero() {
               initial={reduce ? undefined : { opacity: 0, scale: 0.92 }}
               animate={reduce ? undefined : { opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, delay: 0.2, ease }}
-              className="relative mx-auto mt-16 aspect-square w-full max-w-[500px] md:mt-0 md:max-w-[clamp(300px,calc(100svh-25.5rem),500px)]"
+              className="relative mx-auto mt-16 aspect-square w-full max-w-[31.25rem] md:mt-0 md:max-w-[clamp(18.75rem,calc(100svh-25.5rem),31.25rem)]"
             >
               {/* centre: 3D Vastu compass with hovering house */}
               <div className="absolute left-1/2 top-1/2 z-[2] h-full w-full -translate-x-1/2 -translate-y-1/2" aria-hidden="true">

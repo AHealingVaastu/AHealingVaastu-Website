@@ -7,7 +7,7 @@ import { posts } from "@/lib/content";
 export default function Blog() {
   return (
     <section id="blog" aria-label="Blog" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div className="mx-auto max-w-frame rounded-[2.375rem] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_1.125rem_3.125rem_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         {/* heading */}
         <Reveal className="px-4 pb-8 pt-8 md:px-10 md:pb-10 md:pt-12">
           <SectionLabel index="06" label="Vastu wisdom" />
@@ -28,7 +28,7 @@ export default function Blog() {
 
         {/* article index */}
         <Reveal delay={0.1}>
-          <div className="overflow-hidden rounded-[30px] bg-[#FFFCF6]">
+          <div className="overflow-hidden rounded-[1.875rem] bg-[#FFFCF6]">
             <ol className="group/list">
               {posts.map((p, i) => (
                 <li key={p.title} className={i > 0 ? "border-t border-line" : ""}>
@@ -51,7 +51,7 @@ export default function Blog() {
                         <span className="hidden h-3 w-px bg-line sm:block" aria-hidden="true" />
                         <span className="basis-full sm:basis-auto">{p.date}</span>
                       </div>
-                      <p className="mt-3 max-w-[560px] text-[0.9rem] leading-[1.65] text-body-muted">{p.excerpt}</p>
+                      <p className="mt-3 max-w-[35rem] text-[0.9rem] leading-[1.65] text-body-muted">{p.excerpt}</p>
                     </div>
                     <span
                       className="hidden h-12 w-12 shrink-0 place-items-center rounded-full border border-line bg-white text-ink transition-colors duration-300 group-hover/row:border-ink group-hover/row:bg-ink group-hover/row:text-[#FFFCF6] md:grid"
