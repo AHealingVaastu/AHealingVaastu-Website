@@ -52,12 +52,12 @@ export default function Hero() {
             <PillNav menuId="hero-menu" label="Hero navigation" priority />
           </div>
 
-          <div className="relative z-[2] mx-auto grid w-full max-w-shell flex-1 grid-cols-1 3xl:max-w-[1480px] items-center gap-10 px-6 pb-14 pt-32 md:grid-cols-2 md:px-14 md:pt-[clamp(7rem,18svh,9rem)]">
+          <div className="relative z-[2] mx-auto grid w-full max-w-shell flex-1 grid-cols-1 items-center gap-10 px-6 pb-14 pt-32 md:grid-cols-2 md:px-14 md:pt-[clamp(7rem,18svh,9rem)]">
             {/* LEFT: copy */}
             <div className="text-center md:text-left">
               <motion.h1
                 {...rise(0.08)}
-                className="font-display text-[clamp(2.6rem,5vw,4.4rem)] font-normal 3xl:text-[5.1rem] leading-[1.08] tracking-[-0.025em] text-ink"
+                className="font-display text-[clamp(2.6rem,5vw,4.4rem)] font-normal leading-[1.08] tracking-[-0.025em] text-ink"
               >
                 Ancient Wisdom,
                 <br />
@@ -66,7 +66,7 @@ export default function Hero() {
 
               <motion.p
                 {...rise(0.16)}
-                className="mx-auto mt-6 max-w-[420px] text-[1rem] leading-[1.65] 3xl:max-w-[500px] 3xl:text-[1.15rem] text-ink/70 md:mx-0"
+                className="mx-auto mt-6 max-w-[420px] text-[1rem] leading-[1.65] text-ink/70 md:mx-0"
               >
                 Transform your home or business through the sacred science of Vastu Shastra, aligning your space with nature&apos;s five elements for prosperity, health, and lasting peace.
               </motion.p>
@@ -95,7 +95,7 @@ export default function Hero() {
               initial={reduce ? undefined : { opacity: 0, scale: 0.92 }}
               animate={reduce ? undefined : { opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, delay: 0.2, ease }}
-              className="relative mx-auto mt-16 aspect-square w-full max-w-[500px] md:mt-0 md:max-w-[clamp(300px,calc(100svh-25.5rem),500px)] 3xl:max-w-[clamp(300px,calc(100svh-25.5rem),680px)]"
+              className="relative mx-auto mt-16 aspect-square w-full max-w-[500px] md:mt-0 md:max-w-[clamp(300px,calc(100svh-25.5rem),500px)]"
             >
               {/* centre: 3D Vastu compass with hovering house */}
               <div className="absolute left-1/2 top-1/2 z-[2] h-full w-full -translate-x-1/2 -translate-y-1/2" aria-hidden="true">

@@ -29,7 +29,7 @@ export default function Nav() {
         visible ? "" : "pointer-events-none -translate-y-[130%] opacity-0"
       }`}
     >
-      <div className="mx-auto max-w-frame px-[calc(1.35rem+1px)] md:px-[calc(2.6rem+1px)]">
+      <div className="mx-auto max-w-shell">
         <PillNav menuId="nav-menu" label="Main navigation" floating hidden={!visible} />
       </div>
     </div>
