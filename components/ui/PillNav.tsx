@@ -37,15 +37,15 @@ export default function PillNav({
     <>
       <nav
         aria-label={label}
-        className={`flex items-center justify-between gap-3 rounded-full border border-white/60 py-[0.6rem] pl-[0.6rem] pr-[0.6rem] backdrop-blur-[1rem] [@media(max-height:500px)]:py-[0.3rem] backdrop-saturate-[1.4] ${
-          floating ? "bg-[#FFFCF6]/80 shadow-[0_0.625rem_2.125rem_rgba(74,31,92,0.12)]" : "bg-[#FFFCF6]/55 shadow-[0_0.5rem_1.875rem_rgba(74,31,92,0.08)]"
+        className={`flex items-center justify-between gap-3 rounded-full border border-white/60 py-[0.6rem] pl-[0.6rem] pr-[0.6rem] backdrop-blur-[16px] [@media(max-height:500px)]:py-[0.3rem] backdrop-saturate-[1.4] ${
+          floating ? "bg-[#FFFCF6]/80 shadow-[0_10px_34px_rgba(74,31,92,0.12)]" : "bg-[#FFFCF6]/55 shadow-[0_8px_30px_rgba(74,31,92,0.08)]"
         }`}
       >
         {/* logo and wordmark share one pill in the logo's own plum, so the logo's square edge disappears */}
         <a
           href="#top"
           tabIndex={tab}
-          className="flex h-[3.25rem] shrink-0 items-center rounded-full bg-[#391C3B] shadow-[0_0.375rem_1.125rem_rgba(42,14,61,0.22)] lg:pl-1.5 lg:pr-5"
+          className="flex h-[3.25rem] shrink-0 items-center rounded-full bg-[#391C3B] shadow-[0_6px_18px_rgba(42,14,61,0.22)] lg:pl-1.5 lg:pr-5"
           aria-label="A Healing Vaastu home"
         >
           {/* lotus-only mark (logo-mark.png): the full logo's tiny printed name repeats the wordmark beside it */}
@@ -87,7 +87,7 @@ export default function PillNav({
           <a
             href="#contact"
             tabIndex={tab}
-            className="hidden shrink-0 whitespace-nowrap rounded-full bg-ink px-5 py-[0.6rem] text-[0.88rem] font-medium text-page shadow-[0_0.375rem_1.125rem_rgba(42,14,61,0.28)] transition hover:-translate-y-px hover:bg-plum sm:inline-flex"
+            className="hidden shrink-0 whitespace-nowrap rounded-full bg-ink px-5 py-[0.6rem] text-[0.88rem] font-medium text-page shadow-[0_6px_18px_rgba(42,14,61,0.28)] transition hover:-translate-y-px hover:bg-plum sm:inline-flex"
           >
             Book Consultation
           </a>
@@ -109,7 +109,7 @@ export default function PillNav({
       {open && (
         <div
           id={menuId}
-          className="mt-2 flex flex-col gap-1 rounded-[1.5rem] border border-white/60 bg-[#FFFCF6]/90 p-2 shadow-[0_1.125rem_3.125rem_rgba(74,31,92,0.16)] backdrop-blur-xl md:hidden"
+          className="mt-2 flex flex-col gap-1 rounded-[24px] border border-white/60 bg-[#FFFCF6]/90 p-2 shadow-[0_18px_50px_rgba(74,31,92,0.16)] backdrop-blur-xl md:hidden"
         >
           {nav.map((l) => (
             <a

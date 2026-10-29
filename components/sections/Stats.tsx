@@ -60,8 +60,8 @@ export default function Stats() {
 
   return (
     <section aria-label="Our impact" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="mx-auto max-w-frame rounded-[2.375rem] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_1.125rem_3.125rem_rgba(74,31,92,0.08)] md:p-[0.85rem]">
-        <div ref={ref} className="grid grid-cols-1 gap-px overflow-hidden rounded-[1.875rem] bg-line sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+        <div ref={ref} className="grid grid-cols-1 gap-px overflow-hidden rounded-[30px] bg-line sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s) => (
             <StatCard key={s.label} {...s} run={run} />
           ))}

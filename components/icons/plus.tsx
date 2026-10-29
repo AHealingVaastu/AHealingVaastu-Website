@@ -62,7 +62,7 @@ const PlusIcon = forwardRef<PlusIconHandle, PlusIconProps>(
         <motion.svg
           animate={controls}
           fill="none"
-          height={`${size / 16}rem`}
+          height={size}
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -77,7 +77,7 @@ const PlusIcon = forwardRef<PlusIconHandle, PlusIconProps>(
             },
           }}
           viewBox="0 0 24 24"
-          width={`${size / 16}rem`}
+          width={size}
           xmlns="http://www.w3.org/2000/svg"
         >
           <path d="M5 12h14" />

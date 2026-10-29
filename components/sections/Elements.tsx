@@ -6,7 +6,7 @@ import { elements } from "@/lib/content";
 export default function Elements() {
   return (
     <section aria-label="The five elements" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="mx-auto max-w-frame rounded-[2.375rem] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_1.125rem_3.125rem_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         {/* heading */}
         <Reveal className="px-4 pb-8 pt-8 md:px-10 md:pb-10 md:pt-12">
           <SectionLabel index="02" label="The five elements" />
@@ -16,7 +16,7 @@ export default function Elements() {
               <br />
               <span className="text-accent-plum">In Balance</span>
             </h2>
-            <p className="max-w-[27.5rem] text-[1rem] leading-[1.65] text-body-muted">
+            <p className="max-w-[440px] text-[1rem] leading-[1.65] text-body-muted">
               Vastu Shastra maps Earth, Water, Fire, Air and Space to the directions of your home. When each element sits in its zone, the space supports the people living in it.
             </p>
           </div>
@@ -24,7 +24,7 @@ export default function Elements() {
 
         {/* elements panel: the 1px gap shows as divider lines; Space spans the row below lg */}
         <Reveal delay={0.1}>
-          <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-[1.875rem] bg-line lg:grid-cols-5">
+          <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-[30px] bg-line lg:grid-cols-5">
             {elements.map((el, i) => (
               <li
                 key={el.name}
