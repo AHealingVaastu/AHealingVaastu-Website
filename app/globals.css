@@ -21,8 +21,10 @@
 
 html {
   /* fluid scale: 16px up to a 1440px-wide window, then everything grows with the
-     screen, so large monitors show the laptop layout scaled up */
-  font-size: max(100%, calc(100vw / 90));
+     screen, so large monitors show the laptop layout scaled up. The scale is also
+     capped by height (694px = 43.375rem at 16px), so screens wider than about 2:1
+     (ultrawides) never grow taller than they can show */
+  font-size: max(100%, min(calc(100vw / 90), calc(100vh / 43.375)));
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;

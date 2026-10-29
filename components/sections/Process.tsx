@@ -31,8 +31,8 @@ export default function Process() {
       <div className="mx-auto max-w-frame rounded-[2.375rem] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_1.125rem_3.125rem_rgba(74,31,92,0.08)] md:p-[0.85rem]">
         <div className="grid grid-cols-1 gap-2 lg:grid-cols-[0.9fr_1.1fr] lg:gap-4">
           {/* mesh card: pinned on desktop, tracks the active step */}
-          <div className="lg:sticky lg:top-24 lg:self-start">
-            <div className="mesh-hero grain relative flex flex-col overflow-hidden rounded-[1.875rem] px-6 pb-8 pt-8 md:px-10 md:pt-10 lg:h-[min(41.25rem,calc(100svh-7.5rem))] lg:pb-6">
+          <div className="lg:sticky lg:top-24 lg:self-start [@media(min-width:1024px)_and_(max-height:694px)]:!static">
+            <div className="mesh-hero grain relative flex flex-col overflow-hidden rounded-[1.875rem] px-6 pb-8 pt-8 md:px-10 md:pt-10 lg:h-[min(41.25rem,calc(100svh-7.5rem))] [@media(min-width:1024px)_and_(max-height:694px)]:!h-auto lg:pb-6">
               <div className="relative z-[2]">
                 <SectionLabel index="04" label="How it works" />
                 <h2 className="mt-6 font-display text-[clamp(2.2rem,4vw,3.4rem)] font-normal leading-[1.08] tracking-[-0.025em] text-ink">
@@ -45,13 +45,13 @@ export default function Process() {
                 </p>
               </div>
 
-              <div className="relative z-[2] mt-auto hidden lg:block" aria-hidden="true">
+              <div className="relative z-[2] mt-auto hidden lg:block [@media(min-width:1024px)_and_(max-height:694px)]:mt-10" aria-hidden="true">
                 <motion.span
                   key={step.n}
                   initial={reduce ? false : { opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.45, ease: [0.2, 0.7, 0.2, 1] }}
-                  className="block font-display text-[clamp(6rem,10vw,8.5rem)] font-normal leading-none tracking-[-0.04em] text-[#FFFCF6]"
+                  className="block font-display text-[min(clamp(6rem,10vw,8.5rem),13svh)] font-normal leading-none tracking-[-0.04em] text-[#FFFCF6]"
                 >
                   {step.n}
                 </motion.span>
@@ -95,8 +95,8 @@ export default function Process() {
                 >
                   {s.n}
                 </span>
-                <div>
-                  <h3 className="font-display text-[1.35rem] font-medium leading-[1.2] tracking-[-0.015em] text-ink">{s.title}</h3>
+                <div className="min-w-0">
+                  <h3 className="break-words font-display text-[1.35rem] font-medium leading-[1.2] tracking-[-0.015em] text-ink">{s.title}</h3>
                   <p className="mt-3 max-w-[28.75rem] text-[0.95rem] leading-[1.65] text-body-muted">{s.body}</p>
                 </div>
               </li>

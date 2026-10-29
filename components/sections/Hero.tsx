@@ -57,7 +57,7 @@ export default function Hero() {
             <div className="text-center md:text-left">
               <motion.h1
                 {...rise(0.08)}
-                className="font-display text-[clamp(2.6rem,5vw,4.4rem)] font-normal leading-[1.08] tracking-[-0.025em] text-ink"
+                className="font-display text-[clamp(1.5rem,8.4vw,2.6rem)] font-normal md:text-[clamp(2.1rem,4.3vw,2.6rem)] lg:text-[clamp(2.6rem,5vw,4.4rem)] leading-[1.08] tracking-[-0.025em] text-ink"
               >
                 Ancient Wisdom,
                 <br />
@@ -106,12 +106,12 @@ export default function Hero() {
               <GlassTag
                 title="Residential Vastu"
                 sub="Book home consultation"
-                className="bottom-[4%] left-0 md:-left-[6%] xl:bottom-[10%]"
+                className="bottom-[4%] left-0 max-[359px]:-left-2 max-[359px]:scale-90 md:-left-[6%] xl:bottom-[10%]"
               />
               <GlassTag
                 title="Business Vastu"
                 sub="Book business audit"
-                className="-top-14 right-0 md:-right-[4%] lg:-right-16 lg:-top-10"
+                className="-top-14 right-0 md:-right-[4%] lg:-right-6 lg:-top-10 xl:-right-16 [@media(min-width:768px)_and_(max-height:640px)]:hidden"
               />
             </motion.div>
           </div>
