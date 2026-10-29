@@ -84,7 +84,7 @@ export default function Process() {
                   rows.current[i] = el;
                 }}
                 data-index={i}
-                className={`grid grid-cols-[3.25rem_1fr] gap-x-5 border-line py-8 transition-opacity duration-500 md:grid-cols-[4.5rem_1fr] md:gap-x-8 md:py-10 lg:min-h-[min(34svh,300px)] 3xl:min-h-[min(30svh,280px)] lg:content-center ${
+                className={`grid grid-cols-[3.25rem_1fr] gap-x-5 border-line py-8 transition-opacity duration-500 md:grid-cols-[4.5rem_1fr] md:gap-x-8 md:py-10 lg:min-h-[min(34svh,300px)] lg:content-center ${
                   i > 0 ? "border-t" : ""
                 } ${i === active ? "" : "lg:opacity-45"}`}
               >
@@ -96,8 +96,8 @@ export default function Process() {
                   {s.n}
                 </span>
                 <div>
-                  <h3 className="font-display text-[1.35rem] font-medium 3xl:text-[1.6rem] leading-[1.2] tracking-[-0.015em] text-ink">{s.title}</h3>
-                  <p className="mt-3 max-w-[460px] text-[0.95rem] leading-[1.65] text-body-muted 3xl:max-w-[600px] 3xl:text-[1.05rem]">{s.body}</p>
+                  <h3 className="font-display text-[1.35rem] font-medium leading-[1.2] tracking-[-0.015em] text-ink">{s.title}</h3>
+                  <p className="mt-3 max-w-[460px] text-[0.95rem] leading-[1.65] text-body-muted">{s.body}</p>
                 </div>
               </li>
             ))}
