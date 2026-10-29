@@ -25,25 +25,48 @@ const field =
   "w-full rounded-[14px] border border-line bg-white px-4 py-3 text-[0.93rem] text-ink outline-none transition placeholder:text-body-faint/70 focus:border-plum/50 focus:ring-4 focus:ring-plum/10";
 const label = "mb-2 block text-[0.8rem] font-medium text-ink/80";
 
-/** Radio group styled as selectable pills. */
-function Pills({ name, legend, options, required = false }: { name: string; legend: string; options: { value: string; label: string }[]; required?: boolean }) {
+/** Native select styled like the text fields, with a custom chevron. */
+function Select({ id, label: text, options, placeholder, required = false }: { id: string; label: string; options: { value: string; label: string }[]; placeholder: string; required?: boolean }) {
+  // placeholder shows muted until something is chosen
+  const [chosen, setChosen] = useState(false);
   return (
-    <fieldset>
-      <legend className={label}>
-        {legend}
+    <div>
+      <label htmlFor={id} className={label}>
+        {text}
         {required && " *"}
-      </legend>
-      <div className="flex flex-wrap gap-2">
-        {options.map((o) => (
-          <label key={o.value} className="cursor-pointer">
-            <input type="radio" name={name} value={o.value} required={required} className="peer sr-only" />
-            <span className="inline-flex rounded-full border border-line bg-white px-4 py-2 text-[0.84rem] text-ink/80 transition hover:border-ink/40 peer-checked:border-ink peer-checked:bg-ink peer-checked:text-[#FFFCF6] peer-focus-visible:ring-4 peer-focus-visible:ring-plum/20">
+      </label>
+      <div className="relative">
+        <select
+          id={id}
+          name={id}
+          required={required}
+          defaultValue=""
+          onChange={(e) => setChosen(e.target.value !== "")}
+          className={`${field} cursor-pointer appearance-none truncate pr-11 ${chosen ? "" : "!text-body-faint"}`}
+        >
+          <option value="" disabled>
+            {placeholder}
+          </option>
+          {options.map((o) => (
+            <option key={o.value} value={o.value} className="text-ink">
               {o.label}
-            </span>
-          </label>
-        ))}
+            </option>
+          ))}
+        </select>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={1.75}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/60"
+          aria-hidden="true"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
       </div>
-    </fieldset>
+    </div>
   );
 }
 
@@ -167,8 +190,10 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <Pills name="service" legend="Service needed" options={serviceOptions} required />
-                <Pills name="propertyType" legend="Property type" options={propertyOptions} />
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <Select id="service" label="Service needed" options={serviceOptions} placeholder="Select a service" required />
+                  <Select id="propertyType" label="Property type" options={propertyOptions} placeholder="Select a type" />
+                </div>
 
                 <div>
                   <label htmlFor="message" className={label}>Your message</label>

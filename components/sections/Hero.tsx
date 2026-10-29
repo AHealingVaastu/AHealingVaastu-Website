@@ -111,7 +111,7 @@ export default function Hero() {
               <GlassTag
                 title="Business Vastu"
                 sub="Book business audit"
-                className="-top-14 right-0 md:-right-[4%] lg:-right-16 lg:-top-12"
+                className="-top-14 right-0 md:-right-[4%] lg:-right-16 lg:-top-10"
               />
             </motion.div>
           </div>

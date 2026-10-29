@@ -37,20 +37,22 @@ export default function PillNav({
     <>
       <nav
         aria-label={label}
-        className={`flex items-center justify-between gap-3 rounded-full border border-white/60 py-[0.6rem] pl-4 pr-[0.6rem] backdrop-blur-[16px] [@media(max-height:500px)]:py-[0.3rem] backdrop-saturate-[1.4] md:pl-5 ${
+        className={`flex items-center justify-between gap-3 rounded-full border border-white/60 py-[0.6rem] pl-[0.6rem] pr-[0.6rem] backdrop-blur-[16px] [@media(max-height:500px)]:py-[0.3rem] backdrop-saturate-[1.4] ${
           floating ? "bg-[#FFFCF6]/80 shadow-[0_10px_34px_rgba(74,31,92,0.12)]" : "bg-[#FFFCF6]/55 shadow-[0_8px_30px_rgba(74,31,92,0.08)]"
         }`}
       >
-        <a href="#top" tabIndex={tab} className="flex min-h-10 min-w-10 shrink-0 items-center gap-3" aria-label="A Healing Vaastu home">
-          <Image
-            src="/logo.png"
-            alt="A Healing Vaastu"
-            width={36}
-            height={36}
-            className="h-9 w-9 rounded-xl shadow-[0_2px_10px_rgba(74,31,92,0.18)]"
-            priority={priority}
-          />
-          <span className="hidden whitespace-nowrap font-display text-[0.98rem] font-semibold leading-[1.12] tracking-[0.01em] text-ink lg:block">
+        {/* logo and wordmark share one pill in the logo's own plum, so the logo's square edge disappears */}
+        <a
+          href="#top"
+          tabIndex={tab}
+          className="flex h-[3.25rem] shrink-0 items-center rounded-full bg-[#391C3B] shadow-[0_6px_18px_rgba(42,14,61,0.22)] lg:pl-1.5 lg:pr-5"
+          aria-label="A Healing Vaastu home"
+        >
+          {/* lotus-only mark (logo-mark.png): the full logo's tiny printed name repeats the wordmark beside it */}
+          <span className="grid h-[3.25rem] w-[3.25rem] shrink-0 place-items-center">
+            <Image src="/logo-mark.png" alt="A Healing Vaastu" width={42} height={42} className="h-[2.65rem] w-[2.65rem] rounded-full" priority={priority} />
+          </span>
+          <span className="hidden whitespace-nowrap pl-0.5 font-display text-[0.98rem] font-semibold leading-[1.12] tracking-[0.01em] text-[#FFFCF6] lg:block">
             A Healing
             <br />
             Vaastu
