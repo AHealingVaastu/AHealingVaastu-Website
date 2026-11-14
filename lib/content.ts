@@ -15,7 +15,7 @@ export const business = {
   email: "contact@ahealingvaastu.com",
   location: "Brampton, Ontario, Canada",
   area: "Serving Canada, the US & worldwide",
-  hours: "Mon–Fri by appointment · Sat–Sun closed",
+  hours: "Mon–Fri: By Appointment · Sat–Sun: Closed",
   hoursLines: ["Monday – Friday: By appointment only", "Saturday – Sunday: Closed"],
   bookingNote: "Available Mon–Fri by appointment",
   since: 2018,

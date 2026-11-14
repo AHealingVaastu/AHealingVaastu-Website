@@ -36,26 +36,23 @@ export default function Footer() {
   return (
     <footer className="bg-page px-3 pb-3 md:px-5 md:pb-5">
       <div>
-        {/* closing statement on the outro mesh, mirroring the hero card */}
-        <div className="mesh-outro grain relative overflow-hidden rounded-[30px]">
+        {/* closing statement on the hero's cloud sky, so the page opens and closes in the clouds */}
+        <div className="outro-clouds relative overflow-hidden rounded-[30px]">
           <Reveal className="relative z-[2] mx-auto max-w-shell px-6 py-16 text-center md:px-14 md:py-24">
-            <div className="flex justify-center">
-              <Image src="/lotus.png" alt="" width={72} height={50} aria-hidden="true" />
-            </div>
-            <h2 className="mx-auto mt-6 max-w-3xl font-display text-article sm:text-section lg:text-display font-normal !leading-[1.1] tracking-[-0.025em] text-[#FFFFFF]">
+            <h2 className="mx-auto max-w-3xl font-display text-article sm:text-section lg:text-display font-normal !leading-[1.1] tracking-[-0.025em] text-ink">
               Let your space <span className="text-accent-plum">breathe,</span>
               <br className="hidden sm:block" /> and watch your life <span className="text-accent-plum">bloom.</span>
             </h2>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
               <a
                 href="#contact"
-                className="inline-flex items-center rounded-[14px] bg-[#FFFFFF] px-7 py-[0.95rem] text-copy font-medium leading-[1.3] text-ink shadow-[0_12px_34px_rgba(20,6,36,0.3)] transition hover:-translate-y-0.5 hover:bg-white"
+                className="inline-flex items-center rounded-[14px] bg-cta px-7 py-[0.95rem] text-copy font-medium leading-[1.3] text-white shadow-[0_10px_26px_rgba(91,30,90,0.28)]"
               >
                 Begin Your Journey
               </a>
               <a
                 href={business.phoneHref}
-                className="tap text-copy font-medium leading-[1.3] text-[#FFFFFF] underline decoration-[#FFFFFF]/40 underline-offset-4 transition hover:decoration-[#FFFFFF]"
+                className="tap text-copy font-medium leading-[1.3] text-ink underline decoration-ink/30 underline-offset-4 transition hover:decoration-ink"
               >
                 Or call {business.phone}
               </a>
@@ -66,12 +63,13 @@ export default function Footer() {
         {/* link columns */}
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 px-4 pb-6 pt-10 sm:grid-cols-2 md:px-10 lg:grid-cols-[1.6fr_1fr_1fr_1.3fr]">
           <div>
+            {/* same mark and wordmark as the nav pill, but the plum stays on the mark */}
             <a href="#top" className="flex items-center gap-3" aria-label="A Healing Vaastu home">
-              <Image src="/logo.png" alt="A Healing Vaastu" width={44} height={44} className="rounded-xl shadow-[0_2px_10px_rgba(74,31,92,0.18)]" />
-              <span className="font-display text-copy font-semibold leading-[1.12] tracking-[0.01em] text-ink">
-                A Healing
-                <br />
-                Vaastu
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#391C3B]">
+                <Image src="/logo-mark.png" alt="" width={42} height={42} className="h-[2.1rem] w-[2.1rem] rounded-full" />
+              </span>
+              <span className="whitespace-nowrap font-wordmark text-copy font-normal leading-none tracking-[0.01em] text-ink">
+                A Healing Vaastu
               </span>
             </a>
             <p className="mt-5 max-w-xs text-small text-body-muted">
@@ -122,8 +120,13 @@ export default function Footer() {
                   {business.email}
                 </a>
               </li>
-              <li className="py-[0.6rem]">Brampton, ON, Canada</li>
-              <li className="py-[0.6rem] text-body-muted">{business.hours}</li>
+              <li className="py-[0.6rem] text-body-muted">
+                {business.hours.split(" · ").map((part) => (
+                  <span key={part} className="block whitespace-nowrap">
+                    {part}
+                  </span>
+                ))}
+              </li>
             </ul>
           </div>
         </div>

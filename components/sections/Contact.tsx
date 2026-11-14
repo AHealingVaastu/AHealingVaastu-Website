@@ -54,8 +54,8 @@ const invalid = (id: string, msg?: string) =>
   msg ? { "aria-invalid": true as const, "aria-describedby": `${id}-error` } : {};
 
 const field =
-  "w-full rounded-[14px] border border-line bg-white px-4 py-3 text-copy text-ink outline-none transition placeholder:text-body-faint/70 focus:border-plum/50 focus:ring-4 focus:ring-plum/10";
-const label = "mb-2 block text-small font-medium text-ink/80";
+  "w-full rounded-[14px] border border-line bg-white px-4 py-3 lg:py-[0.6rem] text-copy text-ink outline-none transition placeholder:text-body-faint/70 focus:border-plum/50 focus:ring-4 focus:ring-plum/10";
+const label = "mb-2 lg:mb-1.5 block text-small font-medium text-ink/80";
 // rose border marks the field; the message uses a deeper rose that passes 4.5:1 on cream
 const fieldError = "!border-rose/60 focus:!ring-rose/10";
 
@@ -242,7 +242,7 @@ export default function Contact() {
           </Reveal>
 
           {/* form */}
-          <Reveal delay={0.1} className="rounded-[30px] bg-[#FFFFFF] px-6 py-8 md:px-10 md:py-10">
+          <Reveal delay={0.1} className="rounded-[30px] bg-[#FFFFFF] px-6 py-8 md:px-10 md:py-10 lg:mt-12 lg:py-8">
             {status === "success" ? (
               <div className="flex flex-col items-center py-14 text-center">
                 <span className="grid h-14 w-14 place-items-center rounded-2xl bg-ink text-[#FFFFFF]">
@@ -254,7 +254,7 @@ export default function Contact() {
                 </p>
               </div>
             ) : (
-              <form ref={formRef} id="contact-form" onSubmit={onSubmit} noValidate className="scroll-mt-24 space-y-5">
+              <form ref={formRef} id="contact-form" onSubmit={onSubmit} noValidate className="scroll-mt-24 space-y-5 lg:space-y-4">
                 <div>
                   <h3 className="font-display text-subhead lg:text-card font-normal leading-[1.25] tracking-[-0.015em] text-ink">Request a Consultation</h3>
                   <p className="mt-1 text-small text-body-muted">Free 15-minute discovery call included with every enquiry.</p>
@@ -312,9 +312,9 @@ export default function Contact() {
                   <textarea
                     id="message"
                     name="message"
-                    rows={4}
+                    rows={2}
                     placeholder="Tell us briefly about your space and the challenges you're experiencing…"
-                    className={`${field} min-h-[110px] resize-y`}
+                    className={`${field} min-h-[80px] resize-y`}
                   />
                 </div>
 
@@ -340,7 +340,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="flex w-full items-center justify-center gap-2 rounded-[14px] bg-cta px-7 py-[0.95rem] text-copy font-medium leading-[1.3] text-white shadow-[0_10px_26px_rgba(91,30,90,0.28)] disabled:cursor-not-allowed disabled:opacity-70"
+                  className="flex w-full items-center justify-center gap-2 rounded-[14px] bg-cta px-7 py-[0.95rem] lg:py-[0.8rem] text-copy font-medium leading-[1.3] text-white shadow-[0_10px_26px_rgba(91,30,90,0.28)] disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {status === "loading" ? (
                     <>
