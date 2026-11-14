@@ -83,6 +83,15 @@ section[id] { scroll-margin-top: 90px; }
     linear-gradient(122deg, #F5E1B6 0%, #E199BE 25%, #A552C0 50%, #5A2188 73%, #1F0A3A 100%);
 }
 
+/* FOOTER OUTRO: the same cloud picture as the hero sky, on its own (no compass) */
+.outro-clouds {
+  background-color: #F1E7F5;
+  background-image: url("/hero-clouds.jpg");
+  background-image: image-set(url("/hero-clouds.webp") type("image/webp"), url("/hero-clouds.jpg") type("image/jpeg"));
+  background-size: cover;
+  background-position: center;
+}
+
 /* HERO: a lavender cloudscape in three layers. The sky sits at the back, the Vastu
    compass turns in front of it, and the cloud bank (the same picture, cut out below
    its ridge line) sits in front of the compass, so the compass rises from behind the
@@ -204,18 +213,6 @@ section[id] { scroll-margin-top: 90px; }
 @media (max-width: 767px) {
   .hero-flutes > span:nth-child(-n + 4),
   .hero-flutes > span:nth-child(n + 14) { display: none; }
-}
-
-/* FOOTER OUTRO: the exact hero mesh, point-reflected 180° so it reads
-   as an inverted "outro": deep purple at the top (flows from the page)
-   blooming into warm gold/rose toward the bottom. */
-.mesh-outro {
-  background:
-    radial-gradient(ellipse 95% 85% at 94% 96%,  #F8EAC6 0%, transparent 46%),
-    radial-gradient(ellipse 70% 75% at 72% 66%,  #EEC3DA 0%, transparent 52%),
-    radial-gradient(ellipse 85% 95% at 26% 38%,  #9C53C2 0%, transparent 56%),
-    radial-gradient(ellipse 95% 95% at -2% -4%,  #1E0838 0%, transparent 60%),
-    linear-gradient(302deg, #F5E1B6 0%, #E199BE 25%, #A552C0 50%, #5A2188 73%, #1F0A3A 100%);
 }
 
 /* ABOUT portrait frame: branded mini-mesh */
