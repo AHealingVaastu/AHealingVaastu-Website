@@ -184,7 +184,7 @@ export const posts = [
 ];
 
 // one option per service, labelled with the service's title so the form, emails and Services section stay in step
-const serviceValues = ["residential", "business", "pre-purchase", "astrology", "horoscope-report", "online"];
+export const serviceValues = ["residential", "business", "pre-purchase", "astrology", "horoscope-report", "online"];
 export const serviceOptions = services.map((s, i) => ({ value: serviceValues[i], label: s.title }));
 
 export const propertyOptions = [

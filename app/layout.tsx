@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
 import { Inter, Outfit, Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-display",
+});
+
+// Vogun Medium (Yukita Creative), for the logo wordmark and the hero headline
+const vogun = localFont({
+  src: "../components/fonts/Vogun-Medium.woff",
+  display: "swap",
+  variable: "--font-wordmark",
 });
 
 const inter = Inter({
@@ -53,7 +61,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${outfit.variable} ${vogun.variable} ${inter.variable} ${playfair.variable}`}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );

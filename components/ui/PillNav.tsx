@@ -37,36 +37,34 @@ export default function PillNav({
     <>
       <nav
         aria-label={label}
-        className={`flex items-center justify-between gap-3 rounded-full border border-white/60 py-[0.6rem] pl-[0.6rem] pr-[0.6rem] backdrop-blur-[16px] [@media(max-height:500px)]:py-[0.3rem] backdrop-saturate-[1.4] ${
-          floating ? "bg-[#FFFCF6]/80 shadow-[0_10px_34px_rgba(74,31,92,0.12)]" : "bg-[#FFFCF6]/55 shadow-[0_8px_30px_rgba(74,31,92,0.08)]"
+        className={`liquid-glass flex items-center justify-between gap-3 rounded-[20px] lg:grid lg:grid-cols-[1fr_auto_1fr] py-[0.6rem] pl-[0.6rem] pr-[0.6rem] [@media(max-height:500px)]:py-[0.3rem] ${
+          floating ? "liquid-glass--floating" : ""
         }`}
       >
         {/* logo and wordmark share one pill in the logo's own plum, so the logo's square edge disappears */}
         <a
           href="#top"
           tabIndex={tab}
-          className="flex h-[3.25rem] shrink-0 items-center rounded-full bg-[#391C3B] shadow-[0_6px_18px_rgba(42,14,61,0.22)] lg:pl-1.5 lg:pr-5"
+          className="flex h-10 shrink-0 items-center justify-self-start rounded-xl bg-[#391C3B] lg:pl-1 lg:pr-4"
           aria-label="A Healing Vaastu home"
         >
           {/* lotus-only mark (logo-mark.png): the full logo's tiny printed name repeats the wordmark beside it */}
-          <span className="grid h-[3.25rem] w-[3.25rem] shrink-0 place-items-center">
-            <Image src="/logo-mark.png" alt="A Healing Vaastu" width={42} height={42} className="h-[2.65rem] w-[2.65rem] rounded-full" priority={priority} />
+          <span className="grid h-10 w-10 shrink-0 place-items-center">
+            <Image src="/logo-mark.png" alt="A Healing Vaastu" width={42} height={42} className="h-[2.1rem] w-[2.1rem] rounded-full" priority={priority} />
           </span>
-          <span className="hidden whitespace-nowrap pl-0.5 font-display text-[0.98rem] font-semibold leading-[1.12] tracking-[0.01em] text-[#FFFCF6] lg:block">
-            A Healing
-            <br />
-            Vaastu
+          <span className="hidden whitespace-nowrap pl-0.5 font-wordmark text-copy font-normal leading-none tracking-[0.01em] text-[#FFFFFF] lg:block">
+            A Healing Vaastu
           </span>
         </a>
 
-        {/* desktop links */}
+        {/* desktop links: truly centred in the bar from lg up (three-column grid) */}
         <ul className="hidden min-w-0 items-center md:flex lg:gap-1">
           {nav.map((l) => (
             <li key={l.href} className="shrink-0">
               <a
                 href={l.href}
                 tabIndex={tab}
-                className="whitespace-nowrap rounded-full px-[0.7rem] py-2 text-[0.9rem] font-medium text-ink/80 transition hover:bg-plum/[0.07] hover:text-ink lg:px-[0.95rem]"
+                className="whitespace-nowrap rounded-[10px] px-[0.7rem] py-2 text-small font-medium leading-[1.3] text-ink/80 transition hover:bg-plum/[0.07] hover:text-ink lg:px-[0.95rem]"
               >
                 {l.label}
               </a>
@@ -74,12 +72,12 @@ export default function PillNav({
           ))}
         </ul>
 
-        <div className="flex shrink-0 items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2 justify-self-end">
           <HoverGroup
             as="a"
             href={business.phoneHref}
             tabIndex={tab}
-            className="hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white/70 px-4 py-[0.65rem] text-[0.88rem] font-medium text-ink transition hover:bg-white xl:inline-flex"
+            className="hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-xl bg-white/70 px-4 py-[0.65rem] text-small font-medium leading-[1.3] text-ink transition hover:bg-white xl:inline-flex"
           >
             <GroupIcon icon={PhoneIcon} size={14} strokeWidth={2} />
             {business.phone}
@@ -87,14 +85,14 @@ export default function PillNav({
           <a
             href="#contact"
             tabIndex={tab}
-            className="hidden shrink-0 whitespace-nowrap rounded-full bg-ink px-5 py-[0.6rem] text-[0.88rem] font-medium text-page shadow-[0_6px_18px_rgba(42,14,61,0.28)] transition hover:-translate-y-px hover:bg-plum sm:inline-flex"
+            className="hidden shrink-0 whitespace-nowrap rounded-xl bg-cta px-5 py-[0.6rem] text-small font-medium leading-[1.3] text-white sm:inline-flex"
           >
             Book Consultation
           </a>
           <button
             type="button"
             tabIndex={tab}
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full text-ink transition hover:bg-plum/[0.07] md:hidden"
+            className="relative grid h-10 w-10 shrink-0 place-items-center rounded-xl text-ink transition after:absolute after:-inset-[2px] after:content-[''] hover:bg-plum/[0.07] md:hidden"
             aria-label="Toggle navigation"
             aria-expanded={open}
             aria-controls={menuId}
@@ -109,7 +107,7 @@ export default function PillNav({
       {open && (
         <div
           id={menuId}
-          className="mt-2 flex flex-col gap-1 rounded-[24px] border border-white/60 bg-[#FFFCF6]/90 p-2 shadow-[0_18px_50px_rgba(74,31,92,0.16)] backdrop-blur-xl md:hidden"
+          className="mt-2 flex flex-col gap-1 rounded-[24px] border border-white/60 bg-[#FFFFFF]/90 p-2 shadow-[0_18px_50px_rgba(74,31,92,0.16)] backdrop-blur-xl md:hidden"
         >
           {nav.map((l) => (
             <a
@@ -132,7 +130,7 @@ export default function PillNav({
           <a
             href="#contact"
             onClick={() => setOpen(false)}
-            className="m-1 inline-flex items-center justify-center rounded-full bg-ink px-5 py-3 font-medium text-page"
+            className="m-1 inline-flex items-center justify-center rounded-xl bg-cta px-5 py-3 text-copy font-medium leading-[1.3] text-white"
           >
             Book Consultation
           </a>
