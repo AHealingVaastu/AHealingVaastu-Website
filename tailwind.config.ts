@@ -9,20 +9,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        page: "#FBF5EC",
+        page: "#F4EDF7",
         ink: "#2A0E3D",
         cream: { DEFAULT: "#FDF6EE", 200: "#F6ECDB" },
         gold: { light: "#E8D5A3", DEFAULT: "#C9A84C", dark: "#8B6914" },
         rose: { light: "#EABEC9", DEFAULT: "#C0607A" },
         plum: { DEFAULT: "#7B3F8C", deep: "#4A1F5C" },
         terra: "#C1440E",
-        body: { DEFAULT: "#2D1B0E", muted: "#6B4C35", faint: "#A07860" },
+        body: { DEFAULT: "#2E2140", muted: "#5B4C6C", faint: "#6E6181" },
+        lavender: { DEFAULT: "#F1E7F5", cloud: "#DED4EF" },
+        cta: { from: "#6052E3", to: "#7D74EF" },
         line: "rgba(123,63,140,0.12)",
       },
       fontFamily: {
         display: ["var(--font-display)", "system-ui", "sans-serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         accent: ["var(--font-accent)", "Georgia", "serif"],
+        wordmark: ["var(--font-wordmark)", "Georgia", "serif"],
+      },
+      // Type scale: 16px base, ratio 1.25 (major third). Every size on the site is one of
+      // these steps, named for its role. Headings step down at the tablet (sm, 640px) and
+      // mobile breakpoints but always land on the scale. Body, supporting, caption and
+      // eyebrow line heights live here; headings and buttons set their role's line height
+      // and letter spacing where they are used, since a role keeps them at every size.
+      fontSize: {
+        eyebrow: ["0.75rem", { lineHeight: "1.4" }], //    12px  uppercase labels (+0.12em)
+        caption: ["0.8125rem", { lineHeight: "1.5" }], //  13px  captions, copyright
+        small: ["0.875rem", { lineHeight: "1.5" }], //     14px  supporting text, metadata, UI
+        copy: ["1rem", { lineHeight: "1.6" }], //          16px  body, buttons, inputs
+        subhead: ["1.25rem", { lineHeight: "1.25" }], //   20px  card headings (mobile), process steps
+        card: ["1.5625rem", { lineHeight: "1.25" }], //    25px  card headings (H3)
+        article: ["1.9375rem", { lineHeight: "1.15" }], // 31px  article titles
+        section: ["2.4375rem", { lineHeight: "1.15" }], // 39px  section headings (H2)
+        display: ["3.0625rem", { lineHeight: "1.1" }], //  49px  hero and closing headlines
       },
       maxWidth: { shell: "1240px", frame: "1680px" },
       borderRadius: { "4xl": "2rem" },

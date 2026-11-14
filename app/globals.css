@@ -6,7 +6,7 @@
    BASE
    ============================================================ */
 :root {
-  --page: #FBF5EC;
+  --page: #F4EDF7;
   --ink: #2A0E3D;
   --gold: #C9A84C;
   --gold-light: #E8D5A3;
@@ -30,7 +30,7 @@ body::-webkit-scrollbar,
 
 body {
   background: var(--page);
-  color: #2D1B0E;
+  color: #2E2140;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -48,7 +48,7 @@ section[id] { scroll-margin-top: 90px; }
 /* gold→terracotta gradient accent used on headline emphasis */
 .text-accent {
   font-weight: 500;
-  background: linear-gradient(100deg, #B8821E, #E2A93C 50%, #C1440E);
+  background: linear-gradient(100deg, #7B3F8C, #6052E3);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -83,6 +83,129 @@ section[id] { scroll-margin-top: 90px; }
     linear-gradient(122deg, #F5E1B6 0%, #E199BE 25%, #A552C0 50%, #5A2188 73%, #1F0A3A 100%);
 }
 
+/* HERO: a lavender cloudscape in three layers. The sky sits at the back, the Vastu
+   compass turns in front of it, and the cloud bank (the same picture, cut out below
+   its ridge line) sits in front of the compass, so the compass rises from behind the
+   clouds. Both pictures share one size and position so they line up exactly. The
+   bottom then dissolves into the page colour. */
+.hero-sky,
+.hero-cloudbank {
+  position: absolute; inset: 0; pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  /* both pictures sit lower in the hero, together, so the cloud line meets the
+     compass and the sky above stays open for the headline */
+  transform: translateY(17%);
+}
+/* the strip the pictures uncover at the top is the sky's own colour, and the
+   picture's top edge feathers into it so there is no seam */
+.hero-backdrop { position: absolute; inset: 0; background: #F2EAF9; }
+.hero-sky {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 14%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 14%);
+  background-image: url("/hero-clouds.jpg");
+  background-image: image-set(url("/hero-clouds.webp") type("image/webp"), url("/hero-clouds.jpg") type("image/jpeg"));
+}
+.hero-cloudbank { background-image: url("/hero-clouds-front.webp"); }
+.hero-fade {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(244, 237, 247, 0) 62%, rgba(244, 237, 247, 0.7) 86%, #F4EDF7 100%);
+}
+
+/* the compass stands upright, centred and low enough to leave room above for the
+   headline and subtext, and turns clockwise */
+.hero-compass {
+  position: absolute; left: 50%; top: 77.5%;
+  width: min(72svh, 88vw, 680px);
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.hero-compass svg {
+  display: block; width: 100%; height: 100%;
+  animation: hero-compass-turn 60s linear infinite;
+  will-change: transform;
+}
+@keyframes hero-compass-turn { to { transform: rotate(360deg); } }
+
+/* hero copy starts just under the nav, in the open sky above the compass */
+.hero-copy { padding-top: clamp(6.5rem, 15svh, 9.5rem); }
+
+/* HERO (fluted): a small spotlight at the top centre shines on 17 stacked
+   glass flutes, in the lavender palette. Away from it the panel is a soft
+   lavender, deeper toward both ends, and the lower half settles into cloud
+   lavender. */
+.fluted-hero {
+  background:
+    radial-gradient(ellipse 14% 24% at 50% -4%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(ellipse 24% 38% at 50% -6%, rgba(244, 237, 247, 0.9) 0%, rgba(244, 237, 247, 0) 100%),
+    linear-gradient(90deg, #DED4EF 0%, #F1E7F5 26%, #F4EDF7 50%, #F1E7F5 74%, #DED4EF 100%);
+}
+
+/* sits above the flutes: the lower half darkens into a warm gold, and a light
+   touch of deeper gold gathers in all four corners */
+.hero-vignette {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 28% 38% at 0% 0%, rgba(118, 98, 170, 0.28) 0%, rgba(118, 98, 170, 0) 100%),
+    radial-gradient(ellipse 28% 38% at 100% 0%, rgba(118, 98, 170, 0.28) 0%, rgba(118, 98, 170, 0) 100%),
+    radial-gradient(ellipse 28% 38% at 0% 100%, rgba(118, 98, 170, 0.32) 0%, rgba(118, 98, 170, 0) 100%),
+    radial-gradient(ellipse 28% 38% at 100% 100%, rgba(118, 98, 170, 0.32) 0%, rgba(118, 98, 170, 0) 100%),
+    linear-gradient(180deg, rgba(118, 98, 170, 0) 62%, rgba(118, 98, 170, 0.1) 82%, rgba(118, 98, 170, 0.22) 100%),
+    linear-gradient(180deg, rgba(201, 188, 232, 0) 38%, rgba(201, 188, 232, 0.34) 54%, rgba(201, 188, 232, 0.62) 74%, rgba(201, 188, 232, 0.82) 100%);
+}
+
+/* the flutes are stacked like overlapping panels, rising toward the centre:
+   each of the left 8 overlaps its left neighbour, each of the right 8 its
+   right neighbour, and the middle one overlaps both. All shading lives inside
+   each flute and starts exactly at its edges: the overlapping edge begins
+   lit, the body stays soft, and the edge tucked under the next flute deepens
+   smoothly into shadow, so every seam is clean. They run the full height. */
+.hero-flutes {
+  position: absolute; inset: 0; z-index: 1; display: flex; pointer-events: none;
+  filter: blur(6px); /* softens each seam into a gentle fold */
+}
+.hero-flutes > span {
+  position: relative;
+  flex: 1;
+  background: linear-gradient(90deg,
+    rgba(255, 255, 255, 0.116) 0%,
+    rgba(255, 255, 255, 0.116) 14%,
+    rgba(255, 255, 255, 0.108) 30%,
+    rgba(255, 255, 255, 0.091) 46%,
+    rgba(255, 255, 255, 0.058) 60%,
+    rgba(255, 255, 255, 0.024) 71%,
+    rgba(118, 98, 170, 0) 79%,
+    rgba(118, 98, 170, 0.02) 88%,
+    rgba(118, 98, 170, 0.036) 96%,
+    rgba(118, 98, 170, 0.042) 100%);
+}
+.hero-flutes > span:nth-child(9) {
+  background: linear-gradient(90deg,
+    rgba(255, 255, 255, 0.116) 0%,
+    rgba(255, 255, 255, 0.124) 15%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(255, 255, 255, 0.124) 85%,
+    rgba(255, 255, 255, 0.116) 100%);
+}
+/* right side mirrors the left, shadow included */
+.hero-flutes > span:nth-child(n + 10) { transform: scaleX(-1); }
+/* stacking order: rising toward the centre from both ends */
+.hero-flutes > span:nth-child(1), .hero-flutes > span:nth-child(17) { z-index: 1; }
+.hero-flutes > span:nth-child(2), .hero-flutes > span:nth-child(16) { z-index: 2; }
+.hero-flutes > span:nth-child(3), .hero-flutes > span:nth-child(15) { z-index: 3; }
+.hero-flutes > span:nth-child(4), .hero-flutes > span:nth-child(14) { z-index: 4; }
+.hero-flutes > span:nth-child(5), .hero-flutes > span:nth-child(13) { z-index: 5; }
+.hero-flutes > span:nth-child(6), .hero-flutes > span:nth-child(12) { z-index: 6; }
+.hero-flutes > span:nth-child(7), .hero-flutes > span:nth-child(11) { z-index: 7; }
+.hero-flutes > span:nth-child(8), .hero-flutes > span:nth-child(10) { z-index: 8; }
+.hero-flutes > span:nth-child(9) { z-index: 9; }
+/* phones keep the centre 9 so the flutes stay broad */
+@media (max-width: 767px) {
+  .hero-flutes > span:nth-child(-n + 4),
+  .hero-flutes > span:nth-child(n + 14) { display: none; }
+}
+
 /* FOOTER OUTRO: the exact hero mesh, point-reflected 180° so it reads
    as an inverted "outro": deep purple at the top (flows from the page)
    blooming into warm gold/rose toward the bottom. */
@@ -112,6 +235,64 @@ section[id] { scroll-margin-top: 90px; }
   opacity: 0.5;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
 }
+
+/* LIQUID GLASS (nav bar): clearer and more saturated than frosted glass, with a
+   bright inner glow along the top, a specular rim where light catches the
+   top-left and bottom-right edges, and a soft lift off the page. */
+.liquid-glass {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0.12) 100%);
+  -webkit-backdrop-filter: blur(10px) saturate(2.2) brightness(1.02);
+  backdrop-filter: blur(10px) saturate(2.2) brightness(1.02);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 12px 20px -12px rgba(255, 255, 255, 0.95),
+    inset 0 -10px 18px -12px rgba(96, 82, 227, 0.22),
+    inset 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset -1px 0 0 rgba(255, 255, 255, 0.4),
+    0 10px 30px -8px rgba(42, 14, 61, 0.14),
+    0 2px 6px rgba(42, 14, 61, 0.05);
+}
+/* specular rim: a 1px border whose light runs from the top-left round to the bottom-right */
+.liquid-glass::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.25) 35%, rgba(255, 255, 255, 0.1) 60%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+/* a soft sheen across the upper half, like light pooling on a curved surface */
+.liquid-glass::after {
+  content: "";
+  position: absolute; inset: 1px 1px 50% 1px; z-index: -1;
+  border-radius: inherit;
+  border-bottom-left-radius: 50% 30%;
+  border-bottom-right-radius: 50% 30%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+/* floating over page content (white cards, text), so a little more body for legibility */
+.liquid-glass--floating {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.6) 55%, rgba(255, 255, 255, 0.68) 100%);
+  -webkit-backdrop-filter: blur(22px) saturate(1.8);
+  backdrop-filter: blur(22px) saturate(1.8);
+}
+
+/* booking CTAs: the same plum gradient as the accent words in headings
+   (.text-accent-plum), deepening slightly on hover */
+.bg-cta {
+  background-image: linear-gradient(100deg, #8E2C8A, #3D1556);
+  transition: background-image 0.2s, filter 0.2s;
+}
+.bg-cta:hover { filter: brightness(0.94) saturate(1.08); }
 
 .glass {
   background: rgba(255, 255, 255, 0.16);
@@ -155,7 +336,7 @@ section[id] { scroll-margin-top: 90px; }
   position: absolute; left: 50%; top: 55%;
   width: 40%; height: 15%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse at center, rgba(20, 6, 36, 0.4) 0%, rgba(20, 6, 36, 0.16) 42%, transparent 72%);
+  background: radial-gradient(ellipse at center, rgba(90, 66, 12, 0.34) 0%, rgba(90, 66, 12, 0.13) 42%, transparent 72%);
   filter: blur(3px);
   animation: vc-shadow 6s ease-in-out infinite;
   pointer-events: none;
@@ -171,12 +352,13 @@ section[id] { scroll-margin-top: 90px; }
 .vc-house {
   position: absolute; left: 11%; top: -0.6%;
   width: 78%; aspect-ratio: 1 / 1;
-  filter: drop-shadow(0 26px 30px rgba(31, 10, 58, 0.4));
+  filter: drop-shadow(0 26px 30px rgba(110, 80, 20, 0.3));
   animation: vc-float 6s ease-in-out infinite;
   will-change: transform;
 }
 .vc-house svg,
 .vc-house img { display: block; width: 100%; height: auto; overflow: visible; }
+.vc-house img { filter: contrast(1.08) saturate(1.1); }
 @keyframes vc-float {
   0%, 100% { transform: translate3d(0, 0, 0); }
   50%      { transform: translate3d(0, -6%, 0); }

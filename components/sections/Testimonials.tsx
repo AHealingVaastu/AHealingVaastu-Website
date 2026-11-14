@@ -21,17 +21,17 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" aria-label="Testimonials" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div>
         {/* heading */}
         <Reveal className="px-4 pb-8 pt-8 md:px-10 md:pb-10 md:pt-12">
           <SectionLabel index="05" label="Client stories" />
           <div className="mt-6 grid grid-cols-1 items-center gap-5 md:grid-cols-[1.1fr_0.9fr] md:gap-10">
-            <h2 className="font-display text-[clamp(2.2rem,4vw,3.4rem)] font-normal leading-[1.08] tracking-[-0.025em] text-ink">
+            <h2 className="font-display text-card sm:text-article lg:text-section font-normal leading-[1.15] tracking-[-0.025em] text-ink">
               Transformed Spaces,
               <br />
               <span className="text-accent-plum">Transformed Lives</span>
             </h2>
-            <p className="max-w-[440px] text-[1rem] leading-[1.65] text-body-muted">
+            <p className="max-w-[440px] text-copy text-body-muted">
               Real results from families and businesses across Canada, the US, India, and beyond.
             </p>
           </div>
@@ -41,7 +41,7 @@ export default function Testimonials() {
         <Reveal delay={0.1}>
           <div className="stories grid gap-px overflow-hidden rounded-[30px] bg-line">
             {/* featured quote */}
-            <div className="bg-[#FFFCF6] px-6 py-10 md:px-14 md:py-14">
+            <div className="bg-[#FFFFFF] px-6 py-10 md:px-14 md:py-14">
               <div className="flex gap-1 text-plum" aria-label="Rated 5 out of 5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} size={15} fill="currentColor" strokeWidth={0} aria-hidden="true" />
@@ -52,7 +52,7 @@ export default function Testimonials() {
               <div className="mt-6 grid max-w-[920px]" aria-live="polite">
                 {testimonials.map((q, i) => {
                   const cls =
-                    "[grid-area:1/1] font-display text-[clamp(1.3rem,2.3vw,1.9rem)] font-normal leading-[1.42] tracking-[-0.015em] text-ink";
+                    "[grid-area:1/1] font-display text-subhead lg:text-card font-normal !leading-[1.4] tracking-[-0.015em] text-ink";
                   return i === active ? (
                     <motion.blockquote
                       key={q.name}
@@ -73,11 +73,11 @@ export default function Testimonials() {
 
               <div className="mt-8 flex flex-wrap items-end justify-between gap-6 border-t border-line pt-6">
                 <div>
-                  <span className="block text-[1rem] font-medium text-ink">{t.name}</span>
-                  <span className="mt-0.5 block text-[0.82rem] text-body-faint">{t.location}</span>
+                  <span className="block text-copy font-medium text-ink">{t.name}</span>
+                  <span className="mt-0.5 block text-small text-body-faint">{t.location}</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="mr-2 font-display text-[0.95rem] tabular-nums text-body-faint">
+                  <span className="mr-2 font-display text-small tabular-nums text-body-faint">
                     <span className="text-ink">{pad(active + 1)}</span> / {pad(total)}
                   </span>
                   <HoverGroup
@@ -85,7 +85,7 @@ export default function Testimonials() {
                     type="button"
                     aria-label="Previous story"
                     onClick={() => go(active - 1)}
-                    className="grid h-11 w-11 place-items-center rounded-full border border-line bg-white text-ink transition [@media(hover:hover)]:hover:bg-ink [@media(hover:hover)]:hover:text-[#FFFCF6]"
+                    className="grid h-11 w-11 place-items-center rounded-xl border border-line bg-white text-ink transition [@media(hover:hover)]:hover:bg-ink [@media(hover:hover)]:hover:text-[#FFFFFF]"
                   >
                     <GroupIcon icon={ArrowLeftIcon} size={16} strokeWidth={2} />
                   </HoverGroup>
@@ -94,7 +94,7 @@ export default function Testimonials() {
                     type="button"
                     aria-label="Next story"
                     onClick={() => go(active + 1)}
-                    className="grid h-11 w-11 place-items-center rounded-full bg-ink text-[#FFFCF6] transition hover:bg-plum"
+                    className="grid h-11 w-11 place-items-center rounded-xl bg-ink text-[#FFFFFF] transition hover:bg-plum"
                   >
                     <GroupIcon icon={ArrowRightIcon} size={16} strokeWidth={2} />
                   </HoverGroup>
@@ -113,19 +113,19 @@ export default function Testimonials() {
                       onClick={() => go(i)}
                       aria-current={on}
                       className={`relative flex h-full w-full items-center gap-3 px-5 py-5 text-left transition-colors duration-300 ${
-                        on ? "bg-white" : "bg-[#FFFCF6] hover:bg-white"
+                        on ? "bg-white" : "bg-[#FFFFFF] hover:bg-white"
                       }`}
                     >
                       <span
-                        className={`grid h-9 w-9 shrink-0 place-items-center rounded-full font-display text-[0.95rem] transition-colors duration-300 ${
-                          on ? "bg-ink text-[#FFFCF6]" : "border border-line bg-white text-body-muted"
+                        className={`grid h-9 w-9 shrink-0 place-items-center rounded-[10px] font-display text-small transition-colors duration-300 ${
+                          on ? "bg-ink text-[#FFFFFF]" : "border border-line bg-white text-body-muted"
                         }`}
                       >
                         {c.avatar}
                       </span>
                       <span className="min-w-0">
-                        <span className={`block truncate text-[0.88rem] font-medium ${on ? "text-ink" : "text-ink/70"}`}>{c.name}</span>
-                        <span className="block truncate text-[0.75rem] text-body-faint">{c.location.split(" · ")[0]}</span>
+                        <span className={`block truncate text-small font-medium ${on ? "text-ink" : "text-ink/70"}`}>{c.name}</span>
+                        <span className="block truncate text-small text-body-faint">{c.location.split(" · ")[0]}</span>
                       </span>
                       {on && !reduce && (
                         <span

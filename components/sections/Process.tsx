@@ -28,19 +28,19 @@ export default function Process() {
 
   return (
     <section id="process" aria-label="Process" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
+      <div>
         <div className="grid grid-cols-1 gap-2 lg:grid-cols-[0.9fr_1.1fr] lg:gap-4">
           {/* mesh card: pinned on desktop, tracks the active step */}
           <div className="lg:sticky lg:top-24 lg:self-start">
             <div className="mesh-hero grain relative flex flex-col overflow-hidden rounded-[30px] px-6 pb-8 pt-8 md:px-10 md:pt-10 lg:h-[min(660px,calc(100svh-7.5rem))] lg:pb-6">
               <div className="relative z-[2]">
                 <SectionLabel index="04" label="How it works" />
-                <h2 className="mt-6 font-display text-[clamp(2.2rem,4vw,3.4rem)] font-normal leading-[1.08] tracking-[-0.025em] text-ink">
+                <h2 className="mt-6 font-display text-card sm:text-article lg:text-section font-normal leading-[1.15] tracking-[-0.025em] text-ink">
                   Your Journey
                   <br />
                   to <span className="text-accent-plum">Harmony</span>
                 </h2>
-                <p className="mt-5 max-w-[380px] text-[1rem] leading-[1.65] text-ink/70">
+                <p className="mt-5 max-w-[380px] text-copy text-ink/70">
                   A clear, compassionate process designed to bring measurable change to your space, and to your life.
                 </p>
               </div>
@@ -51,25 +51,25 @@ export default function Process() {
                   initial={reduce ? false : { opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.45, ease: [0.2, 0.7, 0.2, 1] }}
-                  className="block font-display text-[clamp(6rem,10vw,8.5rem)] font-normal leading-none tracking-[-0.04em] text-[#FFFCF6]"
+                  className="block font-display text-[5rem] sm:text-[6.25rem] lg:text-[7.5rem] font-normal leading-none tracking-[-0.04em] text-[#FFFFFF]"
                 >
                   {step.n}
                 </motion.span>
                 <div className="glass mt-4 rounded-[18px] px-5 py-4 shadow-[0_12px_30px_rgba(31,10,58,0.22)]">
                   <div className="flex items-center justify-between gap-4">
-                    <span className="text-[0.78rem] text-[#FFFCF6]/75">
+                    <span className="text-caption text-[#FFFFFF]/75">
                       Step {step.n} of {String(process.length).padStart(2, "0")}
                     </span>
                     <span className="flex gap-1">
                       {process.map((s, j) => (
                         <span
                           key={s.n}
-                          className={`h-[3px] w-4 rounded-full transition-colors duration-300 ${j <= active ? "bg-[#FFFCF6]" : "bg-[#FFFCF6]/25"}`}
+                          className={`h-[3px] w-4 rounded-full transition-colors duration-300 ${j <= active ? "bg-[#FFFFFF]" : "bg-[#FFFFFF]/25"}`}
                         />
                       ))}
                     </span>
                   </div>
-                  <span className="mt-1.5 block text-[1.05rem] font-medium text-[#FFFCF6]">{step.title}</span>
+                  <span className="mt-1.5 block text-copy font-medium text-[#FFFFFF]">{step.title}</span>
                 </div>
               </div>
             </div>
@@ -84,20 +84,20 @@ export default function Process() {
                   rows.current[i] = el;
                 }}
                 data-index={i}
-                className={`grid grid-cols-[3.25rem_1fr] gap-x-5 border-line py-8 transition-opacity duration-500 md:grid-cols-[4.5rem_1fr] md:gap-x-8 md:py-10 lg:min-h-[min(34svh,300px)] lg:content-center ${
+                className={`relative grid grid-cols-[3.25rem_1fr] gap-x-5 border-line py-8 transition-opacity duration-500 before:absolute before:-left-4 before:top-8 before:bottom-8 before:w-[2px] before:rounded-full before:bg-plum before:transition-opacity before:duration-500 md:before:-left-6 md:before:top-10 md:before:bottom-10 md:grid-cols-[4.5rem_1fr] md:gap-x-8 md:py-10 lg:min-h-[min(34svh,300px)] lg:content-center ${
                   i > 0 ? "border-t" : ""
-                } ${i === active ? "" : "lg:opacity-45"}`}
+                } ${i === active ? "lg:before:opacity-100" : "before:opacity-0 lg:opacity-[0.85]"}`}
               >
                 <span
-                  className={`font-display text-[clamp(2.2rem,3.4vw,3rem)] font-normal leading-none tracking-[-0.025em] transition-colors duration-500 ${
-                    i === active ? "text-plum" : "text-ink/30"
+                  className={`font-display text-card sm:text-article lg:text-section font-normal !leading-none tracking-[-0.025em] transition-colors duration-500 ${
+                    i === active ? "text-plum" : "text-ink/40"
                   }`}
                 >
                   {s.n}
                 </span>
                 <div>
-                  <h3 className="font-display text-[1.35rem] font-medium leading-[1.2] tracking-[-0.015em] text-ink">{s.title}</h3>
-                  <p className="mt-3 max-w-[460px] text-[0.95rem] leading-[1.65] text-body-muted">{s.body}</p>
+                  <h3 className="font-display text-subhead font-medium leading-[1.25] tracking-[-0.015em] text-ink">{s.title}</h3>
+                  <p className="mt-3 max-w-[460px] text-small text-body-muted">{s.body}</p>
                 </div>
               </li>
             ))}

@@ -28,12 +28,12 @@ function useCountUp(target: number, run: boolean, duration = 1800) {
 function StatCard({ target, suffix, label, run }: { target: number; suffix: string; label: string; run: boolean }) {
   const val = useCountUp(target, run);
   return (
-    <div className="bg-[#FFFCF6] px-8 py-9">
-      <span className="block font-display text-[clamp(2.6rem,4vw,3.4rem)] font-normal leading-none tracking-[-0.025em] text-ink">
+    <div className="bg-[#FFFFFF] px-5 py-6 sm:px-8 sm:py-9">
+      <span className="block font-display text-article sm:text-section lg:text-display font-normal !leading-none tracking-[-0.025em] text-ink">
         {val}
         <span className="text-accent font-accent italic">{suffix}</span>
       </span>
-      <span className="mt-3 block text-[0.86rem] text-body-faint">{label}</span>
+      <span className="mt-3 block text-small text-body-faint">{label}</span>
     </div>
   );
 }
@@ -60,8 +60,8 @@ export default function Stats() {
 
   return (
     <section aria-label="Our impact" className="bg-page px-3 pb-3 md:px-5 md:pb-5">
-      <div className="mx-auto max-w-frame rounded-[38px] border border-white/90 bg-white/60 p-[0.6rem] shadow-[0_18px_50px_rgba(74,31,92,0.08)] md:p-[0.85rem]">
-        <div ref={ref} className="grid grid-cols-1 gap-px overflow-hidden rounded-[30px] bg-line sm:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <div ref={ref} className="grid grid-cols-2 gap-px overflow-hidden rounded-[30px] bg-line lg:grid-cols-4">
           {stats.map((s) => (
             <StatCard key={s.label} {...s} run={run} />
           ))}
